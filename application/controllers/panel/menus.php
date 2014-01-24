@@ -291,15 +291,18 @@ class Menus extends CI_Controller {
 				$elementos .= "  <li class='soyPadre'>
 
 									<div class='row thumbnail' style='margin-left:0px;'>
-										<div class='span4'>
-											<span class='label label-inverse'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'>" . $row->titulo . "</a></span>
+										<div class='span6 cont_items_first' style='text-align: left;'>
+										<span class='label label-inverse'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'>" . $row->titulo . "</a></span>	
+										 	<div  class='cont_act'>
+											 	<a estado='".$row->estado."' title='Activar/Desactivar Item' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
+												<a title='Editar Item' class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'><i class='icon-pencil'></i></a>
+												<a title='Eliminar Item' class='item_link act_eliminar' href='". base_url('panel/menus/elimina_item/') . "/". $row->idItem . "'><i class='icon-remove-sign'></i></a> 
+											</div>
 										</div>
 										<div class='span2 input-prepend' style='text-align: center;'>
-											<input name='orden' class='orden span4' value='".$row->orden."' data-id='". $row->idItem. "'>
+											<input type='number' name='orden' class='orden span4' value='".$row->orden."' data-id='". $row->idItem. "'>
 										</div>
-										<div class='span2' style='text-align: center;'>
-										<a estado='".$row->estado."' title='Activar/Desactivar Item'  class='item_link act_activar' data-id='".$row->idItem."' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>
-										</div>
+										
 										<div class='span2' style='text-align: center;'>
 										<a title='Editar Item'  class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'><i class='icon-pencil'></i></a>
 										</div>
@@ -313,14 +316,16 @@ class Menus extends CI_Controller {
 			}else{
 				$elementos .= " <li style='list-style:none;margin:0;'>
 								<div class='row thumbnail' style='margin-left:0px;'>
-								<div class='span4'>
-								<span class='label'><i class='icon-asterisk'></i><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'> " . $row->titulo . "</a></span>
+								<div class='span6 cont_items_first' style='text-align: left;'>
+								<span class='label'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'>" . $row->titulo . "</a></span>	
+								 	<div  class='cont_act'>
+									 	<a estado='".$row->estado."' title='Activar/Desactivar Item' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
+										<a title='Editar Item' class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'><i class='icon-pencil'></i></a>
+										<a title='Eliminar Item' class='item_link act_eliminar' href='". base_url('panel/menus/elimina_item/') . "/". $row->idItem . "'><i class='icon-remove-sign'></i></a> 
+									</div>
 								</div>
 								<div class='span2 input-prepend' style='text-align: center;'>
-									<input name='orden' class='orden span4' value='".$row->orden."' data-id='". $row->idItem. "'>
-								</div>
-								<div class='span2' style='text-align: center;'>
-								<a estado='".$row->estado."' title='Activar/Desactivar Item'class='item_link act_activar' data-id='".$row->idItem."' href='". base_url('panel/menus/activa/') . "/". $row->idItem . 		"'><i class='$iconito'></i></a>
+									<input type='number' name='orden' class='orden span4' value='".$row->orden."' data-id='". $row->idItem. "'>
 								</div>
 								<div class='span2' style='text-align: center;'>
 								<a title='Editar Item'  class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . 		"'><i class='icon-pencil'></i></a>
