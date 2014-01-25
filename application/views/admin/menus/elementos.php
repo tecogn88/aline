@@ -28,7 +28,8 @@
 							<table id='tblMenus' class='table table-striped  table-bordered ' style="margin-bottom:0px;">
 								<thead>
 									<tr style='background-color: #D9EDF7;'>
-										<th class="span6"><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>Nombre</th>
+										<th class="span4"><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>Nombre</th>
+										<th class='span2' style='text-align: center;'><span class='label label-info' style='margin-right: 10px;'><i class='icon-list icon-white'></i></span>Activar/Desactivar</th>
 										<th class='span2' style='text-align: center;'>
 											<span class='label label-info' style='margin-right: 10px;'><i class='icon-list icon-white'></i></span>Orden 
 											<span class="badge badge-success" id='guarda_orden' style='float:right;display:none;'><a href='#'><i class='icon-ok icon-white'></i></a></span>
