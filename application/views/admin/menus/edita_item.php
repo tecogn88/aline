@@ -4,6 +4,7 @@
 	<div class="wrapper container-fluid">
 			<div class="row-fluid">
 				<div id="body_content" class="span12">
+					<input type="hidden" name="orden_menu" id="orden_menu" value="<?=$row->orden?>">
 						<div class="well">
 							<div class="span8">
 								<h2><?=$titulo_pagina?> <small><?=$descripcion_pagina?></small></h2>
@@ -358,7 +359,7 @@ var postID = 0;
 			var vTitulo = $("#titulo").val(); 
 			var vPadre  = $("#menuPadres").find('.padre_sel').attr("idItem");
 			var vidTipo = $("#sel_tipo").val();
-			var vOrden  = 0;
+			var vOrden  = $("#orden_menu").val();
 			var vid_css = $("#id_css").val();
 			var vclase = $("#clase").val();
 			var visLogged = $("#islogged").val();
