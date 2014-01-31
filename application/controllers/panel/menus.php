@@ -314,7 +314,7 @@ class Menus extends CI_Controller {
 				$elementos .= " <li style='list-style:none;margin:0;'>
 								<div class='row thumbnail' style='margin-left:0px;'>
 								<div class='span6 cont_items_first' style='text-align: left;'>
-								<span class='label'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'>" . $row->titulo . "</a></span>	
+								<span class='label' style='margin-left:20px;'><i class='icon-circle-arrow-right'></i><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'>  " . $row->titulo . "</a></span>	
 								 	<div  class='cont_act' style='float:right;margin-right:55px;'>
 									 	<a estado='".$row->estado."' title='Activar/Desactivar Item' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
 									</div>
