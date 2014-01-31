@@ -83,6 +83,9 @@ class Slider extends CI_Controller{
 	public function do_upload($edicion=false,$id=0){
 		$config['upload_path'] = 'assets/img/slider/';
 		$config['allowed_types'] = '*';
+		//$config['max_size']	= '2048';
+		//$config['max_width']  = '2048';
+		//$config['max_height']  = '1600';
 		$this->load->library('upload',$config);
 		if(!$this->upload->do_upload('imagen')){
 			
