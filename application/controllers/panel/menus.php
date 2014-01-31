@@ -25,6 +25,7 @@ class Menus extends CI_Controller {
 	}
 
 	public function index(){
+		//$data['menus'] = $this->get_tabla_menu_panel();
 		$data['head'] = $this->alinecms->get_head('Panel de Menús' , TRUE);
 		$data['header'] = $this->alinecms->get_header('_4');
 		$menus = $this->menu->get_menus();
@@ -128,7 +129,7 @@ class Menus extends CI_Controller {
 								<tr style='background-color: #D9EDF7;'>
 									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-barcode icon-white'></i></span>ID</th>
 									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>Titulo</th>
-									<th class='cont_accion'><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Acciones</th>
+									<th class='cont_acci'><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Acciones</th>
 								</tr>
 							</thead>
 					<tbody>";
@@ -158,7 +159,6 @@ class Menus extends CI_Controller {
 		$data = array(
 					"titulo_menu" => $menu->row('titulo'),
 					"descripcion" => $menu->row('descripcion'),
-					"ubicacion" =>$menu->row('ubicacion'),
 					"id_css" => $menu->row('id_css'),
 					"clase" => $menu->row('clase'),
 					"atributos" => $menu->row('atributos'),
@@ -292,7 +292,7 @@ class Menus extends CI_Controller {
 
 									<div class='row thumbnail' style='margin-left:0px;'>
 										<div class='span6 cont_items_first' style='text-align: left;'>
-										<span class='label label-inverse'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'>" . $row->titulo . "</a></span>	
+										<span class='label label-inverse'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'>" . $row->titulo . "</a></span>	
 										 	<div  class='cont_act' style='float:right;margin-right:55px;'>
 											 	<a estado='".$row->estado."' title='Activar/Desactivar Item' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
 											</div>
@@ -314,7 +314,7 @@ class Menus extends CI_Controller {
 				$elementos .= " <li style='list-style:none;margin:0;'>
 								<div class='row thumbnail' style='margin-left:0px;'>
 								<div class='span6 cont_items_first' style='text-align: left;'>
-								<span class='label'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='#'>" . $row->titulo . "</a></span>	
+								<span class='label'><a $color style='color:#fff;' idItem='". $row->idItem. "' class='clPadre' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'>" . $row->titulo . "</a></span>	
 								 	<div  class='cont_act' style='float:right;margin-right:55px;'>
 									 	<a estado='".$row->estado."' title='Activar/Desactivar Item' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
 									</div>
@@ -378,7 +378,7 @@ class Menus extends CI_Controller {
 								 	<div  class='cont_act'>
 									 	<a estado='".$row->estado."' title='Activar/Desactivar Item' style='display:none;' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . "'><i class='$iconito'></i></a>  
 										<a title='Editar Item' style='display:none;' class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . "'><i class='icon-pencil'></i></a>
-										<a title='Eliminar Item' style='display:none;' class='item_link act_eliminar' href='". base_url('panel/menus/elimina_item/') . "/". $row->idItem . "'><i class='icon-remove-sign'></i></a> 
+										<a title='Eliminar Item' style='display:none;' class='item_link act_eliminar' href='". base_url('panel/menus/borrar_item/') . "/". $row->idItem . "'><i class='icon-remove-sign'></i></a> 
 									</div>
 								 </div>" ;
 			}else{
@@ -388,7 +388,7 @@ class Menus extends CI_Controller {
 									<div class='cont_act'>
 										<a estado='".$row->estado."' title='Activar/Desactivar Item' style='display:none;' class='item_link act_activar' href='". base_url('panel/menus/activa/') . "/". $row->idItem . 		"'><i class='$iconito'></i></a>
 										<a title='Editar Item' style='display:none;' class='item_link act_editar' href='". base_url('panel/menus/edita_item/') . "/". $row->idItem . 		"'><i class='icon-pencil'></i></a>
-										<a title='Eliminar Item' style='display:none;' class='item_link act_eliminar' href='". base_url('panel/menus/elimina_item/') . "/". $row->idItem . 	"'><i class='icon-remove-sign'></i></a> 
+										<a title='Eliminar Item' style='display:none;' class='item_link act_eliminar' href='". base_url('panel/menus/borrar_item/') . "/". $row->idItem . 	"'><i class='icon-remove-sign'></i></a> 
 									</div>									
 								</div>";
 			}
