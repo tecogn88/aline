@@ -7,9 +7,9 @@
 					<input type="hidden" name="orden_menu" id="orden_menu" value="<?=$row->orden?>">
 						<div class="well">
 							<div class="span8">
-								<h2><?=$titulo_pagina?> <small><?=$descripcion_pagina?></small></h2>
+								<h2><?=$titulo_pagina?> <small><?=$descripcion_pagina?> <b class="alert alert-info"><?=$row->titulo?></b></small></h2>
 							</div>
-					      	<a href="<?php echo base_url('panel/menus/'); ?>" style="float:right;margin-left:10px;" class="btn btn-danger">Cancelar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
+					      	<a href="<?php echo base_url('panel/menus/elementosMenu/'.$row->idmenu); ?>" style="float:right;margin-left:10px;" class="btn btn-danger">Cancelar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
 					      	<button id="btnCreaItem" style="float:right;margin-left:10px;" class="btn btn-primary">Guardar<span style='float:right;margin-left:10px;'><i class='icon-ok-sign icon-white'></i></span></button>
 						</div>
 						<div class="accordion" id="accordion2">
@@ -289,8 +289,6 @@ var postID = 0;
 						$("#divUrl").show();
 					break;
 				}
-
-
 			}); // End Click
 		}); // End Function anonima
 
@@ -389,11 +387,6 @@ var postID = 0;
 			});
 
 		});
-
-
-
-
-
 		$(".alert").alert();
 	});// End Ready document
 </script>

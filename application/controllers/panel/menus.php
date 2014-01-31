@@ -446,8 +446,8 @@ class Menus extends CI_Controller {
 		$data['row']  = $this->menu->get_datos_item($id);
 		$data['head'] = $this->alinecms->get_head('Edición de menus' , TRUE);
 		$data['header'] = $this->alinecms->get_header('_4');
-		$data['titulo_pagina'] = "Edita un item de menu";
-		$data['descripcion_pagina'] = "edita los datos del item de menu.";
+		$data['titulo_pagina'] = "Edicion de item de menu";
+		$data['descripcion_pagina'] = "edita los datos del elemento ";
 		$data['menu_id'] = $this->menu->get_id_item_menu($id);
 		$padre = $this->menu->get_padre_item_menu($id);
 		$data['padres'] = $this->get_padres($data['menu_id'],'0',$padre);
