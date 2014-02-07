@@ -2,6 +2,22 @@
   </div><!--container end-->
   <footer style="background-color:#CECECE;padding:0px;">
     <div class="container"> 
+      <div class="row-fluid menus-footer">
+        <?php if ($menu_footer1 == TRUE) {
+          $this->load->view('/public/helper/menus/menu_footer1.php'); 
+        } 
+        if ($menu_footer2 == TRUE) {
+          $this->load->view('/public/helper/menus/menu_footer2.php'); 
+        }
+        if ($menu_footer3 == TRUE) {
+          $this->load->view('/public/helper/menus/menu_footer3.php'); 
+        }
+        if ($menu_footer4 == TRUE) {
+          $this->load->view('/public/helper/menus/menu_footer4.php'); 
+        } ?>
+      </div>
+    </div>
+    <div class="container">
       <div class="row">
         <div class="span6">
           <?php $year = date("Y"); ?>
@@ -39,7 +55,7 @@
       </div>
     </div>
   </footer>
-	<!-- Le javascript
+  <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- This .js file, add generic functions. -->
