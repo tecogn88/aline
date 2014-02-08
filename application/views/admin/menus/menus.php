@@ -39,7 +39,10 @@
 									<tr style='background-color: #D9EDF7;'>
 										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-barcode icon-white'></i></span>ID</th>
 										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>Titulo</th>
-										<th class='cont_accion'><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Acciones</th>
+										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Agregar item de menu</th>
+										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Ver items de menu</th>
+										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Editar menu</th>
+										<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Eliminar menu</th>
 									</tr>
 								</thead>
 								<?php foreach ($menues->result() as $row){ ?>
@@ -47,12 +50,16 @@
 			    					<td style='font-style:italic;font-weight:bold;'><?php echo $row->id; ?></td>
 		    						<td><a href='<?php echo base_url("/panel/menus/edita_menu/".$row->id); ?>'><?php echo $row->titulo  ?></a></td>
 		    						<td>
-		    							<div class='cont_accio'>
 											<a class='badge badge-info	agrega_item' href='<?php echo base_url("/panel/menus/agrega_item/".$row->id); ?>' rel='tooltip' title='Agrega items al menú: <br/>"<?php echo $row->titulo; ?>"'><i class='icon-plus icon-white'></i></a>
+									</td>
+									<td>
 											<a class='badge badge-warning' href='<?php echo base_url("/panel/menus/elementosMenu/".$row->id); ?>'><i class='icon-eye-open icon-white'></i></a>  
+									</td>
+									<td>
 											<a class='badge badge-success' href='<?php echo base_url("/panel/menus/edita_menu/".$row->id); ?>' rel='tooltip' title='Editar menú:  <br/>"<?php echo $row->titulo; ?> "'><i class='icon-edit icon-white'></i></a> 
+									</td>
+									<td>
 											<a class='badge badge-important btndel' href='<?php echo base_url("/panel/menus/borra_menu/".$row->id); ?>' rel='tooltip' title='Borrar menú: <br/>"<?php echo $row->titulo; ?>"'><i class='icon-remove icon-white'></i></a>  
-										</div>
 									</td>
 				    			</tr>
 								<?php } ?>
