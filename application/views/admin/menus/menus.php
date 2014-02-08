@@ -45,7 +45,7 @@
 								<?php foreach ($menues->result() as $row){ ?>
 			    				<tr title='<?php echo $row->descripcion; ?>'>
 			    					<td style='font-style:italic;font-weight:bold;'><?php echo $row->id; ?></td>
-		    						<td><a href='<?php echo base_url("/panel/menus/elementosMenu/".$row->id); ?>'><?php echo $row->titulo  ?></a></td>
+		    						<td><a href='<?php echo base_url("/panel/menus/edita_menu/".$row->id); ?>'><?php echo $row->titulo  ?></a></td>
 		    						<td>
 		    							<div class='cont_accio'>
 											<a class='badge badge-info	agrega_item' href='<?php echo base_url("/panel/menus/agrega_item/".$row->id); ?>' rel='tooltip' title='Agrega items al menú: <br/>"<?php echo $row->titulo; ?>"'><i class='icon-plus icon-white'></i></a>
