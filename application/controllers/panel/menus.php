@@ -162,7 +162,8 @@ class Menus extends CI_Controller {
 					"id_css" => $menu->row('id_css'),
 					"clase" => $menu->row('clase'),
 					"atributos" => $menu->row('atributos'),
-					"id_post" => $ids_post
+					"id_post" => $ids_post,
+					"ubicacion" => $menu->row('ubicacion')
 				);
 		$data['id_menu'] = $id;
 		$data['head'] = $this->alinecms->get_head('Edición de menus' , TRUE);
