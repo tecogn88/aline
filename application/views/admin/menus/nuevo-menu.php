@@ -47,20 +47,203 @@
 						<input type="text" name='clase' id='clase' class="" value="<?php echo set_value('clase'); ?>" >
 						<label for="titulo">Atributos extra</label>
 						<input type="text" name='atributo' id='atributo' class="" value="<?php echo set_value('atributo'); ?>" >
-						<label for="id_post">Seleccione las paginas a asignar<br/> (Presione Ctrl para seleccionar mas de una opción)</label>
+						<!-- <label for="id_post">Seleccione las paginas a asignar<br/> (Presione Ctrl para seleccionar mas de una opción)</label>
 						<select class="" name="id_post[]" id="id_post" multiple>
 							<?=$paginas?>
+						</select> -->
+						<label><h4>Ubicación del menú</h4></label>
+						<select name="ubicacion" id="ubicacion">
+							<option value=''>-- Seleccionar posición --</option>
+							<!-- <option value="top">top</option>
+							<option value="topleft">top left</option> -->
+							<option value="topright">top</option>
+							<option value="nav">nav</option>
+							<!-- <option value="left">left</option>
+							<option value="right">right</option> -->
+							<option value="bottom">footer</option>
+							<!-- <option value="footer">footer</option> -->
+							<option value="footer1">footer 1</option>
+							<option value="footer2">footer 2</option>
+							<option value="footer3">footer 3</option>
+							<option value="footer4">footer 4</option>
+							<!-- <option value="debugger">debugger</option> -->
 						</select>
 					</div>
-					<div class="span8">
-						<label for="titulo">Descripción</label>
-						<textarea name="descripcion" id="ckeditor"><?php echo set_value('descripcion');?></textarea>
-						<?php $ck_config = array(     
-							"replace" => "#ckeditor" // selector del objeto a reemplazar     
-							, "options" => ck_options()     
-						);
-						echo jquery_ckeditor($ck_config); ?>
+					<div class="span9">
+					<h4>Vista previa de ubicación</h4>
+					
+					<div class="well-ubicacion">
+						<div class="row-fluid top">
+							<div class="span4 top-left">
+								<!-- <div class="tmp-pos" data-position="topleft">
+									<ul class="nav nav-pills">
+									  <li class="active">
+									    <a href="#">Home</a>
+									  </li>
+									  <li><a href="#">About</a></li>
+									  <li><a href="#">Help</a></li>
+									  <li><a href="#">Link</a></li>
+									</ul>
+								</div> -->
+							</div>
+							<div class="span4 top">
+								<!-- <div class="tmp-pos" data-position="top">
+									<ul class="nav nav-pills">
+									  <li class="active">
+									    <a href="#">Home</a>
+									  </li>
+									  <li><a href="#">About</a></li>
+									  <li><a href="#">Help</a></li>
+									  <li><a href="#">Link</a></li>
+									</ul>
+								</div> -->
+							</div>
+							<div class="span4 top-right">
+								<div class="tmp-pos" data-position="topright">
+									<ul class="nav nav-pills">
+									  <li class="active">
+									    <a href="#">Home</a>
+									  </li>
+									  <li><a href="#">About</a></li>
+									  <li><a href="#">Help</a></li>
+									  <li><a href="#">Link</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid nav">
+							<div class="tmp-pos" data-position="nav">
+								<div class="navbar navbar-inverse">
+								  <div class="navbar-inner">
+								    <ul class="nav">
+								      <li class="active"><a href="#">Home</a></li>
+								      <li><a href="#">Link</a></li>
+								      <li><a href="#">Link</a></li>
+								    </ul>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid article">
+							<div class="span3 left">
+								<!-- <div class="tmp-pos" data-position="left">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div> -->
+							</div>
+							<div class="span6" style="opacity:0.3;">
+								<div class="well content">
+									<h1>Content</h1>
+								</div>
+							</div>
+							<div class="span3 right">
+								<!-- <div class="tmp-pos" data-position="right">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div> -->
+							</div>
+						</div>
+						<div class="row-fluid bottom">
+							<div class="tmp-pos" data-position="bottom">
+								<div class="navbar navbar-inverse">
+								  <div class="navbar-inner">
+								    <ul class="nav">
+								      <li class="active"><a href="#">Home</a></li>
+								      <li><a href="#">Link</a></li>
+								      <li><a href="#">Link</a></li>
+								    </ul>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="row-fluid footer">
+							<div class="span4"></div>
+							<div class="span4 footer">
+								<div class="tmp-pos" data-position="footer">
+									<ul class="nav nav-pills">
+									  <li class="active">
+									    <a href="#">Home</a>
+									  </li>
+									  <li><a href="#">About</a></li>
+									  <li><a href="#">Help</a></li>
+									  <li><a href="#">Link</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+						<div class="row-fluid footer4pos">
+							<div class="span3 footer1">
+								<div class="tmp-pos" data-position="footer1">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="span3 footer2">
+								<div class="tmp-pos" data-position="footer2">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="span3 footer3">
+								<div class="tmp-pos" data-position="footer3">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="span3 footer4">
+								<div class="tmp-pos" data-position="footer4">
+									<div class="well">
+										<ul class="nav nav-list">
+										  <li class="nav-header"><h4>Menu title</h4></li>
+										  <li class="active"><a href="#">Home</a></li>
+										  <li><a href="#">Library</a></li>
+										</ul>
+									</div>
+								</div>	
+							</div>
+						</div>
+						<!-- <div class="row-fluid debugger">
+							<div class="span4"></div>
+							<div class="span4">
+								<div class="tmp-pos" data-position="debugger">
+									<ul class="nav nav-pills">
+									  <li class="active">
+									    <a href="#">Home</a>
+									  </li>
+									  <li><a href="#">About</a></li>
+									  <li><a href="#">Help</a></li>
+									  <li><a href="#">Link</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
 					</div>
+					
 				</fieldset>
 			</div>
 
@@ -81,7 +264,28 @@
 </div> <!-- Row fluid general" -->
 </div>	<!-- End div class="wrapper container" -->
 
+	<style>
+	.opacidad1{
+		opacity: 1;
+	}
+	.opacidad, .tmp-pos{
+		opacity: 0.1;
+	}
+	</style>
+
 	<script type="text/javascript">
+
+		$(document).on('ready',function(){
+			var _ubicacionsel = $("#ubicacion_sel").val();
+			$(".tmp-pos[data-position="+_ubicacionsel+"]").removeClass( "tmp-pos" ).addClass( "opacidad1" );
+			$("#ubicacion").val(_ubicacionsel);
+		});
+
+		$("#ubicacion").on('change',function(){
+			var _valor = $(this).val();
+			$(".opacidad1").removeClass("opacidad1").addClass( "tmp-pos" );
+			$(".tmp-pos[data-position="+_valor+"]").removeClass( "tmp-pos" ).addClass( "opacidad1" );
+		});
 		$("a[rel='tooltip']").tooltip();
 
 		$(function(){

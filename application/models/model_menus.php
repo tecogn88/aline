@@ -20,9 +20,10 @@ class Model_menus extends CI_Model {
 		$titulo = $this->input->post('titulo');
 		$id_css = $this->input->post('id_css');
 		$clase = $this->input->post('clase');
-		$descripcion = $this->input->post('descripcion');
+		/*$descripcion = $this->input->post('descripcion');*/
 		$atri = $this->input->post('atributo');
-		$id_post = $this->input->post('id_post');
+		$ubicacion = $this->input->post('ubicacion');
+		/*$id_post = $this->input->post('id_post');
 		$id_post_cadena = "";
 		$cont = 0;
 		foreach ($id_post as  $val) {
@@ -31,14 +32,15 @@ class Model_menus extends CI_Model {
 			$id_post_cadena .= $val . "|";
 
 			$cont ++; 
-		}
+		}*/
 		$data = array(
 			'titulo' => $titulo ,
-			'descripcion' => $descripcion,
+			/*'descripcion' => $descripcion,*/
 			'id_css' => $id_css,
 			'clase' => $clase,
 			'atributos' => $atri,
-			'id_post' => $id_post_cadena
+			'ubicacion' => $ubicacion
+			/*'id_post' => $id_post_cadena*/
 		);
 		$this->db->insert('menu', $data); 
 	}

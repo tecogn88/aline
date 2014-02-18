@@ -7,7 +7,9 @@
             <div class="row-fluid">
                 <div class="span4"></div>
                 <div class="span4" id="frmLogin">
-                    <h1>Inicio de sesión</h1><br>
+                    <div class="well">
+                        <h1>Inicio de sesión</h1>
+                    </div>    
                     <?php if($this->alinecms->is_Logged() && ! $this->alinecms->is_LoggedAdmin()){ ?>
                     <p><span class="label label-important">No tienes permiso para estar aquí </span> <br/> <span class="label label-important">  Debes de iniciar sesion como administrador.</span></p>
                     <?php }?>

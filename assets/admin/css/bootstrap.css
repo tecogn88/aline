@@ -3231,6 +3231,12 @@ input[type="submit"].btn.btn-mini {
   border-color: #bce8f1;
 }
 
+.alert-inverse {
+  color: #313131;
+  background-color: #999999;
+  border-color: #838383;
+}
+
 .alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
