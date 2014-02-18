@@ -217,14 +217,14 @@
 				if(plantilla){
 					$("#template option[value=" + plantilla + "]").attr("selected","selected");
 				}
-				var categorias = "<?php echo $categorias ?>";
+				/*var categorias = "<?php echo $categorias ?>";
 
 				if(categorias){
 					categorias_ar = categorias.split("|");
 					for(var i=0; i<categorias_ar.length; i++ )	{
 						$("#categorias option[value="+categorias_ar[i]+"]").attr("selected","selected");
 					}
-				}
+				}*/
 				/* display boton información */
 
 				var informacion = $('#info_c').val();

@@ -29,7 +29,7 @@ class Configuracion extends CI_Controller {
 				redirect('panel/configuracion/','REFRESH');
 			}else{
 				if((int)$this->input->post('nuevo_logo') != 0){
-					die('subir logo');
+					//die('subir logo');
 					$logo = $this->do_upload('logo');
 					if(!$logo){
 						echo "Problemas al subir la imagen";
