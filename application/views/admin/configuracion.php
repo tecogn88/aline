@@ -6,17 +6,18 @@
 			
 				<form action="<?php echo base_url('panel/configuracion'); ?>" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
 					<div class="row-fluid">
-					<div class="well" id="botones">
-						<div class="span4">
-							<h2><?=$titulo_pagina?></h2>
+						<div class="well" id="botones">
+							<div class="span4">
+								<h2><?=$titulo_pagina?></h2>
+							</div>
+							<a style="float:right;margin-left:10px;" class="btn btn-danger" href="<?php echo base_url('panel/escritorio/'); ?>">Terminar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
+							<button style="margin-left:10px;float:right;" class="btn btn-primary" name="btnGuardar" onclick="submit">Guardar<span style='float:right;margin-left:10px;'><i class='icon-ok-sign icon-white'></i></span></button>
 						</div>
-						<a style="float:right;margin-left:10px;" class="btn btn-danger" href="<?php echo base_url('panel/escritorio/'); ?>">Terminar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
-						<button style="margin-left:10px;float:right;" class="btn btn-primary" name="btnGuardar" onclick="submit">Guardar<span style='float:right;margin-left:10px;'><i class='icon-ok-sign icon-white'></i></span></button>
-					</div>
 					</div>
 					<div>
 						<ul class="nav nav-tabs" id="myTab">
 						  <li class="active"><a href="#general">General</a></li>
+						  <li><a href="#informacion">Información</a></li>
 						  <li><a href="#contacto">Contacto</a></li>
 						  <li><a href="#contenido">Contenido</a></li>
 						  <li><a href="#social">Social</a></li>
@@ -53,18 +54,37 @@
 							  	</div>
 							  </div>
 							  <div class="tab-pane" id="contacto">
-							  	<div class="row">
-							  		<div class="span3">
+							  	<div class="row-fluid">
+							  		<div class="span4">
 							  			<label for="nombre_admin"><h5>
 											Nombre del administrador
 										</h5></label>
 										<input type="text" name="nombre_admin" value="<?=$nombre_admin?>" />
+											
+									</div>
+									<div class="span4">	
 									  	<label for="email"><h5>
 											Email administrador
 										</h5></label>
 										<input type="email" name="email" value="<?=$correo_admin?>" required />
+									</div>
+									<div class="span4">
 										<label><h5>Emails extra</h5><small>separados con coma (,)</small></label>
-										<textarea name="emails_extra" placeholder="emails separados por coma"><?=$emails_extra?></textarea>
+										<textarea name="emails_extra" placeholder="emails separados por coma" rows="4" cols="10"><?=$emails_extra?></textarea>
+								  	</div>
+							  	</div>
+							  </div>
+							  <div class="tab-pane" id="informacion">
+							  	<div class="row-fluid">
+									<div class="span3">
+										<label><h5>Direccion</h5></label>
+										<textarea type="text" name="direccion" id="direccion" placeholder="Calle, número, colonia, ciudad, estado" rows="4"><?=$direccion?></textarea>
+									  	<input type="text" name="mapa_g" id="mapa_g" style="display:none" value="<?=$mapa_g?>">
+									  	<img src=".base_url('assets/img/icon-mapa.png')." id='google_img' style="display:none;" width='50px' />
+										<label><h5>
+											Teléfono
+										</h5></label>
+										<input type="text" name="telefono" value="<?=$telefono?>" />	
 										<label><h5>Mostrar mapa</h5></label>
 										<select name="map_u" id="map_u">
 											<?php $seleccion = ''; $seleccion1 = '';
@@ -77,7 +97,7 @@
 											<option value="0" <?=$seleccion1?>>No</option>
 											<option value="1" <?=$seleccion?>>Si</option>
 										</select>
-										<label><h5>Mostrar información de contacto</h5></label>
+										<label><h5>Mostrar información adicional</h5></label>
 										<select name="info_c" id="info_c">
 											<?php $sel_info = ''; $sel_info1 = '';
 										  	if ($infocontacto == 1) {
@@ -90,24 +110,14 @@
 											<option value="1" <?=$sel_info?>>Si</option>
 										</select>	
 									</div>
-									<div class="span3">
-										<label><h5>Direccion</h5></label>
-										<textarea type="text" name="direccion" id="direccion" placeholder="Calle, número, colonia, ciudad, estado" rows="4"><?=$direccion?></textarea>
-									  	<input type="text" name="mapa_g" id="mapa_g" style="display:none" value="<?=$mapa_g?>">
-									  	<img src=".base_url('assets/img/icon-mapa.png')." id='google_img' style="display:none;" width='50px' />
-										<label><h5>
-											Teléfono
-										</h5></label>
-										<input type="text" name="telefono" value="<?=$telefono?>" />	
-									</div>
-									<div class="span6">
+									<div class="span8">
 										Arrastre el marcador para una posición más exacta*
 								  		<div id='map_canvas' style='height:300px;'></div>
 								  	</div>
 							  	</div>
 							  	<div class="row-fluid">
 							  			<hr>
-							  			<h3>Información de contacto<small><i> (ésta información aparecerá en la sección de contacto)</i></small></h3><br>
+							  			<h3>Información adicional<small><i> (ésta información aparecerá en la sección de contacto)</i></small></h3><br>
 							  			<div class="span3">
 								  			<label><h5>Encabezado</h5></label>
 											<input type="text" name="encabezado" value="<?=$encabezado?>">
