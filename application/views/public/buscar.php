@@ -1,7 +1,7 @@
 <?php $this->load->view('/public/helper/head.php'); ?>
-<?php //$this->load->view('public/helper/main_menu.php'); ?>
-<?=$main_menu?>
-<?php //$this->load->view('public/helper/slider.php'); ?>
+<?php $this->load->view('/public/helper/logo.php'); ?>
+<?php if ($menu_top) { $this->load->view('/public/helper/menus/menu_top.php'); } ?>
+<?php if ($menu_nav == TRUE) { $this->load->view('/public/helper/menus/menu_nav.php'); } ?>
 
 <!--  Contenido home  -->
 <div class="container">
@@ -14,7 +14,7 @@
 
 	<!-- Home articulos  -->
 
-	<!-- <div class="span9">
+	<div class="span9">
 		<?php if($articulos!=false){ ?>
 			<?php foreach ($articulos as $post): ?>
 				<div class="nota-secundaria">
@@ -39,7 +39,7 @@
 			<?php endforeach ?>
 		<?php }else{
 			echo "NO se encontraron resultados";
-		} ?> -->
+		} ?>
 
 		<!--<?php if($productos!=False){ ?>
 			<?php foreach ($productos as $producto): ?>
@@ -96,7 +96,7 @@
 </div>
 
 <!--  /Contenido home  -->
-
+<?php if ($menu_footer == TRUE) { $this->load->view('/public/helper/menus/menu_footer.php'); } ?>
 <?php $this->load->view('/public/helper/footer.php'); ?>
 
 
