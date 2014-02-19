@@ -1,8 +1,8 @@
 <?php $this->load->view('/public/helper/head.php');
+$this->load->view('/public/helper/logo.php');
 if ($menu_top) {
 	$this->load->view('/public/helper/menus/menu_top.php'); 
 }
-$this->load->view('/public/helper/logo.php');
 $this->load->view('/public/helper/buscador.php');
 if ($menu_nav == TRUE) {
 	$this->load->view('/public/helper/menus/menu_nav.php'); 
