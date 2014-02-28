@@ -25,7 +25,6 @@ class Menus extends CI_Controller {
 	}
 
 	public function index(){
-		//$data['menus'] = $this->get_tabla_menu_panel();
 		$data['head'] = $this->alinecms->get_head('Panel de Menús' , TRUE);
 		$data['header'] = $this->alinecms->get_header('_4');
 		$menus = $this->menu->get_menus();
@@ -402,7 +401,7 @@ class Menus extends CI_Controller {
 		return $elementos;
 	} 
 
-	public function get_paginas($tipo = 1, $selected = 0){
+	public function get_paginas($tipo, $selected = 0){
 		$this->load->model('model_post');
 		$articulos = $this->model_post->get_posts($tipo);
 		$data['articulos'] = $this->get_tabla_articulos($articulos);

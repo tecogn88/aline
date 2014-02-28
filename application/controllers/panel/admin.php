@@ -35,6 +35,7 @@ class Admin extends CI_Controller {
 		$data['paginas'] = $this->db->count_all('post');
 		$data['menus'] = $this->db->count_all('menu');
 		$data['slides'] = $this->db->count_all('slider');
+		$data['banners'] = $this->db->count_all('banners');
 		$data['error'] = '';
 		$this->form_validation->set_rules('entrar','entrar','callback_inicia_sesion');
 		if ($this->form_validation->run() == false) {

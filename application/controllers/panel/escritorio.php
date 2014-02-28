@@ -36,6 +36,7 @@ class Escritorio extends CI_Controller {
 		$data['paginas'] = $this->db->count_all('post');
 		$data['menus'] = $this->db->count_all('menu');
 		$data['slides'] = $this->db->count_all('slider');
+		$data['banners'] = $this->db->count_all('banners');
 		$this->load->view('admin/escritorio',$data);
 	}
 

@@ -10,6 +10,21 @@ class Model_post extends CI_Model {
         $this->load->library('Configuration');
     }
 	
+	function get_paginas($tipo = "1"){
+		$strSql = " SELECT p.id as id_post,p.*,c.nombre as cnombre,c.slug as cslug,u.* 
+					FROM post p 
+					LEFT JOIN categoria c ON p.id_categoria = c.id
+					LEFT JOIN usuarios u ON p.id_autor = u.id
+					WHERE tipo = $tipo;";
+
+		$articulos = $this->db->query($strSql);
+		if($articulos->num_rows > 0){
+			return $articulos->result();
+		}else{
+			return FALSE;
+		}
+	}
+
 	function get_posts($tipo = "1"){
 		$strSql = " SELECT p.id as id_post,p.*,c.nombre as cnombre,c.slug as cslug,u.* 
 					FROM post p 

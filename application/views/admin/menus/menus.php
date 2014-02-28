@@ -12,12 +12,12 @@
 					</div>
 				</aside>		
 				<div id="body_content" class="span10 panel_usuarios">
-					<div class="page-header">
-						<h2>Menús <small>Crea edita y elimina menus de navegación</small></h2>
-					</div>
-					<div class="row-fluid">
-						<div class="well">
-							<div class="span12">
+					<div class="well">
+						<div class="row-fluid">
+							<div class="span6">
+								<h2>Menús <small>Crea edita y elimina menus de navegación</small></h2>
+							</div>
+							<div class="pull-right">
 								<a class="btn btn-primary" href="<?php echo base_url('panel/menus/crea_menu'); ?>">Nuevo Menu<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
 							</div>
 						</div>
@@ -32,18 +32,17 @@
 								<?php $contador++; ?>
 								<div class="span2 thumbnail" style="text-align:center;margin-bottom:10px;">
 									<div class="well well-small">
-										<?php if(strlen( trim($menu->titulo) ) > 20 ) { ?>
-											<h4 style="margin-bottom:5px;"><?php echo substr($menu->titulo, 0,15).'...'; ?></h4>
-										<?php }else{ ?>
-											<h4 style="margin-bottom:5px;"><?php echo $menu->titulo; ?></h4>
-										<?php } ?>
+										<a href='<?php echo base_url("/panel/menus/edita_menu/".$menu->id); ?>' rel='tooltip' title='Editar menú:  <br/>"<?php echo $menu->titulo; ?> "'> 
+											<?php if(strlen( trim($menu->titulo) ) > 20 ) { ?>
+												<h4 style="margin-bottom:5px;"><?php echo substr($menu->titulo, 0,15).'...'; ?></h4>
+											<?php }else{ ?>
+												<h4 style="margin-bottom:5px;"><?php echo $menu->titulo; ?></h4>
+											<?php } ?>
+										</a>
 									</div>
-									<img src="<?php echo base_url('assets/admin/img/ico/retina/tray_full_64.png');?>" alt="">
-									<hr>
 									<p>
 										<a class='badge badge-info	agrega_item' href='<?php echo base_url("/panel/menus/agrega_item/".$menu->id); ?>' rel='tooltip' title='Agrega items al menú: <br/>"<?php echo $menu->titulo; ?>"'><i class='icon-plus icon-white'></i></a>
 										<a class='badge badge-warning' href='<?php echo base_url("/panel/menus/elementosMenu/".$menu->id); ?>'><i class='icon-eye-open icon-white'></i></a>  
-										<a class='badge badge-success' href='<?php echo base_url("/panel/menus/edita_menu/".$menu->id); ?>' rel='tooltip' title='Editar menú:  <br/>"<?php echo $menu->titulo; ?> "'><i class='icon-edit icon-white'></i></a> 
 										<a class='badge badge-important btndel' href='<?php echo base_url("/panel/menus/borra_menu/".$menu->id); ?>' rel='tooltip' title='Borrar menú: <br/>"<?php echo $menu->titulo; ?>"'><i class='icon-remove icon-white'></i></a>
 									</p>
 								</div>

@@ -12,14 +12,18 @@
 					</div>
 				</aside>		
 				<div id="body_content" class="span10 panel_usuarios">
-					<div class="page-header">
-						<h2>Items de: <b class="alert alert-info"><?php echo $menu->row('titulo'); ?></b><small> Crea edita y elimina items del menu <i><?php echo $menu->row('titulo'); ?></i></small></h2>
-					</div>
 					<div class="row-fluid">
 						<div class="well">
 							<div class="span12">
-								<a class="btn btn-primary" href="<?php echo base_url('panel/menus/crea_menu'); ?>">Nuevo Menu<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
-								<a class='btn btn-warning' href='<?php echo base_url("/panel/menus/agrega_item/".$id); ?>'>Nuevo Item <i class='icon-plus icon-white'></i></a>
+								<div class="span6">
+									<h2>
+										<small>Agrega, edita y elimina elementos de <b><?php echo $menu->row('titulo'); ?></b></small>
+									</h2>
+								</div>
+								<div class="span6" style="text-align:right;">
+								<a class='btn btn-danger' href='<?php echo base_url("/panel/menus/"); ?>'><i class='icon-arrow-left icon-white'></i>  Volver a panel de menus</a>
+								<a class='btn btn-primary' href='<?php echo base_url("/panel/menus/agrega_item/".$id); ?>'>Agregar un elemento a <b><?php echo $menu->row('titulo'); ?></b> <i class='icon-plus icon-white'></i></a>
+								</div>
 							</div>
 						</div>
 					</div>

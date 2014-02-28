@@ -6,33 +6,52 @@
 				<aside id="menu_usuarios" class="span2">
 					<div class="tabbable tabs-left">
 						<ul class="nav nav-tabs">
-							<li class=""><a href="<?php echo base_url('panel/catalogo'); ?>" >Panel de catálogos</a></li>
-							<li class=""><a href="<?php echo base_url('panel/catalogo/crea_catalogo'); ?>" >Administrar Catálogos</a></li>
-							<li class=""><a href="<?php echo base_url('panel/catalogo/crea_categoria'); ?>" >Administrar Categorías</a></li>
-							<li class="active"><a href="<?php echo base_url('panel/banners/crea_banner'); ?>" >Administrar Banners</a></li>
+							<li class="active"><a href="<?php echo base_url('panel/banners/crea_banner'); ?>" >Panel de Banners</a></li>
 						</ul>
 					</div>
 				</aside>
 				<div id="body_content" class="span10 panel_usuarios">
-					<div class="page-header">
-						<h2>Banners <small>Crea, edita y elimina banners</small></h2>
-					</div>
-					<div class="row-fluid">
-						<div class="span12">
-							<a id="btn_crea_banner" class="btn btn-warning" href="<?php echo base_url('panel/banners/crea_banner'); ?>">Nuevo Banner</a>
+					<div class="well">
+						<div class="row-fluid">
+							<div class="span9">
+								<h2>Banners <small>Administra los banners publicitarios de tu página</small></h2>
+							</div>
+							<div class="pull-right">
+								<a id="btn_crea_banner" class="btn btn-primary" href="<?php echo base_url('panel/banners/crea_banner'); ?>">Crear Banner <i class="icon-plus icon-white"></i></a>
+							</div>
 						</div>
 					</div>
-					<hr/>
 					<div class="row-fluid">
-						<div class="span6">
-							<h2>Banners</h2>
-							<?=$banners?>
-							<!--?=$catalogos?-->
+						<?php if(!$banners){ ?>
+							<div class="alert"><h3>Aun no se han creado banners publicitarios!</h3></div>
+						<?php }else{ ?>
+							<div class="row-fluid">
+							<?php $contador = 0; ?>
+							<?php foreach ($banners as $banner){ ?>
+								<?php $contador++; ?>
+								<div class="span3 thumbnail" style="text-align:center;margin-bottom:10px;">
+									<?php if(strlen( trim($banner->nombre) ) > 20 ) { ?>
+										<h4 style="margin-bottom:5px;"><?php echo substr($banner->nombre, 0,15).'...'; ?></h4>
+									<?php }else{ ?>
+										<h4 style="margin-bottom:5px;"><?php echo $banner->nombre; ?></h4>
+									<?php } ?>
+									<?php if ($banner->imagen){ ?>
+										<img src="<?php echo base_url('assets/media/banners/'.$banner->imagen); ?>" style="max-height:150px;">
+									<?php }else{ ?>
+										<img src="<?php echo base_url('assets/admin/img/ico/retina/man_64.png'); ?>" style="margin: 26px auto 10px auto;">
+										<?php } ?>
+									<br>
+									<p>
+										<a class="badge badge-success" href="<?=base_url('/panel/banners/edita_banner/'.$banner->id)?>" rel="tooltip" title="Editar banner:<br /><?=$banner->nombre?>"><i class="icon-edit icon-white"></i></a>
+										<a class="badge badge-important btndel" href="<?=base_url('panel/banners/borrar_banner/'.$banner->id)?>" rel="tooltip" title="Borrar banner:<br /><?=$banner->nombre?>"><i class="icon-remove icon-white"></i></a>
+									</p>
+								</div>
+								<?php if ($contador%4 == 0): ?>
+									</div><div class="row-fluid">
+								<?php endif ?> 
+							<?php } ?><!-- Fin foreach -->
 						</div>
-						<!--div id="cont_items_menu" class="span6">
-							<h2>Elementos del catálogo:</h2><h2 id="nombre_menu"></h2>
-							<div class='' id="items_menu_div"></div>
-						</div-->
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -44,7 +63,7 @@
 		$(function(){
 			$(".btndel").click(function(e){
 				e.preventDefault();
-				if(!confirm("Esta seguro que desea eliminar a este producto?")) { 
+				if(!confirm("Esta seguro que desea eliminar a este banner?")) { 
  					return false;
 				}
 				var idUsr = $(this).attr('href');

@@ -11,34 +11,32 @@
 		</div>
 	</aside>	
 <div id="body_content" class="span10 panel_usuarios">
-	<form method="POST" action="<?php echo base_url('panel/banners/guarda_banner') ?>" id="frmAddUsuario" class="form-horizontal" enctype="multipart/form-data">
+	<form method="POST" action="<?php echo base_url('panel/banners/guarda_banner/'.$banner->id); ?>" id="frmAddUsuario" class="form-horizontal" enctype="multipart/form-data">
 	<div class="well">
 		<div class="row-fluid">
 			<div class="span9">
-				<h2><?=$titulo_pagina?> <small> Aprovecha tu página la máximo creando banners publicitarios</small></h2>
+				<h2>Imagen del banner <?php echo $banner->nombre; ?> <small> Agrega la imagen de tu banner</small></h2>
 			</div>
 			<div class="pull-right">
-		    	<button class="btn btn-primary" name="btnGuardar" onclick="submit">Crear Banner<span style='float:right;margin-left:10px;'><i class='icon-plus icon-white'></i></span></button>
+		    	<button class="btn btn-primary" name="btnGuardar" onclick="submit">Guardar edición<span style='float:right;margin-left:10px;'><i class='icon-plus icon-white'></i></span></button>
 		    	<a class="btn btn-danger" href="<?php echo base_url('panel/banners'); ?>">Cancelar <i class="icon-ban-circle icon-white"></i></a>
 			</div>
 		</div>
 	</div>
 	<div class="well">
-		<?php if (validation_errors()): ?>
 		<div class="row-fluid">
-			<div class="alert alert-error">
-				<button type="button" style="position: relative;top: -2px;line-height: 18px;right:0px;" class="close" data-dismiss="alert">&times;</button>
-				<h3>Verifique los campos requeridos!</h3>
-				<ul>
-					<?php echo validation_errors('<li><span class="label label-important">', '</span></li>'); ?>
-				</ul>
-			</div>
-		</div>
-		<?php endif ?>
-		<div class="row-fluid">
+			<?php if (validation_errors()): ?>
+				<div class="alert alert-error">
+					<button type="button" style="position: relative;top: -2px;line-height: 18px;right:0px;" class="close" data-dismiss="alert">&times;</button>
+					<h3>Verifique los campos requeridos!</h3>
+					<ul>
+						<?php echo validation_errors('<li><span class="label label-important">', '</span></li>'); ?>
+					</ul>
+				</div>
+			<?php endif ?>
 			<div class="span3">
 				<label>Nombre del banner</label>
-				<input name="nombre" type="text">
+				<input name="nombre" type="text" value="<?php echo $banner->nombre; ?>">
 				<label>Posición</label>
 				<select name="ubicacion" id="ubicacion">
 					<option value=''>-- Selecione la posicion --</option>
@@ -63,13 +61,13 @@
 			</div>
 			<div class="span9">
 				<h4>Vista previa de ubicación</h4>
-					
+					<input id="ubicacion_sel" name="ubicacion_sel" type="hidden" value="<?php echo $banner->ubicacion;?>">
 					<div class="well-ubicacion">
-						<div class="row-fluid top">
+						<div class="row-fluid top" style="height:100px;">
 							<div class="span4 top-left">
 								<div class="tmp-pos" data-position="topleft">
 									<div class="thumbnail-white-centered">
-										Center aligned text
+										<img src="<?php echo base_url('assets/media/banners/'.$banner->imagen); ?>">
 									</div>
 								</div>
 							</div>
@@ -87,19 +85,14 @@
 							</div>
 							<div class="span4 top-right">
 								<div class="tmp-pos" data-position="topright">
-									<ul class="nav nav-pills">
-									  <li class="active">
-									    <a href="#">Home</a>
-									  </li>
-									  <li><a href="#">About</a></li>
-									  <li><a href="#">Help</a></li>
-									  <li><a href="#">Link</a></li>
-									</ul>
+									<div class="thumbnail-white-centered">
+										<img src="<?php echo base_url('assets/media/banners/'.$banner->imagen); ?>">
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="row-fluid nav">
-							<div class="tmp-pos" data-position="nav">
+						<div class="row-fluid">
+							<div class="tmp-pos2" style="opacity:0.9;">
 								<div class="navbar navbar-inverse">
 								  <div class="navbar-inner">
 								    <ul class="nav">
@@ -108,6 +101,13 @@
 								      <li><a href="#">Link</a></li>
 								    </ul>
 								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid nav span6">
+							<div class="tmp-pos" data-position="nav">
+								<div class="thumbnail-white-centered">
+									<img src="<?php echo base_url('assets/media/banners/'.$banner->imagen); ?>">
 								</div>
 							</div>
 						</div>
@@ -123,7 +123,7 @@
 									</div>
 								</div> -->
 							</div>
-							<div class="span6" style="opacity:0.3;">
+							<div class="span6" style="opacity:0.9;">
 								<div class="well content">
 									<h1>Content</h1>
 								</div>
@@ -142,14 +142,8 @@
 						</div>
 						<div class="row-fluid bottom">
 							<div class="tmp-pos" data-position="bottom">
-								<div class="navbar navbar-inverse">
-								  <div class="navbar-inner">
-								    <ul class="nav">
-								      <li class="active"><a href="#">Home</a></li>
-								      <li><a href="#">Link</a></li>
-								      <li><a href="#">Link</a></li>
-								    </ul>
-								  </div>
+								<div class="thumbnail-white-centered">
+									<img src="<?php echo base_url('assets/media/banners/'.$banner->imagen); ?>">
 								</div>
 							</div>
 						</div>
@@ -248,7 +242,7 @@
 		opacity: 1;
 	}
 	.opacidad, .tmp-pos{
-		opacity: 0.1;
+		opacity: 0.01;
 	}
 	</style>
 	<script type="text/javascript">

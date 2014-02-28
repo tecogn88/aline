@@ -15,19 +15,6 @@ class Post extends CI_Controller {
 		$this->load->model('model_usuarios', 'usr');
 		$this->load->library('form_validation');
 	}
-			
-	public function index($filtro = '',$actualizado = "", $id = 0){
-		$this->load->library('pagination');
-		$num_post = $this->post->dame_numPost();
-		$pagination = $this->paginacion($num_post,base_url("panel/post/index/"));
-		$data['articulos'] = $this->post->get_post($pagination['per_page'],$pagination['desde'],true);
-		$data['categorias'] = $this->post->get_categorias1($id);
-		$data['paginacion'] = $this->pagination->create_links();
-		$data['autores'] = $this->dame_autores_blog();
-		$data['head'] = $this->alinecms->get_head('Panel de Blog' , TRUE);
-		$data['header'] = $this->alinecms->get_header('_2');
-		$this->load->view('admin/post/post',$data);
-	}
 	
 	public function panel_categorias(){
 		$this->load->helper(array('form','ckeditor'));
@@ -36,7 +23,7 @@ class Post extends CI_Controller {
 		$data['titulo_pagina'] = "Panel de categorias";
 		$data['descripcion_pagina'] = "";
 		$data['categorias'] = $this->get_tabla_categoria_panel();
-		$this->load->view('admin/post/panel-categorias' , $data);
+		$this->load->view('admin/paginas/panel-categorias' , $data);
 	}
 
 	public function paginacion($num,$url){
@@ -75,7 +62,7 @@ class Post extends CI_Controller {
 		$data['categorias'] = $this->dame_categorias();
 		$data['autores'] = $this->dame_autores_blog();
 		$data['descripcion_pagina'] = "";
-		$this->load->view('admin/post/nuevo-post',$data);
+		$this->load->view('admin/paginas/nuevo-post',$data);
 	}
 
 	public function guarda_articulo(){
@@ -97,7 +84,7 @@ class Post extends CI_Controller {
 		$data['titulo_pagina'] = "Creación de categorias";
 		$data['descripcion_pagina'] = "Crea una categoria para tu blog y agrupa tus post.";
 		$data['categorias'] = $this->get_tabla_categoria_panel();
-		$this->load->view('admin/post/nueva-categoria' , $data);
+		$this->load->view('admin/paginas/nueva-categoria' , $data);
 	}
 
 	public function guarda_categoria(){
@@ -166,7 +153,7 @@ class Post extends CI_Controller {
 		$data['titulo_pagina'] = "Edita categoría";
 		$data['descripcion_pagina'] = "";
 		$data['categorias'] = $this->get_tabla_categoria_panel();
-		$this->load->view('admin/post/edita_categoria' , $data);
+		$this->load->view('admin/paginas/edita_categoria' , $data);
 	}
 
 	public function actualizar_categoria($id = 0){
@@ -254,7 +241,7 @@ class Post extends CI_Controller {
 		$data['descripcion_pagina'] = "";
 		$data['id_autor'] = $articulo->row('id_autor');
 		$data['id_categoria'] = $articulo->row('id_categoria');
-		$this->load->view('admin/post/edita-post', $data);
+		$this->load->view('admin/paginas/edita-post', $data);
 	}
 
 	public function guarda_edicion_articulo(){
@@ -387,11 +374,16 @@ class Post extends CI_Controller {
 	}//  __get_rows
 
 	public function panel_paginas(){
-		$articulos = $this->post->get_posts("2");
 		$data['head'] = $this->alinecms->get_head('Panel de Páginas' , TRUE);
 		$data['header'] = $this->alinecms->get_header('_3');
-		$data['paginas'] = $this->get_tabla_paginas($articulos);
-		$this->load->view('admin/post/paginas',$data);
+		$data['paginas'] = $this->post->get_paginas("2");
+		$paginas = $data['paginas'];
+		if($paginas){
+			foreach ($paginas as $pagina) {
+				$data['autor'] = $this->post->dameDatosAutor($pagina->id_autor);
+			}
+		}
+		$this->load->view('admin/paginas/paginas',$data);
 	}
 	
 	public function crea_pagina(){
@@ -400,7 +392,7 @@ class Post extends CI_Controller {
 		$data['header'] = $this->alinecms->get_header('_3');
 		$data['titulo_pagina'] = "Crea una página";
 		$data['descripcion_pagina'] = "";
-		$this->load->view('admin/post/nueva-pagina',$data);
+		$this->load->view('admin/paginas/nueva-pagina',$data);
 	}
 
 	public function guarda_pagina(){
@@ -444,7 +436,7 @@ class Post extends CI_Controller {
 		$data['header'] = $this->alinecms->get_header('_3');
 		$data['titulo_pagina'] = "Edición de página";
 		$data['descripcion_pagina'] = "";
-		$this->load->view('admin/post/edita-pagina',$data);
+		$this->load->view('admin/paginas/edita-pagina',$data);
 	}
 
 	public function guarda_edicion_pagina(){
@@ -504,44 +496,6 @@ class Post extends CI_Controller {
 			}
 		$this->form_validation->set_rules($config); 
 	}
-	
-
-	public function get_tabla_paginas($tblarticulos = ""){
-		$filas = '';
-		$filas = "  <table id='tblarticulos' class='table table-striped  table-bordered '>
-							<thead>
-								<tr style='background-color: #D9EDF7;'>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-barcode icon-white'></i></span>  Id</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>  Titulo</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-bold icon-white'></i></span>  Slug</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-user icon-white'></i></span>  Autor</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-tags icon-white'></i></span>  Etiquetas</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-calendar icon-white'></i></span>  Fecha</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>  Accion</th>
-								</tr>
-							</thead>
-					<tbody>";
-		if( $tblarticulos == FALSE ){$filas = "No hay pagínas creadas."; return $filas;}	
-
-		foreach ($tblarticulos->result() as $row){
-		    $filas.= "<tr>";
-		    	$filas.= "<td style='font-style:italic;font-weight:bold;'>" .  $row->id_post . "</td>";
-	    		$filas.= "<td style='font-style:italic;font-weight:bold;'>" .  $row->titulo . "</td>";
-	    			$filas.= "<td> " .   $row->slug ."</td>";
-	    		$filas.= "<td> " .  $row->nombre . " " . $row->apellidos .  "</td>";
-				// Aqui se creara una consulta para multiples categorias
-				
-				$filas.= "<td> " .   $row->etiquetas ."</td>";
-				$filas.= "<td>".$row->fecha_publicacion."</td>";
-				$filas.= "<td><div class='cont_accion'>" 
-					."<a class='badge badge-success' href='"   . base_url("/panel/post/edita_pagina/$row->id_post")   ."' rel='tooltip' title='Editar la página:  <br/>". $row->titulo . "'><i class='icon-edit icon-white'></i></a>"  
-					."<a class='badge badge-important btndel' 	href='"   . base_url("/panel/post/borrar_pagina/$row->id_post") ."' rel='tooltip' title='Eliminar la página: <br/>". $row->titulo . "'><i class='icon-remove icon-white'></i></a>"  
-					."</div></td>";
-			    $filas.= "</tr>";
-		} // End ForEach
-		$filas .= "</tbody></table>"; 
-		return $filas;
-	}//  __get_rows
 	
 	/**
 	 * Funcion que borra un usuario 

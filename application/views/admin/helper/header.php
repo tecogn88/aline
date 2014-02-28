@@ -72,6 +72,9 @@
 					<!-- <li id="_12" class="item">
 						<a href="<?php echo base_url('panel/testimonios'); ?>">Testimonios</a>
 					</li> -->
+					<li id="_banners" class="item">
+						<a href="<?php echo base_url('panel/banners'); ?>">Banners</a>
+					</li>
 				</ul>
           </div><!--/.nav-collapse -->
         </div>

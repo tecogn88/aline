@@ -147,6 +147,17 @@ class Alinecms {
 		echo $date;  
 	}
 
+    public function dameFechaPublicacion($fecha){
+        $week_days = array("Lun", "Mar", "Mier", "Jue", "Vie", "Sab", "Dom");
+        $months = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        $fecha_ar = explode("-", $fecha);
+        $year = $fecha_ar[0];
+        $month = ltrim($fecha_ar[1], '0')-1;
+        $day = ltrim($fecha_ar[2], '0');
+        $day_week = $week_days[date('N', mktime(0, 0, 0, $fecha_ar[1], $fecha_ar[2], $fecha_ar[0]))-1];
+        return "$day_week $day de $months[$month] de $year";
+    }
+
     public function dameFechaFormato($fecha){
         $week_days = array("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo");
         $months = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");

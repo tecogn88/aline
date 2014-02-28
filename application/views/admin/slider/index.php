@@ -23,13 +23,15 @@
 					<?php echo $columna_izq; ?>					
 				</aside>
 				<div id="body_content" class="span10 panel_usuarios">
-					<div class="page-header">
-						<h2>Slides principal <small>Agrega y elimina slides</small></h2>
-					</div>
-					<div class="row-fluid">
-						<div class="well">
-							<a id="btn_crea_banner" class="btn btn-primary" href="<?php echo base_url('panel/slider/nuevoSlide'); ?>">Nuevo Slide<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
-							<a class="btn btn-inverse" href="<?php echo base_url('panel/slider/configuracionSlider'); ?>">Configuracion del slider<span style='margin-left:10px;'><i class='icon-wrench icon-white'></i></span></a>
+					<div class="well">
+						<div class="row-fluid">
+							<div class="span6">
+								<h2>Slides principal <small>Agrega y elimina slides</small></h2>
+							</div>
+							<div class="pull-right">
+								<a id="btn_crea_banner" class="btn btn-primary" href="<?php echo base_url('panel/slider/nuevoSlide'); ?>">Nuevo Slide<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
+								<a class="btn btn-inverse" href="<?php echo base_url('panel/slider/configuracionSlider'); ?>">Configuracion del slider<span style='margin-left:10px;'><i class='icon-wrench icon-white'></i></span></a>
+							</div>
 						</div>
 					</div>
 					<div class="row-fluid">

@@ -1,5 +1,5 @@
 <?=$head?>
-  <body>
+  <body class='login'>
     <?php echo $header_admin; ?>
     <div class="container-fluid">
       <div class="row-fluid">
@@ -53,7 +53,6 @@
             </div>
         </div><!--/span-->
       </div><!--/row-->
-      <hr>
     <?=$footer?>
     </div><!--/.fluid-container-->
     <script type="text/javascript">

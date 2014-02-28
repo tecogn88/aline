@@ -88,6 +88,24 @@
 						      </div>
 						    </li>
 
+						    <li class="span2">
+						      <div class="thumbnail">
+						      	<?php if($banners !=0){ ?>
+						      		<span style="float:right;" class="badge badge-info"><?php echo $banners; ?></span>
+						      	<?php }else{ ?>
+						      		<span style="float:right;" class="badge"><?php echo $banners; ?></span>
+						      	<?php } ?>
+						      	<a href="<?php echo base_url('panel/banners'); ?>">
+						      		<div class="cont_ico">
+						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/speaker_64.png');?>" alt="">
+						            </div>
+						    	</a>
+						        <div class="caption">
+						          <h4 class="label label-info" style="text-align:center;">Banners</h4>
+						        </div>
+						      </div>
+						    </li>
+
 						    </ul>
 							<ul class="thumbnails">
 							<!-- Acceso al panel de socios -->
