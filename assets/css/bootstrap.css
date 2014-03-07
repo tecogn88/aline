@@ -2391,15 +2391,31 @@ li.sub-menu {
 	
 }
 
-#header div.modulo.span7 ul.nav.nav-pills li.dropdown-submenu:hover ul.dropdown-menu {
-	display: block;
-	 position: absolute;
+#header div.modulo.span7 ul.nav.nav-pills li.dropdown-submenu ul {
+  display: none;
+   position: absolute;
    z-index: 1000;
-	padding: 15px;
-	width: 67%;
-	background-image: url(../img/bg/bg-transparent.png);
+  padding: 15px;
+  width: 67%;
+  background-image: url(../img/bg/bg-transparent.png);
 }
 
+#header div.modulo.span7 ul.nav.nav-pills li.dropdown-submenu:hover ul {
+  display: block;
+   position: absolute;
+   z-index: 1000;
+  padding: 15px;
+  width: 67%;
+  background-image: url(../img/bg/bg-transparent.png);
+}
+
+.dropdown-menu a.dropdown-toggle{
+  color: #ffffff;
+}
+
+.dropdown-menu:hover > .dropdown-menu{
+  display: block;
+}
 
 ul.dropdown-menu{
 display: none;

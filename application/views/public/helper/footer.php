@@ -150,6 +150,11 @@ $(function(){
         }
     });
 });
+
+/*menu activo*/
+$(function(){
+  $('nav li.active').parents('nav li').addClass('active');
+});
 </script>
 
 </body>

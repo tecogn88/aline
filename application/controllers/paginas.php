@@ -182,17 +182,6 @@ class Paginas extends CI_Controller {
             if( $row->is_logged == 'si' && ! $this->session->userdata('logged_in') ) continue;
             
             $hijos = $this->menu->get_hijos($idMenu,$row->idItem);
-            
-            $subClass =""; $subId = ""; $subAtri = "";
-            
-            if(! is_null($row->clase) ) $subClass = "class='".$row->clase."'";
-            
-            if(strlen( trim($row->id_css) ) > 0 ){
-                $subId = "id='".$row->id_css."'";
-            }
-
-            if(! is_null($row->atri) ) $subAtri = $row->atri;
-            $elementos .= "<li ".$subClass." ".$subId." ".$subAtri.">";
 
             $mhref = "";
             // 1 = Home | 2 = Contact | 3 = Page | 4 = Articulo | 5 = Blog | 6 = URL Externa
@@ -248,21 +237,36 @@ class Paginas extends CI_Controller {
                     $mhref = base_url('galeria/videos/'.$row->idpost);
                     break;
             }
+
+            $subClass =""; $subId = ""; $subAtri = ""; $active = "";
+            if(! is_null($row->atri) ) $subAtri = $row->atri;
+
+            if($mhref == current_url()){
+                $active = "active";
+            }
+
+            if(! is_null($row->clase) ) $subClass = "class='".$row->clase." ".$active."'";
+            
+            if(strlen( trim($row->id_css) ) > 0 ){
+                $subId = "id='".$row->id_css."'";
+            }
+            $elementos .= "<li ".$subClass." ".$subId." ".$subAtri.">";
+
             if(! $hijos > 0){
                 $elementos .= "<a href='$mhref'>" . $row->titulo . "</a>";
             }else{
-                $elementos .= "<a class='dropdown-toggle' data-toggle='dropdown' href='$mhref'>" . $row->titulo . "</a>";
+                $elementos .= "<a class='dropdown-toggle' data-toggle='' href='$mhref'>" . $row->titulo . "</a>";
             }
 
             if($hijos > 0){
                 $elementos .= $this->get_padres_vista($idMenu,$row->idItem);
             }
 
-            $elementos .= '</li>';  
+            $elementos .= '</li>';    
         } 
         $elementos .='</ul>';
         return $elementos;
-    } 
+    }
 
     public function get_padres_vista_span3($idMenu = 0, $padre = 0){
         // Obtenemos todos los items padre

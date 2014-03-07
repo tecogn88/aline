@@ -4599,6 +4599,13 @@ a.thumbnail:hover {
           border-radius: 9px;
 }
 
+.badge-small {
+  padding: 2px 2px 1px;
+  -webkit-border-radius: 9px;
+     -moz-border-radius: 9px;
+          border-radius: 9px;
+}
+
 a.label:hover,
 a.badge:hover {
   color: #ffffff;

@@ -467,8 +467,8 @@ nav li.dropdown-submenu li {
 }
 
 nav li.dropdown-submenu ul{
-	border: 1px solid #e0e0e0;
-	width: 350px;
+	/*border: 1px solid #e0e0e0;
+	width: 350px;*/
 }
 
 .menu-top ul{

@@ -36,17 +36,21 @@
 					</div>
 					<div class="well">
 						<div class="row-fluid">
-							<div class="span3">
+							<div class="span4">
 								<?php
 								echo form_label('Nombre', 'nombre');
 								echo form_input('nombre', set_value('nombre'));
 								echo form_error('nombre');
 								echo form_label('Link', 'link');
-								echo form_input('link', set_value('link'));
+								echo form_input('link', set_value('link')); ?>
+							</div>
+							<div class="span4">
+								<?php echo form_label('Texto de botón', 'link');
+								echo form_input('t_link', set_value('t_link'));
 								echo form_label('Imagen', 'imagen');
 								echo form_upload('imagen'); ?>
 							</div>
-							<div class="span8">
+							<div class="span4">
 								<?php echo form_label('Texto', 'descripcion');
 								echo form_textarea('descripcion', set_value('descripcion')); ?>
 							</div>

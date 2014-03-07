@@ -1,5 +1,7 @@
 <?php $this->load->view('/public/helper/head.php'); ?>
-<?php $this->load->view('/public/helper/main_menu.php'); ?>
+<?php $this->load->view('/public/helper/logo.php'); ?>
+<?php if ($menu_top) { $this->load->view('/public/helper/menus/menu_top.php'); } ?>
+<?php if ($menu_nav == TRUE) { $this->load->view('/public/helper/menus/menu_nav.php'); } ?> 
 <div class="container">
     <div class="row">
         <div class="span12 titulos">
@@ -44,6 +46,7 @@
     <!-- ******************************************* -->
     <!-- Le head.php  ==> location: application/views/public/helper/footer.php -->
     
+    <?php if ($menu_footer == TRUE) { $this->load->view('/public/helper/menus/menu_footer.php'); } ?>
     <?php $this->load->view('public/helper/footer.php'); ?>
     <!-- ******************************************* -->
     <script type="text/javascript">

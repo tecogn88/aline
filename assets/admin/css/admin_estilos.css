@@ -184,3 +184,8 @@ div.well.content{
 .label.tag{
 	line-height: 2;
 }
+
+a.link-panel{
+	text-decoration: none;
+	color: white;
+}

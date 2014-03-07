@@ -19,14 +19,17 @@
 						  <ul class="thumbnails">
 						    <li class="span2">
 						      <div class="thumbnail">
-						        <span style="float:right;" class="badge badge-info"><?php echo $users; ?></span>
+						        <span style="float:right;" class="badge-small badge-info">
+						        	<a href="<?php echo base_url('panel/usuarios/nuevo_usuario'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						        	<?php //echo $users; ?>
+						        </span>
 						      	<a href="<?php echo base_url('panel/usuarios'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/man_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Usuarios</h4>
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/usuarios'); ?>">Usuarios</a></h4>
 						        </div>
 						      </div>
 						    </li>
@@ -48,42 +51,51 @@
 
 						    <li class="span2">
 						      <div class="thumbnail">
-						      	<span style="float:right;" class="badge badge-info"><?php echo $paginas; ?></span>
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="<?php echo base_url('/panel/post/crea_pagina'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $paginas; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/post/panel_paginas'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/app_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Páginas</h4>
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/post/panel_paginas'); ?>">Páginas</a></h4>
 						        </div>
 						      </div>
 						    </li>
 
 						    <li class="span2">
 						      <div class="thumbnail">
-						      	<span style="float:right;" class="badge badge-info"><?php echo $menus; ?></span>
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="<?php echo base_url('panel/menus/crea_menu'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $menus; ?>
+						      	</span>
 						      	<a  href="<?php echo base_url('panel/menus'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/tray_full_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="">Menús</h4>
+						          <h4 class="label label-info" style=""><a class="link-panel" href="<?php echo base_url('panel/menus'); ?>">Menús</a></h4>
 						        </div>
 						      </div>
 						    </li>
 
 						    <li class="span2">
 						      <div class="thumbnail">
-						      	<span style="float:right;" class="badge badge-info"><?php echo $slides; ?></span>
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="<?php echo base_url('panel/slider/nuevoSlide'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $slides; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/slider'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/display_off_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Slider</h4>
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/slider'); ?>">Slider</a></h4>
 						        </div>
 						      </div>
 						    </li>
@@ -91,7 +103,10 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<?php if($banners !=0){ ?>
-						      		<span style="float:right;" class="badge badge-info"><?php echo $banners; ?></span>
+						      		<span style="float:right;" class="badge-small badge-info">
+						      			<a href="<?php echo base_url('panel/banners/crea_banner'); ?>"><i class="icon-plus-sign icon-white"></i></a>
+						      			<?php //echo $banners; ?>
+						      		</span>
 						      	<?php }else{ ?>
 						      		<span style="float:right;" class="badge"><?php echo $banners; ?></span>
 						      	<?php } ?>
@@ -101,7 +116,7 @@
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Banners</h4>
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/banners'); ?>">Banners</a></h4>
 						        </div>
 						      </div>
 						    </li>

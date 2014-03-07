@@ -1,22 +1,17 @@
-		<?php $this->load->view('/public/helper/head.php'); ?>
-		<?=$main_menu?>
-		
-				
-                <div id="home-wrapper" class="span12">
-                
-                <div id="contenido-txt">
-                 
-                 <h1><?=$pagina->titulo;?></h1>	
- 	             <?=$pagina->contenido;?>
- 	            </div>  
-                <div id="banners-hor">
-                	<?=$menu_left?>
-                </div>
-            </div>
-            
-			<!-- Le main content -->
-				<?php $this->load->view('public/helper/footer.php'); ?>
-	
-	
-	</body>
+<?php $this->load->view('/public/helper/head.php'); ?>
+<?php $this->load->view('/public/helper/logo.php'); ?>
+<?php if ($menu_top) { $this->load->view('/public/helper/menus/menu_top.php'); } ?>
+<?php if ($menu_nav == TRUE) { $this->load->view('/public/helper/menus/menu_nav.php'); } ?>	
+    <div id="home-wrapper" class="span12"> 
+	    <div id="contenido-txt">
+	    	<h1><?=$pagina->titulo;?></h1>	
+	        <?=$pagina->contenido;?>
+	    </div>  
+	    <div id="banners-hor">
+	    	<?=$menu_left?>
+	    </div>
+	</div>
+<?php if ($menu_footer == TRUE) { $this->load->view('/public/helper/menus/menu_footer.php'); } ?>
+<?php $this->load->view('public/helper/footer.php'); ?>
+</body>
 </html>
