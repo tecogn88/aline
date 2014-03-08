@@ -100,7 +100,7 @@
 						      </div>
 						    </li>
 
-						    <li class="span2">
+						    <!-- <li class="span2">
 						      <div class="thumbnail">
 						      	<?php if($banners !=0){ ?>
 						      		<span style="float:right;" class="badge-small badge-info">
@@ -119,7 +119,7 @@
 						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/banners'); ?>">Banners</a></h4>
 						        </div>
 						      </div>
-						    </li>
+						    </li> -->
 
 						    </ul>
 							<ul class="thumbnails">
