@@ -121,7 +121,7 @@ class Contacto extends CI_Controller {
           <title>Nuevo mensaje!!</title>
         </head>
         <body>
-        <p>Se ha recibido un nuevo correo de contacto de <?=$this->configuration->titulo?></p>
+        <p>Se ha recibido un nuevo correo de contacto de'.$this->configuration->titulo.'</p>
           <table>
             <tr>
               <td><b>Los datos recibidos son:</b><br></td>
