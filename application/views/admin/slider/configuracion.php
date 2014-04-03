@@ -33,86 +33,54 @@
 							<button style="margin-left:10px;float:right;" class="btn btn-primary" name="btnGuardar" onclick="submit">Guardar configuración<span style='float:right;margin-left:10px;'><i class='icon-plus icon-white'></i></span></button>
 							<!-- <a id="btn_crea_banner" class="btn btn-primary" href="<?php echo base_url('panel/slider/nuevoSlide'); ?>" style="float:right;margin-left:10px;">Nuevo slide</a> -->
 						</div>
+						<?php echo $this->session->flashdata('warning'); ?>
 					</div>
 					<div class="well">
 						<div class="row-fluid">
 					  		<div class="span3">
-							  	<label><h5>
-							  		Ancho
-							  	</h5></label>
+							  	<label><h4>Ancho</h4></label>
 							  	<input type="text" name="slider_ancho" value="<?=$slider_ancho?>">
-							  	<label><h5>
-							  		Alto
-							  	</h5></label>
+							  	<label><h4>Alto</h4></label>
 							  	<input type="text" name="slider_alto" value="<?=$slider_alto?>">
-							  	<label><h5>
-							  		Automatico
-							  	</h5></label>
-							  	<?php $sel = ''; $sel1 = '';
-							  	if ($auto == 'true') {
-							  		$sel = 'selected';
-							  	}else{
-							  		$sel1 = 'selected';
-							  	}
-							  	?>
-							  	<select name="auto" id="auto">
-									<option value="true" <?=$sel?>>Si</option>
-									<option value="false" <?=$sel1?>>No</option>
-								</select>
 							</div>
-							<div class="span4">
-								<label><h5>
-									Velocidad del efecto<small>(en milisegundos, 1000 = 1 segundo)</small>
-								</h5></label>
+							<div class="span3">
+								<label><h4>Velocidad de efecto <small>(en milisegundos)</small></h4></label>
 								<input type="text" name="velocidad" value="<?=$velocidad?>">
-								<label><h5>
-							  		Rotacion infinita
-							  	</h5></label>
-							  	<?php $inf = ''; $inf1 = '';
-							  	if ($infinito == 'true') {
-							  		$inf = 'selected';
-							  	}else{
-							  		$inf1 = 'selected';
-							  	}
-							  	?>
-							  	<select name="infinito" id="infinito">
-									<option value="true" <?=$inf?>>Si</option>
-									<option value="false" <?=$inf1?>>No</option>
-								</select>
-								<label><h5>Iniciar en el slide</h5></label>
 								<?php $slides = $this->db->count_all('slider'); ?>
-								<small>(Existen <?=$slides?> slides)<br>el slide1 corresponde al número 0</small><br>
+								<label><h4>Slide inicial <small>(Hay <?=$slides?> slides)</small></h4></label>
 								<input type="text" name="slide_i" value="<?=$slide_i?>">
 							</div>
-							<div class="span4">
-								<label><h5>
-							  		Aleatorio
-							  	</h5></label>
-							  	<?php $alea = ''; $alea1 = '';
-							  	if ($aleatorio == 'true') {
-							  		$alea = 'selected';
-							  	}else{
-							  		$alea1 = 'selected';
-							  	}
-							  	?>
-							  	<select name="aleatorio" id="aleatorio">
-									<option value="true" <?=$alea?>>Si</option>
-									<option value="false" <?=$alea1?>>No</option>
-								</select>
-								<label><h5>
-							  		Mostrar controles
-							  	</h5></label>
-							  	<?php $cont = ''; $cont1 = '';
-							  	if ($controles == 'true') {
-							  		$cont = 'selected';
-							  	}else{
-							  		$cont1 = 'selected';
-							  	}
-							  	?>
-							  	<select name="controles" id="controles">
-									<option value="true" <?=$cont?>>Si</option>
-									<option value="false" <?=$cont1?>>No</option>
-								</select>
+							<div class="span3">
+							  	<label><h4>Automatico</h4></label>
+							  	<div class="btn-group" data-toggle="buttons-radio">
+									<?php $checado_auto = ''; $checado_auto1 = ''; if ($auto == 1) {$checado_auto1 = 'active';}else{$checado_auto = 'active';} ?>
+								  <button id='auto_si' type="button" class="btn btn-inverse <?php echo $checado_auto1 ?>"><i id='icon_auto_si' class="icon-ok icon-white"></i></button>
+								  <button id='auto_no' type="button" class="btn btn-inverse <?php echo $checado_auto ?>"><i id='icon_auto_no' class="icon-ban-circle icon-white"></i></button>
+								</div>
+								<input name="auto" id="auto" type="hidden" value="<?php echo $auto ?>">
+								<label><h4>Rotacion infinita</h4></label>
+								<div class="btn-group" data-toggle="buttons-radio">
+									<?php $checado_inf = ''; $checado_inf1 = ''; if ($infinito == 1) {$checado_inf1 = 'active';}else{$checado_inf = 'active';} ?>
+								  <button id='inf_si' type="button" class="btn btn-inverse <?php echo $checado_inf1 ?>"><i id='icon_inf_si' class="icon-ok icon-white"></i></button>
+								  <button id='inf_no' type="button" class="btn btn-inverse <?php echo $checado_inf ?>"><i id='icon_inf_no' class="icon-ban-circle icon-white"></i></button>
+								</div>
+								<input name="infinito" id="infinito" type="hidden" value="<?php echo $infinito ?>">
+							</div>
+							<div class="span3">
+								<label><h4>Aleatorio</h4></label>
+								<div class="btn-group" data-toggle="buttons-radio">
+									<?php $checado_ale = ''; $checado_ale1 = ''; if ($aleatorio == 1) {$checado_ale1 = 'active';}else{$checado_ale = 'active';} ?>
+								  <button id='alea_si' type="button" class="btn btn-inverse <?php echo $checado_ale1 ?>"><i id='icon_alea_si' class="icon-ok icon-white"></i></button>
+								  <button id='alea_no' type="button" class="btn btn-inverse <?php echo $checado_ale ?>"><i id='icon_alea_no' class="icon-ban-circle icon-white"></i></button>
+								</div>
+								<input name="aleatorio" id="aleatorio" type="hidden" value="<?php echo $aleatorio ?>">
+								<label><h4>Mostrar controles</h4></label>
+								<div class="btn-group" data-toggle="buttons-radio">
+									<?php $checado_ctrls = ''; $checado_ctrls1 = ''; if ($controles == 1) {$checado_ctrls1 = 'active';}else{$checado_ctrls = 'active';} ?>
+								  <button id='ctrls_si' type="button" class="btn btn-inverse <?php echo $checado_ale1 ?>"><i id='icon_ctrls_si' class="icon-ok icon-white"></i></button>
+								  <button id='ctrls_no' type="button" class="btn btn-inverse <?php echo $checado_ale ?>"><i id='icon_ctrls_no' class="icon-ban-circle icon-white"></i></button>
+								</div>
+								<input name="controles" id="controles" type="hidden" value="<?php echo $controles ?>">
 							</div>
 						</div>
 					</form>
@@ -122,6 +90,27 @@
 		<?php $this->load->view('admin/helper/footer.php'); ?>
 	</div> 
 	<!-- End div class="wrapper container" -->
-<script type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).on("ready",function(){
+		$( "#cambio" ).delay(3500).slideUp('slow');
+
+		if($('#auto').val() == 1){$('#icon_auto_no').removeClass('icon-white');}
+		else{$('#icon_auto_si').removeClass('icon-white');}
+		if($('#infinito').val() == 1){$('#icon_inf_no').removeClass('icon-white');}
+		else{$('#icon_inf_si').removeClass('icon-white');}
+		if($('#aleatorio').val() == 1){$('#icon_alea_no').removeClass('icon-white');}
+		else{$('#icon_alea_si').removeClass('icon-white');}
+		if($('#controles').val() == 1){$('#icon_ctrls_no').removeClass('icon-white');}
+		else{$('#icon_ctrls_si').removeClass('icon-white');}
+	});
+	$("#auto_si").on("click",function(){$("#auto").val("true");$('#icon_auto_no').removeClass('icon-white');$('#icon_auto_si').addClass('icon-white');});
+	$("#auto_no").on("click",function(){$("#auto").val("flase");$('#icon_auto_si').removeClass('icon-white');$('#icon_auto_no').addClass('icon-white');});
+	$("#inf_si").on("click",function(){$("#infinito").val("true");$('#icon_inf_no').removeClass('icon-white');$('#icon_inf_si').addClass('icon-white');});
+	$("#inf_no").on("click",function(){$("#infinito").val("flase");$('#icon_inf_si').removeClass('icon-white');$('#icon_inf_no').addClass('icon-white');});
+	$("#alea_si").on("click",function(){$("#aleatorio").val("true");$('#icon_alea_no').removeClass('icon-white');$('#icon_alea_si').addClass('icon-white');});
+	$("#alea_no").on("click",function(){$("#aleatorio").val("flase");$('#icon_alea_si').removeClass('icon-white');$('#icon_alea_no').addClass('icon-white');});
+	$("#ctrls_si").on("click",function(){$("#controles").val("true");$('#icon_ctrls_no').removeClass('icon-white');$('#icon_ctrls_si').addClass('icon-white');});
+	$("#ctrls_no").on("click",function(){$("#controles").val("flase");$('#icon_ctrls_si').removeClass('icon-white');$('#icon_ctrls_no').addClass('icon-white');});
+</script>
 </body>
 </html>

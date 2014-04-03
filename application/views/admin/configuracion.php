@@ -79,7 +79,7 @@
 										<div class="btn-group" data-toggle="buttons-radio">
 											<?php $checado = ''; $checado1 = ''; if ($mostrarmapa == 1) {$checado1 = 'active';}else{$checado = 'active';} ?>
 										  <button id='map_si' type="button" value='1' class="btn btn-inverse <?php echo $checado1 ?>"><i id='icon_si' class="icon-ok icon-white"></i></button>
-										  <button id='map_no' type="button" value="0" class="btn btn-inverse <?php echo $checado ?>"><i id='icon_no' class="icon-remove icon-white"></i></button>
+										  <button id='map_no' type="button" value="0" class="btn btn-inverse <?php echo $checado ?>"><i id='icon_no' class="icon-ban-circle icon-white"></i></button>
 										</div>
 										<div id="map_container" style="display:none;">
 											Mueva el marcador para una posición más exacta*
@@ -92,7 +92,7 @@
 										<div class="btn-group" data-toggle="buttons-radio">
 											<?php $checado_contacto = ''; $checado_contacto1 = ''; if ($infocontacto == 1) {$checado_contacto1 = 'active';}else{$checado_contacto = 'active';} ?>
 										  <button id='contacto_si' type="button" value='1' class="btn btn-inverse <?php echo $checado_contacto1 ?>"><i id='icon_contacto_si' class="icon-ok icon-white"></i></button>
-										  <button id='contacto_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_contacto ?>"><i id='icon_contacto_no' class="icon-remove icon-white"></i></button>
+										  <button id='contacto_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_contacto ?>"><i id='icon_contacto_no' class="icon-ban-circle icon-white"></i></button>
 										</div>
 										<input name="info_c" id="info_c" type="hidden" value="<?php echo $infocontacto ?>">	
 									  	<div class="row-fluid" id="adicional" style="display:none;">

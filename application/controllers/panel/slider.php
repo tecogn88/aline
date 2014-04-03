@@ -136,8 +136,11 @@ class Slider extends CI_Controller{
 	}
 
 	public function GuardaConfiguracion(){
-		$this->configuracion->editar_config_slider();
-		redirect('panel/slider/','REFRESH');
+		$cambio = $this->configuracion->editar_config_slider();
+		if($cambio){
+			$this->session->set_flashdata('warning','<div id="cambio" class="alert alert-success"><b>La configuración se ha guardado correctamente.</b></div>');
+		}
+		redirect('panel/slider/configuracionSlider/','REFRESH');
 	}
 
 }

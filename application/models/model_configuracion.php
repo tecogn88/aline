@@ -245,18 +245,30 @@ class Model_configuracion extends CI_Model {
     }
 
     function editar_config_slider(){
+        if($this->input->post('auto') == 'true'){$auto = 1;}
+        else{$auto = 0;}
+        if($this->input->post('infinito') == 'true'){$infinito = 1;}
+        else{$infinito = 0;}
+        if($this->input->post('aleatorio') == 'true'){$aleatorio = 1;}
+        else{$aleatorio = 0;}
+        if($this->input->post('controles') == 'true'){$controles = 1;}
+        else{$controles = 0;}
         $data = array(
             'slider_ancho' => $this->input->post('slider_ancho', true),
             'slider_alto' => $this->input->post('slider_alto', true),
-            'auto' => $this->input->post('auto', true),
-            'infinito' => $this->input->post('infinito', true),
+            'auto' => $auto,
+            'infinito' => $infinito,
             'slide_i' => $this->input->post('slide_i', true),
-            'aleatorio' => $this->input->post('aleatorio', true),
-            'controles' => $this->input->post('controles', true),
+            'aleatorio' => $aleatorio,
+            'controles' => $controles,
             'velocidad' => $this->input->post('velocidad', true),
             );
         $this->db->update('config_slider',$data);
-        return true;
+        if ($this->db->affected_rows() > 0) {
+           return true;
+        }else{
+            return false;
+        }
     }
 
     function dame_categorias(){
