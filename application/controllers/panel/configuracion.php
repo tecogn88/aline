@@ -38,7 +38,10 @@ class Configuracion extends CI_Controller {
 						}else{
 							$imagen = array('ancho' => $this->input->post('logo_ancho'), 'alto' => $this->input->post('alto'));
 						}
-						$this->configuracion->editar_configuracion($logo,$imagen);
+						$cambio = $this->configuracion->editar_configuracion($logo,$imagen);
+						if($cambio){
+							$this->session->set_flashdata('warning','<div id="cambio" class="alert alert-success"><b>La configuración se ha guardado correctamente.</b></div>');
+						}
 						redirect('panel/configuracion/','REFRESH');	
 					}
 				}else{
@@ -47,10 +50,13 @@ class Configuracion extends CI_Controller {
 					}else{
 						$imagen = array('ancho' => $this->input->post('logo_ancho'), 'alto' => $this->input->post('logo_alto'));
 					}
-					$this->configuracion->editar_configuracion($this->configuration->logo,$imagen);
-					$this->configuracion->editar_config_contacto();
-					$this->configuracion->editar_config_contenido();
-					$this->configuracion->editar_config_social();
+					$cambio_gen = $this->configuracion->editar_configuracion($this->configuration->logo,$imagen);
+					$cambio_cnt = $this->configuracion->editar_config_contacto();
+					$cambio_con = $this->configuracion->editar_config_contenido();
+					$cambio_soc = $this->configuracion->editar_config_social();
+					if($cambio_gen || $cambio_cnt || $cambio_con || $cambio_soc){
+						$this->session->set_flashdata('warning','<div id="cambio" class="alert alert-success"><b>La configuración se ha guardado correctamente.</b></div>');
+					}
 					redirect('panel/configuracion/','REFRESH');
 				}
 			}

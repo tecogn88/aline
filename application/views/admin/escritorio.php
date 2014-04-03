@@ -20,7 +20,7 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						        <span style="float:right;" class="badge-small badge-info">
-						        	<a href="<?php echo base_url('panel/usuarios/nuevo_usuario'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						        	<a title="Agregar usuario" class="pop_red" href="<?php echo base_url('panel/usuarios/nuevo_usuario'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						        	<?php //echo $users; ?>
 						        </span>
 						      	<a href="<?php echo base_url('panel/usuarios'); ?>">
@@ -52,7 +52,7 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="<?php echo base_url('/panel/post/crea_pagina'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<a title="Agregar página" class="pop_red" href="<?php echo base_url('/panel/post/crea_pagina'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						      		<?php //echo $paginas; ?>
 						      	</span>
 						      	<a href="<?php echo base_url('panel/post/panel_paginas'); ?>">
@@ -69,7 +69,7 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="<?php echo base_url('panel/menus/crea_menu'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<a title="Agregar menú" class="pop_red" href="<?php echo base_url('panel/menus/crea_menu'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						      		<?php //echo $menus; ?>
 						      	</span>
 						      	<a  href="<?php echo base_url('panel/menus'); ?>">
@@ -86,7 +86,7 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="<?php echo base_url('panel/slider/nuevoSlide'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<a title="Agregar slide" class="pop_red" href="<?php echo base_url('panel/slider/nuevoSlide'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						      		<?php //echo $slides; ?>
 						      	</span>
 						      	<a href="<?php echo base_url('panel/slider'); ?>">
@@ -241,6 +241,14 @@
 				$(this).find(".info").hide();
 				division.find("img").removeClass("animated bounce");
 			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$('.pop_red').tooltip({
+			trigger: 'hover',
+			placement: 'bottom',
+			animation: true
 		});
 	</script>
 

@@ -13,29 +13,26 @@
 							<a style="float:right;margin-left:10px;" class="btn btn-danger" href="<?php echo base_url('panel/escritorio/'); ?>">Terminar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
 							<button style="margin-left:10px;float:right;" class="btn btn-primary" name="btnGuardar" onclick="submit">Guardar<span style='float:right;margin-left:10px;'><i class='icon-ok-sign icon-white'></i></span></button>
 						</div>
+						<?php echo $this->session->flashdata('warning'); ?>
 					</div>
 					<div>
 						<ul class="nav nav-tabs" id="myTab">
-						  <li class="active"><a href="#general">General</a></li>
-						  <li><a href="#informacion">Información</a></li>
-						  <li><a href="#contacto">Contacto</a></li>
-						  <li><a href="#contenido">Contenido</a></li>
-						  <li><a href="#social">Social</a></li>
+						  <li class="active"><a href="#general"><h4>General</h4></a></li>
+						  <li><a href="#informacion" id="info_tab"><h4>Información</h4></a></li>
+						  <li><a href="#contacto"><h4>Contacto</h4></a></li>
+						  <li><a href="#contenido"><h4>Contenido</h4></a></li>
+						  <li><a href="#social"><h4>Redes sociales</h4></a></li>
 						</ul>
 						<div class="alert alert-tabs">
 							<div class="tab-content">
 							  <div class="tab-pane active" id="general">
 							  	<div class="row">
 								  	<div class="span4">
-									  	<label for="titulo"><h5>
-											Título de la página
-										</h5></label>
+									  	<label for="titulo"><h4>Nombre del sitio</h4></label>
 										<input type="text" name="titulo" value="<?=$titulo?>" />
 								  	</div>
 								  	<div class="span4">
-										<label for="Logo"><h5>
-											Logotipo
-										</h5></label>
+										<label for="Logo"><h4>Logotipo</h4></label>
 										<input type="hidden" name="nuevo_logo" value="0" id="nuevo_logo">
 										<?php $logotipo = "assets/img/" . $logo; ?>
 										<div>
@@ -44,9 +41,7 @@
 										<input type="file" name="logo" value="<?=$logo?>" id="logo" />
 								  	</div>
 								  	<div class="span4">
-										<label><h5>
-											Proporciones de logotipo
-										</h5></label>
+										<label><h4>Proporciones de logotipo</h4></label>
 										Ancho: <input type="text" pattern="[0-9]{0,5}" title="Solo se permiten números" name="logo_ancho" class="span1 proporcion" value="<?=$logo_ancho?>" id="logo_ancho" />
 										Alto: <input type="text" pattern="[0-9]{0,5}" title="Solo se permiten números" name="logo_alto" class="span1 proporcion" value="<?=$logo_alto?>" id="logo_alto" />
 										Proporcional: <input type="checkbox" name="logo_proporcional" id="logo_proporcional" />
@@ -56,20 +51,15 @@
 							  <div class="tab-pane" id="contacto">
 							  	<div class="row-fluid">
 							  		<div class="span4">
-							  			<label for="nombre_admin"><h5>
-											Nombre del administrador
-										</h5></label>
+							  			<label for="nombre_admin"><h4>Nombre del administrador</h4></label>
 										<input type="text" name="nombre_admin" value="<?=$nombre_admin?>" />
-											
 									</div>
 									<div class="span4">	
-									  	<label for="email"><h5>
-											Email administrador
-										</h5></label>
+									  	<label for="email"><h4>Email principal</h4></label>
 										<input type="email" name="email" value="<?=$correo_admin?>" required />
 									</div>
 									<div class="span4">
-										<label><h5>Emails extra</h5><small>separados con coma (,)</small></label>
+										<label><h4>Emails extra</h4><small>separados con coma (,)</small></label>
 										<textarea name="emails_extra" placeholder="emails separados por coma" rows="4" cols="10"><?=$emails_extra?></textarea>
 								  	</div>
 							  	</div>
@@ -77,88 +67,61 @@
 							  <div class="tab-pane" id="informacion">
 							  	<div class="row-fluid">
 									<div class="span3">
-										<label><h5>Direccion</h5></label>
+										<label><h4>Ubicación</h4></label>
 										<textarea type="text" name="direccion" id="direccion" placeholder="Calle, número, colonia, ciudad, estado" rows="4"><?=$direccion?></textarea>
 									  	<input type="text" name="mapa_g" id="mapa_g" style="display:none" value="<?=$mapa_g?>">
 									  	<img src=".base_url('assets/img/icon-mapa.png')." id='google_img' style="display:none;" width='50px' />
-										<label><h5>
-											Teléfono
-										</h5></label>
+										<label><h4>Teléfono</h4></label>
 										<input type="text" name="telefono" value="<?=$telefono?>" />	
-										<label><h5>Mostrar mapa</h5></label>
-										<select name="map_u" id="map_u">
-											<?php $seleccion = ''; $seleccion1 = '';
-										  	if ($mostrarmapa == 1) {
-										  		$seleccion = 'selected';
-										  	}else{
-										  		$seleleccion1 = 'selected';
-										  	}
-										  	?>
-											<option value="0" <?=$seleccion1?>>No</option>
-											<option value="1" <?=$seleccion?>>Si</option>
-										</select>
-										<label><h5>Mostrar información adicional</h5></label>
-										<select name="info_c" id="info_c">
-											<?php $sel_info = ''; $sel_info1 = '';
-										  	if ($infocontacto == 1) {
-										  		$sel_info = 'selected';
-										  	}else{
-										  		$sel_info1 = 'selected';
-										  	}
-										  	?>
-											<option value="0" <?=$sel_info1?>>No</option>
-											<option value="1" <?=$sel_info?>>Si</option>
-										</select>	
 									</div>
-									<div class="span8">
-										Arrastre el marcador para una posición más exacta*
-								  		<div id='map_canvas' style='height:300px;'></div>
+									<div class="span3">
+										<label><h4>Mostrar mapa</h4></label>
+										<div class="btn-group" data-toggle="buttons-radio">
+											<?php $checado = ''; $checado1 = ''; if ($mostrarmapa == 1) {$checado1 = 'active';}else{$checado = 'active';} ?>
+										  <button id='map_si' type="button" value='1' class="btn btn-inverse <?php echo $checado1 ?>"><i id='icon_si' class="icon-ok icon-white"></i></button>
+										  <button id='map_no' type="button" value="0" class="btn btn-inverse <?php echo $checado ?>"><i id='icon_no' class="icon-remove icon-white"></i></button>
+										</div>
+										<div id="map_container" style="display:none;">
+											Mueva el marcador para una posición más exacta*
+								  			<div id='map_canvas' style='height:250px;'></div>
+											<input name="map_u" id="map_u" type="hidden" value="<?php echo $mostrarmapa ?>">
+										</div>
 								  	</div>
-							  	</div>
-							  	<div class="row-fluid">
-							  			<hr>
-							  			<h3>Información adicional<small><i> (ésta información aparecerá en la sección de contacto)</i></small></h3><br>
-							  			<div class="span3">
-								  			<label><h5>Encabezado</h5></label>
+								  	<div class="span6">
+										<label><h4>Mostrar información adicional<small><i> (Se mostrará en la sección de contacto)</i></small></h4></label>
+										<div class="btn-group" data-toggle="buttons-radio">
+											<?php $checado_contacto = ''; $checado_contacto1 = ''; if ($infocontacto == 1) {$checado_contacto1 = 'active';}else{$checado_contacto = 'active';} ?>
+										  <button id='contacto_si' type="button" value='1' class="btn btn-inverse <?php echo $checado_contacto1 ?>"><i id='icon_contacto_si' class="icon-ok icon-white"></i></button>
+										  <button id='contacto_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_contacto ?>"><i id='icon_contacto_no' class="icon-remove icon-white"></i></button>
+										</div>
+										<input name="info_c" id="info_c" type="hidden" value="<?php echo $infocontacto ?>">	
+									  	<div class="row-fluid" id="adicional" style="display:none;">
+									  		<label><h4>Encabezado</h4></label>
 											<input type="text" name="encabezado" value="<?=$encabezado?>">
-							  			</div>
-							  			<div class="span8">
-										<label><h5>Descripción</h5></label>
-										<textarea name="info_descripcion" id="ckeditor"><?=$info_descripcion?></textarea>
-										<?php $ck_config = array(     
-											"replace" => "#ckeditor"   
-											, "options" => ck_options()     
-											);
-											echo jquery_ckeditor($ck_config); ?>
-							  			</div>
-							  		
+											<label><h4>Información</h4></label>
+											<textarea name="info_descripcion" id="ckeditor"><?=$info_descripcion?></textarea>
+											<?php $ck_config = array( "replace" => "#ckeditor", "options_configuracion" => ck_options()); echo jquery_ckeditor($ck_config); ?>
+									  	</div>
+								  	</div>
 							  	</div>
 							  </div>
 							  <div class="tab-pane" id="contenido">
 							  	<div class="row">
 								  	<div class="span4">
-									  	<label for="template"><h5>
-											Template predeterminado
-										</h5></label>
+									  	<label for="template"><h4>Template predeterminado</h4></label>
 										<select name="template" id="template">
 											<option value="1" selected>Plantilla Default</option>
 											<option value="2">Plantilla BLog</option>
 											<option value="3">Plantilla Página</option>
 											<option value="4">Plantilla Portafolio</option>
 										</select>
-										<label for="num_articulos"><h5>
-											Número de artículos
-										</h5></label>
+										<label for="num_articulos"><h4>Número de artículos</h4></label>
 										<input type="number" name="num_articulos" value="<?=$num_articulos?>" />
 									</div>
 									<div class="span4">
-										<label for="num_recientes"><h5>
-											Número de artículos recientes
-										</h5></label>
+										<label for="num_recientes"><h4>Número de artículos recientes</h4></label>
 										<input type="number" name="num_recientes" value="<?=$num_recientes?>" />
-										<label for="categoria"><h5>
-											Categorías
-										</h5></label>
+										<label for="categoria"><h4>Categorías</h4></label>
 										<select name="categorias[]" id="categorias" multiple>
 											<option value="--">Todas</option>
 											<?php foreach($categorias_select->result() as $categoria){ ?>
@@ -170,30 +133,20 @@
 							  </div>
 							  <div class="tab-pane" id="social">
 							  	<div class="span4">
-								  	<label for="twitter"><h5>
-										Twitter
-									</h5></label>
+								  	<label for="twitter"><h4>Twitter</h4></label>
 									<input type="text" name="twitter" value="<?=$twitter?>" />
-									<label for="facebook"><h5>
-										Facebook
-									</h5></label>
+									<label for="facebook"><h4>Facebook</h4></label>
 									<input type="text" name="facebook" value="<?=$facebook?>" />
 							  	</div>
 							  	<div class="span4">
-									<label for="youtube"><h5>
-										Youtube
-									</h5></label>
+									<label for="youtube"><h4>Youtube</h4></label>
 									<input type="text" name="youtube" value="<?=$youtube?>" />
-									<label for="google"><h5>
-										G+
-									</h5></label>
+									<label for="google"><h4>G+</h4></label>
 									<input type="text" name="google" value="<?=$google?>" />
 							  	</div>
 							  	<div class="span3">
-								<label for="linked"><h5>
-									LinkedIn
-								</h5></label>
-								<input type="text" name="linked" value="<?=$linked?>" />
+									<label for="linked"><h4>LinkedIn</h4></label>
+									<input type="text" name="linked" value="<?=$linked?>" />
 							  	</div>
 							  </div>
 							  </div>
@@ -201,10 +154,34 @@
 						</div>	
 					</div>
 				</form>
-			
 		</div>
 		
 		<script type="text/javascript">
+			$("#map_si").on("click",function(){
+				$("#map_u").val("1");
+				$('#map_container').slideDown('slow');
+				$('#icon_no').removeClass('icon-white');
+				$('#icon_si').addClass('icon-white');
+			});
+			$("#map_no").on("click",function(){
+				$("#map_u").val("0");
+				$('#map_container').slideUp('slow');
+				$('#icon_si').removeClass('icon-white');
+				$('#icon_no').addClass('icon-white');
+			});
+
+			$("#contacto_si").on("click",function(){
+				$("#info_c").val("1");
+				$('#adicional').slideDown('slow');
+				$('#icon_contacto_no').removeClass('icon-white');
+				$('#icon_contacto_si').addClass('icon-white');
+			});
+			$("#contacto_no").on("click",function(){
+				$("#info_c").val("0");
+				$('#adicional').slideUp('slow');
+				$('#icon_contacto_si').removeClass('icon-white');
+				$('#icon_contacto_no').addClass('icon-white');
+			});
 
 			function display_contacto(informacion){
 				if (informacion == 1) {
@@ -222,6 +199,22 @@
 			});
 
 			$(document).on("ready",function(){
+				$( "#cambio" ).delay(3500).slideUp('slow');
+
+				if($('#map_u').val() == 1){
+					$('#map_container').show();
+					$('#icon_no').removeClass('icon-white');
+				}else{
+					$('#icon_si').removeClass('icon-white');
+				}
+
+				if($('#info_c').val() == 1){
+					$('#adicional').show();
+					$('#icon_contacto_no').removeClass('icon-white');
+				}else{
+					$('#icon_contacto_si').removeClass('icon-white');
+				}
+
 				var plantilla = "<?php echo $plantilla ?>";
 				var logo_ancho = $("#logo_ancho").val();
 				if(plantilla){
@@ -327,7 +320,7 @@
 		}
 		function muestraVentana(){
 			var titulo = $("input[name='titulo']").val();
-			var mensaje_titulo = "<h5>" + titulo + "</h5>";
+			var mensaje_titulo = "<h4>" + titulo + "</h4>";
 			var direccion = $("input[name='direccion']").val();
 			var mensaje_direc = "<p>" + direccion + "</p>"
 			var mensaje_completo = "<div='mensaje_mapa'>" + mensaje_titulo + mensaje_direc + "</div>";
@@ -355,13 +348,12 @@
 		$(document).ready(function() {
 		  loadScript();
 		});
-		/*$("#direccion").on("click",loadScript);*/
+		$("#direccion").on("click",loadScript);
+		$("#direccion").on("keypress",loadScript);
+		$("#info_tab").on("click",loadScript);
+		$('#map_si').on('click',loadScript);
         /*$("#google_img").on("click",loadScript);*/
         $("#direccion").on("change",codeAddress);
 // FIN GOOGLE MAPS
-		
-
-
 </script>
-
-	</body>
+</body>

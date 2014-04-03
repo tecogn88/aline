@@ -164,7 +164,11 @@ class Model_configuracion extends CI_Model {
             'logo_alto' => $alto,
     	);
     	$this->db->update($this->tabla,$data);
-    	return true;
+        if ($this->db->affected_rows() > 0) {
+    	   return true;
+        }else{
+            return false;
+        }
     }
 
     function editar_config_catalogo(){
@@ -203,7 +207,11 @@ class Model_configuracion extends CI_Model {
             'telefono' => $this->input->post('telefono', true),
             );
         $this->db->update('config_contacto',$data);
-        return true;
+        if ($this->db->affected_rows() > 0) {
+           return true;
+        }else{
+            return false;
+        }
     }
 
     function editar_config_contenido(){
@@ -214,7 +222,11 @@ class Model_configuracion extends CI_Model {
             'categorias' => $categorias,
             );
         $this->db->update('config_contenido',$data);
-        return true;
+        if ($this->db->affected_rows() > 0) {
+           return true;
+        }else{
+            return false;
+        }
     }
 
     function editar_config_social(){
@@ -225,8 +237,11 @@ class Model_configuracion extends CI_Model {
             'youtube' => $this->input->post('youtube', true),
             'linked' => $this->input->post('linked', true),
             );
-        $this->db->update('config_social',$data);
-        return true;
+        if ($this->db->affected_rows() > 0) {
+           return true;
+        }else{
+            return false;
+        }
     }
 
     function editar_config_slider(){

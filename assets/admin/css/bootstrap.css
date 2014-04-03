@@ -4399,6 +4399,7 @@ input[type="submit"].btn.btn-mini {
   z-index: 1010;
   display: none;
   padding: 5px;
+  max-width: 190px!important;
 }
 
 .popover.top {

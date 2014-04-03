@@ -21,6 +21,7 @@
 						<?php } ?>
 						<?php if ($mostrarmapa == 1){ ?>
 						<h2 style="margin-top:0px;">Ubicación</h2>
+						<input type="hidden" id="direccion" value='<?php echo $direccion; ?>'>
 							<div id='map_canvas' style='height:350px;width:850px;'></div>
 						<?php }?>
 					</div>
@@ -157,7 +158,7 @@
 		$(document).ready(function() {
 		  loadScript();
 		});
-		/*$("#direccion").on("click",loadScript);*/
+		$("#direccion").on("click",loadScript);
         /*$("#google_img").on("click",loadScript);*/
         $("#direccion").on("change",codeAddress);
 // FIN GOOGLE MAPS

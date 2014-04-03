@@ -69,6 +69,49 @@ function ck_options_paginas(){
   );
 }
 
+function ck_options_configuracion(){
+  return array( // las opciones (opcionales)
+    "bodyClass" => "ck_custom",
+    "contentsCss" => "css/admin_styles.css",
+    "language" => "es",
+    "width" => 520,
+    "toolbar" => 'Full',
+    "toolbar_Full" => array(
+      array("name" => 'document', "items" => array('Source','-','Print','-','Templates')) ,
+      array("name" => 'clipboard', "items" => array('Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo')),
+      array("name" => 'styles', "items" => array('Styles','Format','Font','FontSize')),
+      '/',
+      array("name" => 'paragraph', "items" => array('NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock')),
+      array("name" => 'colors', "items" => array('TextColor','BGColor')),
+      array("name" => 'editing', "items" => array('Find','Replace','-','SelectAll')),
+      array("name" => 'links', "items" => array('Link','Unlink','Anchor')),
+      array("name" => 'tools', "items" => array('Maximize', 'ShowBlocks','-','About')),
+      array("name" => 'insert', "items" => array('Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe'))
+  ),
+    "toolbar_CUSTOM" => array(
+      array("name" => 'clipboard', "items" => array('Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo')),
+      array("name" => 'styles', "items" => array('Styles','Format','Font','FontSize')),
+      '/',
+      array("name" => 'basicstyles', "items" => array('Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat')),
+      array("name" => 'paragraph', "items" => array('NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock')),
+      array("name" => 'colors', "items" => array('TextColor','BGColor')),
+      array("name" => 'editing', "items" => array('Find','Replace','-','SelectAll')),
+      array("name" => 'links', "items" => array('Link','Unlink','Anchor')),
+    ),
+
+        "filebrowserBrowseUrl" => base_url() . "assets/admin/ckeditor/kcfinder/browse.php?type=files",
+        "filebrowserImageBrowseUrl" => base_url() . "assets/admin/ckeditor/kcfinder/browse.php?type=images",
+        "filebrowserFlashBrowseUrl" => base_url() . "assets/admin/ckeditor/kcfinder/browse.php?type=flash",
+
+        "filebrowserUploadUrl" => base_url() . "assets/admin/ckeditor/kcfinder/upload.php?type=files",
+        "filebrowserImageUploadUrl" => base_url() . "assets/admin/ckeditor/kcfinder/upload.php?type=images",
+        "filebrowserFlashUploadUrl" => base_url() . "assets/admin/ckeditor/kcfinder/upload.php?type=flash",
+        "uploadURL" => base_url() . "/media"
+
+
+  );
+}
+
 function ck_options(){
   return array( // las opciones (opcionales)
     "bodyClass" => "ck_custom",
