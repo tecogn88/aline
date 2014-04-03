@@ -256,11 +256,11 @@ class Model_configuracion extends CI_Model {
         $data = array(
             'slider_ancho' => $this->input->post('slider_ancho', true),
             'slider_alto' => $this->input->post('slider_alto', true),
-            'auto' => $auto,
-            'infinito' => $infinito,
+            'auto' => $this->input->post('auto', true),
+            'infinito' => $this->input->post('infinito', true),
             'slide_i' => $this->input->post('slide_i', true),
-            'aleatorio' => $aleatorio,
-            'controles' => $controles,
+            'aleatorio' => $this->input->post('aleatorio', true),
+            'controles' => $this->input->post('controles', true),
             'velocidad' => $this->input->post('velocidad', true),
             );
         $this->db->update('config_slider',$data);

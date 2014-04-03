@@ -103,14 +103,14 @@
 		if($('#controles').val() == 1){$('#icon_ctrls_no').removeClass('icon-white');}
 		else{$('#icon_ctrls_si').removeClass('icon-white');}
 	});
-	$("#auto_si").on("click",function(){$("#auto").val("true");$('#icon_auto_no').removeClass('icon-white');$('#icon_auto_si').addClass('icon-white');});
-	$("#auto_no").on("click",function(){$("#auto").val("flase");$('#icon_auto_si').removeClass('icon-white');$('#icon_auto_no').addClass('icon-white');});
-	$("#inf_si").on("click",function(){$("#infinito").val("true");$('#icon_inf_no').removeClass('icon-white');$('#icon_inf_si').addClass('icon-white');});
-	$("#inf_no").on("click",function(){$("#infinito").val("flase");$('#icon_inf_si').removeClass('icon-white');$('#icon_inf_no').addClass('icon-white');});
-	$("#alea_si").on("click",function(){$("#aleatorio").val("true");$('#icon_alea_no').removeClass('icon-white');$('#icon_alea_si').addClass('icon-white');});
-	$("#alea_no").on("click",function(){$("#aleatorio").val("flase");$('#icon_alea_si').removeClass('icon-white');$('#icon_alea_no').addClass('icon-white');});
-	$("#ctrls_si").on("click",function(){$("#controles").val("true");$('#icon_ctrls_no').removeClass('icon-white');$('#icon_ctrls_si').addClass('icon-white');});
-	$("#ctrls_no").on("click",function(){$("#controles").val("flase");$('#icon_ctrls_si').removeClass('icon-white');$('#icon_ctrls_no').addClass('icon-white');});
+	$("#auto_si").on("click",function(){$("#auto").val(1);$('#icon_auto_no').removeClass('icon-white');$('#icon_auto_si').addClass('icon-white');});
+	$("#auto_no").on("click",function(){$("#auto").val(0);$('#icon_auto_si').removeClass('icon-white');$('#icon_auto_no').addClass('icon-white');});
+	$("#inf_si").on("click",function(){$("#infinito").val(1);$('#icon_inf_no').removeClass('icon-white');$('#icon_inf_si').addClass('icon-white');});
+	$("#inf_no").on("click",function(){$("#infinito").val(0);$('#icon_inf_si').removeClass('icon-white');$('#icon_inf_no').addClass('icon-white');});
+	$("#alea_si").on("click",function(){$("#aleatorio").val(1);$('#icon_alea_no').removeClass('icon-white');$('#icon_alea_si').addClass('icon-white');});
+	$("#alea_no").on("click",function(){$("#aleatorio").val(0);$('#icon_alea_si').removeClass('icon-white');$('#icon_alea_no').addClass('icon-white');});
+	$("#ctrls_si").on("click",function(){$("#controles").val(1);$('#icon_ctrls_no').removeClass('icon-white');$('#icon_ctrls_si').addClass('icon-white');});
+	$("#ctrls_no").on("click",function(){$("#controles").val(0);$('#icon_ctrls_si').removeClass('icon-white');$('#icon_ctrls_no').addClass('icon-white');});
 </script>
 </body>
 </html>
