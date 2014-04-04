@@ -258,7 +258,7 @@ class Menus extends CI_Controller {
 		$data['titulo_pagina'] = "Edita menu";
 		$data['descripcion_pagina'] = "edita un menu de navegación";
 
-		$data['items'] = $this->menu->dameItemsMenu($idMenu,$padre=0);
+		/*$data['items'] = $this->menu->dameItemsMenu($idMenu,$padre=0);
 		$items = $data['items'];
 		foreach($items as $item){
 			$hijos = $this->menu->get_hijos($idMenu, $item->idItem);
@@ -266,7 +266,7 @@ class Menus extends CI_Controller {
 				$data['items1'] = $this->menu->dameItemsMenu($item->idmenu,$padre=0);
 				$items1 = $data['items1'];
 			}
-		}
+		}*/
 		$this->load->view('admin/menus/elementos', $data);
 	}
 
@@ -360,7 +360,7 @@ class Menus extends CI_Controller {
 		if($padre == 0){ $elementos = "<ul id='menuPadres' style='list-style:none;' class=''>";}
 		// Verificamos que exista algun item de menu padre para proseguir con la consulta
 		if($items->num_rows == 0 and $padre == 0){
-			$elementos = "<ul class='nav nav-pills nav-stacked'><li idItem='0' class='item_menu_' idItem='0'>No hay items de menu en la base de datos.</li></ul><br/>";
+			$elementos = "<ul class='nav nav-pills nav-stacked'><li idItem='0' class='item_menu_' idItem='0'>No hay menus en éste menu.</li></ul><br/>";
 			return $elementos;
 		}
 		// Recorremos el arbol de elementos padre buscando hijos 
@@ -457,6 +457,15 @@ class Menus extends CI_Controller {
 	public function borrar_item(){
 		$idItem = $this->input->post('id');
 		$this->menu->borra_item($idItem);
+	}
+
+	public function borrar_item_con_modal($id){
+		$this->menu->borra_item($id);
+		$data['head'] = $this->alinecms->get_head('Panel de Menús' , TRUE);
+		$data['header'] = $this->alinecms->get_header('_4');
+		$menus = $this->menu->get_menus();
+		$data['menues'] = $this->menu->get_menus();
+		$this->load->view('admin/menus/menus' , $data);
 	}
 
 	public function activa_item(){

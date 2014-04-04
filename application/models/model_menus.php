@@ -407,6 +407,11 @@ class Model_menus extends CI_Model {
 		$this->db->delete('item_menu'); 
 	}
 
+	public function borra_item_modal($id){
+		$this->db->where('id', $id);
+		$this->db->delete('menu'); 
+	}
+
 	public function activa_item($idItem = 0){
 		$estado = $this->input->post('estado');
 		$idItem = $this->input->post('idItem');

@@ -18,7 +18,7 @@
 								<h2>Menús <small>Crea edita y elimina menus de navegación</small></h2>
 							</div>
 							<div class="pull-right">
-								<a class="btn btn-primary" href="<?php echo base_url('panel/menus/crea_menu'); ?>">Nuevo Menu<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
+								<a class="btn btn-primary" href="<?php echo base_url('panel/menus/crea_menu'); ?>">Nuevo Menú<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
 							</div>
 						</div>
 					</div>
@@ -27,30 +27,151 @@
 							<p>Aún no hay menus creados.</p>
 						<?php }else{ ?>
 						<div class="row-fluid">
-							<?php $contador = 0; ?>
-							<?php foreach ($menues->result() as $menu){ ?>
-								<?php $contador++; ?>
-								<div class="span2 thumbnail" style="text-align:center;margin-bottom:10px;">
-									<div class="well well-small">
-										<a href='<?php echo base_url("/panel/menus/edita_menu/".$menu->id); ?>' rel='tooltip' title='Editar menú:  <br/>"<?php echo $menu->titulo; ?> "'> 
-											<?php if(strlen( trim($menu->titulo) ) > 20 ) { ?>
-												<h4 style="margin-bottom:5px;"><?php echo substr($menu->titulo, 0,15).'...'; ?></h4>
-											<?php }else{ ?>
-												<h4 style="margin-bottom:5px;"><?php echo $menu->titulo; ?></h4>
-											<?php } ?>
-										</a>
+							<div class="accordion" id="accordion2">
+								<?php foreach ($menues->result() as $menu){ ?>
+									<div class="accordion-group">
+									    <div class="accordion-heading">
+									    	<div class="row-fluid">
+									    		<div class="span9">
+										      		<a style="color:#555;text-decoration:none;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $menu->id; ?>">
+										        		<h4><?php echo $menu->titulo; ?></h4>
+										      		</a>
+									    		</div>
+									    		<div class="span3" style="text-align:right;padding:5px;">
+									    			<a class='btn btn-small' href='<?php echo base_url("/panel/menus/agrega_item/".$menu->id); ?>' rel='tooltip' title='Agrega items al menú: <br/>"<?php echo $menu->titulo; ?>"'>Agregar menu <i class='icon-plus icon-black'></i></a>
+													<a class='btn btn-danger btn-small btndel' href='<?php echo base_url("/panel/menus/borra_menu/".$menu->id); ?>' rel='tooltip' title='Borrar menú: <br/>"<?php echo $menu->titulo; ?>"'>Eliminar <i class='icon-remove icon-white'></i></a>
+									    		</div>
+									    	</div>
+									    </div>
+									    <div id="collapse<?php echo $menu->id; ?>" class="accordion-body collapse in">
+									      	<div class="accordion-inner">
+									      		<div class="row-fluid">
+									      			<div class="span3 well" style="text-align:center">
+												        <h4>Detalles</h4>
+												        <div class="row-fluid">
+												        	<div class="span6" style="text-align:right;">
+												        		<p><b>ID: </b></p>
+												        		<p><b>Clase CSS: </b></p>
+												        		<p><b>Ubicación: </b></p>
+												        	</div>
+												        	<div class="span6" style="text-align:left;">
+														        <p><?php echo $menu->id ?></p>
+														        <p><?php echo $menu->clase; ?></p>
+														        <p><?php echo $menu->ubicacion ?></p>
+												        	</div>
+												        </div>
+												        <hr>
+												        <a class="btn btn-info" href='<?php echo base_url("/panel/menus/edita_menu/".$menu->id); ?>' rel='tooltip' title='Editar menú:  <br/>"<?php echo $menu->titulo; ?> "'>Editar <i class="icon-edit icon-white"></i></a>
+												      		<!-- <a class='btn btn-primary' id='ver_items' href='<?php echo base_url("/panel/menus/elementosMenu/".$menu->id); ?>'>Ver menús</a> -->
+									      			</div>
+									      			<div class="span9 well" id="items_contenedor">
+														<table id='tblMenus' class='table table-striped  table-bordered ' style="margin-bottom:0px;">
+															<thead>
+																<tr style='background-color: #D9EDF7;'>
+																	<th class="span4">Nombre</th>
+																	<th class='span2' style='text-align: center;'>Activar/Desactivar</th>
+																	<th class='span2' style='text-align: center;'>Orden</th>
+																	<th class='span2' style='text-align: center;'>Editar</th>
+																	<th class='span2' style='text-align: center;'>Eliminar</th>
+																</tr>
+															</thead>
+														</table>
+														<div id="elementosmenus">
+															<div class="row-fluid" style="margin:5px;">
+																<?php $items = $this->menu->get_ItemsMenu($menu->id,$padre = 0); ?>
+																<?php $idMenu = $menu->id; ?>
+																<ul style='list-style:none;margin:0;'>
+																	<?php if($padre == 0){ ?><ul id='menuPadres' style='list-style:none;margin:0;'><?php } ?>
+																		<?php if($items->num_rows == 0 and $padre == 0){ ?>
+																			<ul class='nav nav-pills nav-stacked' style='list-style:none;margin:0;'>
+																				<li idItem='0' class='item_menu_' idItem='0'>No hay elementos en éste menú.</li>
+																			</ul><br/>
+																		<?php } ?> 
+																		<?php foreach($items->result() as $row){
+																			$hijos = $this->menu->get_hijos($idMenu,$row->idItem);
+																			$estilo = "";
+																			if ($row->estado == 1) {$estilo = "color:gray";}
+																				$iconito = 'icon-thumbs-up'; $color="";
+																				if($row->estado == 0){$iconito = "icon-thumbs-down";$color="style='color:gray;'";}
+																					if($padre == 0){?>
+																						<li class='soyPadre'>
+																							<div class="row-fluid" style="border-bottom: solid 1px #dfdfdf;padding-top: 5px;">
+																								<div class='span6 cont_items_first' style='text-align: left;'>
+																									<span class='label label-inverse'><a <?php echo $color; ?> style='color:#fff;' idItem='<?php echo $row->idItem; ?>' class='clPadre' href='<?php echo base_url('panel/menus/edita_item/'. $row->idItem); ?>'> <?php echo $row->titulo; ?></a></span>	
+																								 	<div  class='cont_act' style='float:right;margin-right:55px;'>
+																									 	<a estado='<?php echo $row->estado; ?>' title='Activar/Desactivar Item' id="act_activar" class='item_link act_activar' href='<?php echo base_url('panel/menus/activa/'.$row->idItem); ?>'><i class='<?php echo $iconito; ?>'></i></a>  
+																									</div>
+																								</div>
+																								<div class='span2 input-prepend' style='text-align: center;'>
+																									<input type='number' name='orden' class='orden span4' value='<?php echo $row->orden; ?>' data-id='<?php echo $row->idItem; ?>' id="<?php echo $row->idItem; ?>">
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Editar Item'  class='item_link act_editar' href='<?php echo base_url('panel/menus/edita_item/'.$row->idItem); ?>'><i class='icon-pencil'></i></a>
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Eliminar Item'  class='item_link act_eliminar_hijo' data-id='<?php echo $row->idItem; ?>' href='<?php echo base_url('panel/menus/elimina_item/'.$row->idItem); ?>'><i class='icon-remove-sign'></i></a> 
+																								</div>
+																							</div>
+																					<?php }else{ ?>
+																						<li style='list-style:none;margin:0;'>
+																							<div class="row-fluid" style="border-bottom: solid 1px #dfdfdf;padding-top: 5px;">
+																								<div class='span6 cont_items_first' style='text-align: left;'>
+																									<span class='label label-inverse'><a <?php echo $color; ?> style='color:#fff;' idItem='<?php echo $row->idItem; ?>' class='clPadre' href='<?php echo base_url('panel/menus/edita_item/'. $row->idItem); ?>'> <?php echo $row->titulo; ?></a></span>	
+																								 	<div  class='cont_act' style='float:right;margin-right:55px;'>
+																									 	<a estado='<?php echo $row->estado; ?>' title='Activar/Desactivar Item' id="act_activar" class='item_link act_activar' href='<?php echo base_url('panel/menus/activa/'.$row->idItem); ?>'><i class='<?php echo $iconito; ?>'></i></a>  
+																									</div>
+																								</div>
+																								<div class='span2 input-prepend' style='text-align: center;'>
+																									<input type='number' name='orden' class='orden span4' value='<?php echo $row->orden; ?>' data-id='<?php echo $row->idItem; ?>' id="<?php echo $row->idItem; ?>">
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Editar Item'  class='item_link act_editar' href='<?php echo base_url('panel/menus/edita_item/'.$row->idItem); ?>'><i class='icon-pencil'></i></a>
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Eliminar Item'  class='item_link act_eliminar_hijo' data-id='<?php echo $row->idItem; ?>' href='<?php echo base_url('panel/menus/elimina_item/'.$row->idItem); ?>'><i class='icon-remove-sign'></i></a> 
+																								</div>
+																							</div>
+																					<?php } ?>
+																					</li>	
+																				<?php if($hijos > 0){ 
+																					$padre1 = $row->idItem;
+																					$items1 = $this->menu->dameItemsMenu($menu->id,$padre1); ?>
+																					<?php //var_dump($items1) ?>
+																					<?php foreach($items1 as $row1){ ?>
+																							<li>
+																							<div class="row-fluid" style="border-bottom: solid 1px #dfdfdf;padding-top: 5px;">
+																								<div class='span6 cont_items_first' style='text-align: left;'>
+																									<i class="icon-circle-arrow-right"></i> <a <?php echo $color; ?> idItem='<?php echo $row1->idItem; ?>' class='clPadre' href='<?php echo base_url('panel/menus/edita_item/'. $row1->idItem); ?>'> <?php echo $row1->titulo; ?></a>
+																								 	<div  class='cont_act' style='float:right;margin-right:55px;'>
+																									 	<a estado='<?php echo $row1->estado; ?>' title='Activar/Desactivar Item' id="act_activar" class='item_link act_activar' href='<?php echo base_url('panel/menus/activa/'.$row1->idItem); ?>'><i class='<?php echo $iconito; ?>'></i></a>  
+																									</div>
+																								</div>
+																								<div class='span2 input-prepend' style='text-align: center;'>
+																									<input type='number' name='orden' class='orden span4' value='<?php echo $row1->orden; ?>' data-id='<?php echo $row1->idItem; ?>' id="<?php echo $row1->idItem; ?>">
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Editar Item'  class='item_link act_editar' href='<?php echo base_url('panel/menus/edita_item/'.$row1->idItem); ?>'><i class='icon-pencil'></i></a>
+																								</div>
+																								<div class='span2' style='text-align: center;'>
+																									<a title='Eliminar Item'  class='item_link act_eliminar_hijo' data-id='<?php echo $row1->idItem; ?>' href='<?php echo base_url('panel/menus/elimina_item/'.$row1->idItem); ?>'><i class='icon-remove-sign'></i></a> 
+																								</div>
+																							</div>
+																							</li>
+																					<?php } ?>
+																				<?php } ?>
+																		<?php }?>
+																</ul>
+															</div>
+														</div>
+									      			</div>
+									      		</div>
+									      	</div>
+									    </div>
 									</div>
-									<p>
-										<a class='badge badge-info	agrega_item' href='<?php echo base_url("/panel/menus/agrega_item/".$menu->id); ?>' rel='tooltip' title='Agrega items al menú: <br/>"<?php echo $menu->titulo; ?>"'><i class='icon-plus icon-white'></i></a>
-										<a class='badge badge-warning' href='<?php echo base_url("/panel/menus/elementosMenu/".$menu->id); ?>'><i class='icon-eye-open icon-white'></i></a>  
-										<a class='badge badge-important btndel' href='<?php echo base_url("/panel/menus/borra_menu/".$menu->id); ?>' rel='tooltip' title='Borrar menú: <br/>"<?php echo $menu->titulo; ?>"'><i class='icon-remove icon-white'></i></a>
-									</p>
-								</div>
-								<?php if ($contador%6 == 0): ?>
-									</div><div class="row-fluid">
-								<?php endif ?> 
-							<?php } ?><!-- Fin foreach -->
+								<?php } ?>
+							</div>
 						</div>
+
 						<?php } ?>
 					</div>
 				</div>
@@ -60,6 +181,9 @@
 	</div> 
 	<!-- End div class="wrapper container" -->
 <script type="text/javascript">
+
+	$(".collapse").collapse();
+
 		$(function(){
 			$(".btndel").click(function(e){
 				e.preventDefault();
@@ -80,9 +204,8 @@
 
 		$("a[rel='tooltip']").tooltip();
 
-		$(function(){
+		/*$(function(){
 			$(".cont_items_first").live("mouseover",function(){
-				//$("a.item_link").hide();
 				var div = $(this).find("div.cont_act");
 				div.find("a.item_link").show();
 			});
@@ -91,8 +214,7 @@
 				$("a.item_link").hide();
 			});
 
-		});
-
+		});*/
 
 		$(function(){
 			$(".act_eliminar").live("click",function(e){
@@ -107,7 +229,19 @@
 		});
 
 		$(function(){
-			$(".act_activar").live("click",function(e){
+			$(".act_eliminar_hijo").live("click",function(e){
+				e.preventDefault();
+				var valorId = $(this).attr('data-id');
+				var answer = confirm("Esta seguro que desea eliminar definitivamente este elemento?");
+				if (answer){
+					$.post("<?php echo base_url('panel/menus/borrar_item'); ?>", { id: valorId});
+					$(this).closest("li").remove();
+				}				
+			});
+		});
+
+		$(function(){
+			$("#act_activar").live("click",function(e){
 				e.preventDefault();
 				var icono = $(this).find("i");
 
@@ -132,6 +266,26 @@
 				}				
 								
 			});
+		});
+
+		$(document).on("change",".orden",function(e){
+			var _ordenMenu = $(this).val();
+			var _idItem = $(this).attr('data-id');
+			$.ajax({
+	          url: '<?php echo base_url("panel/menus/ordenar"); ?>',
+	          async: false,
+	          type: 'POST',
+	          data: {id_item: _idItem, orden: _ordenMenu,menu_principal:"<?php echo $menu->id ?>"}
+	        })
+	        .success(function(data){
+	          console.log(data);
+	          if (data != "0") {
+	            console.log(data);
+	          	$('#elementosmenus').html(data);
+	          }else{
+	            console.log('valio barriga');
+	          }
+	        });
 		});
 
 
