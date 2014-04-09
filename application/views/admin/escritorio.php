@@ -100,6 +100,26 @@
 						      </div>
 						    </li>
 
+						    <!-- modulos -->
+						    <!-- 
+							<li class="span2">
+						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="<?php echo base_url('panel/modulos/nuevoModulo'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
+						      	<a href="<?php echo base_url('panel/modulos'); ?>">
+						      		<div class="cont_ico">
+						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/app_globe_64.png');?>" alt="">
+						            </div>
+						    	</a>
+						        <div class="caption">
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/modulos'); ?>">Modulos</a></h4>
+						        </div>
+						      </div>
+						    </li>
+						     -->
+
 						    <!-- <li class="span2">
 						      <div class="thumbnail">
 						      	<?php if($banners !=0){ ?>

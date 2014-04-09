@@ -46,7 +46,6 @@ header{
 }
 
 #menu_usuarios{
-	/*background: url(../img/ico/user.png) center no-repeat;*/
 	min-height: 350px;
 }
 
@@ -92,7 +91,6 @@ header{
 	background: url(../img/ico/32/add.png) left center no-repeat;
 	padding-left:4%;
 	width:96%;
-
 }
 
 #cont_perfiles{
@@ -105,7 +103,6 @@ header{
 }
 
 .div_form{
-	/*width:720px;*/
 	margin-left:170px;
 }
 
@@ -126,15 +123,12 @@ header{
 text-align:center; font-size:1.8em; padding:10px 0px
 }
 
-#content_escritorio img{
-	/*animation-iteration-count: infinite;*/
-}
+#content_escritorio img{}
 
 .cont_accion{
-	/*text-align: center!important;*/
 	padding: 0px;
-	/*width: 190px;*/
 }
+
 .cont_accion a{
 	margin:0px 5px;
 }
@@ -147,6 +141,7 @@ a.clPadre.padre_sel{
 	-webkit-border-radius: 7px 7px 7px 7px;
 	border: 0px none #000000;
 }
+
 div.alert.alert-tabs{
 	color: #555555;
 	background-color: transparent;
@@ -188,4 +183,8 @@ div.well.content{
 a.link-panel{
 	text-decoration: none;
 	color: white;
+}
+
+div.text-center{
+	text-align: center;
 }
