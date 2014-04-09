@@ -76,6 +76,7 @@ class Configuracion extends CI_Controller {
 			$data['mapa_g'] = $this->configuration->mapa_g;
 			$data['mostrarmapa'] = $this->configuration->mostrarmapa;
 			$data['infocontacto'] = $this->configuration->infocontacto;
+			$data['buscador'] = $this->configuration->buscador;
 			$data['encabezado'] = $this->configuration->encabezado;
 			$data['info_descripcion'] = $this->configuration->info_descripcion;
 			$data['telefono'] = $this->configuration->telefono;

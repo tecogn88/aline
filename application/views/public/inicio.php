@@ -3,7 +3,9 @@ $this->load->view('/public/helper/logo.php');
 if ($menu_top) {
 	$this->load->view('/public/helper/menus/menu_top.php'); 
 }
-$this->load->view('/public/helper/buscador.php');
+if($this->configuration->buscador == 1){
+	$this->load->view('/public/helper/buscador.php');
+}
 if ($menu_nav == TRUE) {
 	$this->load->view('/public/helper/menus/menu_nav.php'); 
 }

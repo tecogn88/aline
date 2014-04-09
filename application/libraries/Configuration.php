@@ -10,6 +10,7 @@ class Configuration{
 	public $mapa_g ='';
 	public $mostrarmapa ='';
 	public $infocontacto ='';
+	public $buscador = '';
 	public $encabezado ='';
 	public $info_descripcion ='';
 	public $telefono ='';
@@ -106,6 +107,7 @@ class Configuration{
 			$this->no_articulos = $configuracion_contenido->row('no_articulos');
 			$this->no_recientes = $configuracion_contenido->row('no_recientes');
 			$this->categorias = $configuracion_contenido->row('categorias');
+			$this->buscador = $configuracion_contenido->row('mostrar_buscador');
 		}
 
 		if ($configuracion_social->num_rows() > 0) {

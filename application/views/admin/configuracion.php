@@ -129,6 +129,15 @@
 											<?php } ?>
 										</select>
 									</div>
+									<div class="span4">
+										<label><h4>Mostrar Buscador</h4></label>
+										<div class="btn-group" data-toggle="buttons-radio">
+											<?php $checado_search = ''; $checado_search1 = ''; if ($buscador == 1) {$checado_search1 = 'active';}else{$checado_search = 'active';} ?>
+										  <button id='buscador_si' type="button" value='1' class="btn btn-inverse <?php echo $checado_search1 ?>"><i id='icon_buscador_si' class="icon-ok icon-white"></i></button>
+										  <button id='buscador_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_search ?>"><i id='icon_buscador_no' class="icon-ban-circle icon-white"></i></button>
+										</div>
+										<input name="m_buscador" id="m_buscador" type="hidden" value="<?php echo $buscador ?>">
+									</div>
 								</div>
 							  </div>
 							  <div class="tab-pane" id="social">
@@ -183,6 +192,17 @@
 				$('#icon_contacto_no').addClass('icon-white');
 			});
 
+			$("#buscador_si").on("click",function(){
+				$("#m_buscador").val("1");
+				$('#icon_buscador_no').removeClass('icon-white');
+				$('#icon_buscador_si').addClass('icon-white');
+			});
+			$("#buscador_no").on("click",function(){
+				$("#m_buscador").val("0");
+				$('#icon_buscador_si').removeClass('icon-white');
+				$('#icon_buscador_no').addClass('icon-white');
+			});
+
 			function display_contacto(informacion){
 				if (informacion == 1) {
 					$('#modal_informacion').show();
@@ -213,6 +233,12 @@
 					$('#icon_contacto_no').removeClass('icon-white');
 				}else{
 					$('#icon_contacto_si').removeClass('icon-white');
+				}
+
+				if($('#m_buscador').val() == 1){
+					$('#icon_buscador_no').removeClass('icon-white');
+				}else{
+					$('#icon_buscador_si').removeClass('icon-white');
 				}
 
 				var plantilla = "<?php echo $plantilla ?>";

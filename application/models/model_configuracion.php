@@ -220,6 +220,7 @@ class Model_configuracion extends CI_Model {
             'no_articulos' => (int)$this->input->post('num_articulos', true),
             'no_recientes' => (int)$this->input->post('num_recientes', true),
             'categorias' => $categorias,
+            'mostrar_buscador' => $this->input->post('m_buscador', true),
             );
         $this->db->update('config_contenido',$data);
         if ($this->db->affected_rows() > 0) {
