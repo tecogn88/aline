@@ -30,7 +30,7 @@
 							<div class="accordion" id="accordion2">
 								<?php foreach ($menues->result() as $menu){ ?>
 									<div class="accordion-group">
-									    <div class="accordion-heading">
+									    <div class="accordion-heading padres">
 									    	<div class="row-fluid">
 									    		<div class="span9">
 										      		<a style="color:#555;text-decoration:none;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $menu->id; ?>">

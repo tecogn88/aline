@@ -188,3 +188,15 @@ a.link-panel{
 div.text-center{
 	text-align: center;
 }
+
+div.accordion-heading.padres{
+	background-color: #ececec;
+}
+
+div.accordion-heading.padres:hover{
+	background-color: #bbbbbb;
+}
+
+div.span2.thumbnail.paginas:hover{
+	border: #0088cc solid 1px;
+};

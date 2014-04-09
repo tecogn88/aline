@@ -32,12 +32,12 @@
 							<?php $contador = 0; ?>
 							<?php foreach ($paginas as $pagina){ ?>
 								<?php $contador++; ?>
-								<div class="span3 thumbnail" style="text-align:center;">
-									<div class="well">
+								<div class="span2 thumbnail paginas" style="text-align:center;">
+									<div class="well well-small">
 										<?php if(strlen( trim($pagina->titulo) ) > 20 ) { ?>
-											<h3 style="margin-bottom:5px;"><?php echo substr($pagina->titulo, 0,15).'...'; ?></h3>
+											<h4 style="margin-bottom:5px;"><?php echo substr($pagina->titulo, 0,15).'...'; ?></h4>
 										<?php }else{ ?>
-											<h3 style="margin-bottom:5px;"><?php echo $pagina->titulo; ?></h3>
+											<h4 style="margin-bottom:5px;"><?php echo $pagina->titulo; ?></h4>
 										<?php } ?>
 									</div>
 									<p><small><i><?php echo $this->alinecms->dameFechaPublicacion($pagina->fecha_publicacion); ?></i></small></p>
