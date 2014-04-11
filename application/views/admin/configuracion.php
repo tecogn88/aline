@@ -110,10 +110,9 @@
 								  	<div class="span4">
 									  	<label for="template"><h4>Template predeterminado</h4></label>
 										<select name="template" id="template">
-											<option value="1" selected>Plantilla Default</option>
-											<option value="2">Plantilla BLog</option>
-											<option value="3">Plantilla Página</option>
-											<option value="4">Plantilla Portafolio</option>
+											<option value="1" selected>Plantilla 1</option>
+											<option value="2">Plantilla 2</option>
+											<option value="3">Plantilla 3</option>
 										</select>
 										<label for="num_articulos"><h4>Número de artículos</h4></label>
 										<input type="number" name="num_articulos" value="<?=$num_articulos?>" />
@@ -121,13 +120,6 @@
 									<div class="span4">
 										<label for="num_recientes"><h4>Número de artículos recientes</h4></label>
 										<input type="number" name="num_recientes" value="<?=$num_recientes?>" />
-										<label for="categoria"><h4>Categorías</h4></label>
-										<select name="categorias[]" id="categorias" multiple>
-											<option value="--">Todas</option>
-											<?php foreach($categorias_select->result() as $categoria){ ?>
-												<option value="<?=$categoria->id?>"><?=$categoria->nombre?></option>
-											<?php } ?>
-										</select>
 									</div>
 									<div class="span4">
 										<label><h4>Mostrar Buscador</h4></label>

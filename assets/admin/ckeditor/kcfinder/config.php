@@ -16,11 +16,10 @@
 // you are using session configuration.
 // See http://kcfinder.sunhater.com/install for setting descriptions
 $direccion_root = $_SERVER['DOCUMENT_ROOT'];
-$host = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '')
-                      .'://'.$_SERVER['HTTP_HOST'];
-
-$host .= "localhost";
-$direccion_root .= "/aline";
+$host = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 's' : '').'://'.$_SERVER['HTTP_HOST'];
+//$host .= "localhost";
+$root = dirname($_SERVER['PHP_SELF']);
+$base = $host.''.$root;
 $_CONFIG = array(
 
     'disabled' => false,
@@ -30,8 +29,8 @@ $_CONFIG = array(
 
     'theme' => "oxygen",
 
-    'uploadURL' => "/media",
-    'uploadDir' => "",
+    'uploadURL' => $base."/media",
+    'uploadDir' => "media",
 
     'dirPerms' => 0755,
     'filePerms' => 0644,

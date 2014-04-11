@@ -24,42 +24,58 @@
 				</div>
 				<br>
 				<div class="row-fluid">
-					<div class="well"><?=$links?>	
-					<hr>
+					<?=$links?>
+					<br>
 						<?php if($usuarios == FALSE){ ?>
-							<p>Aún no hay usuarios creados.</p>
-						<?php }else{ ?>
-						<div class="row-fluid">
-							<?php $contador = 0; ?>
-							<?php foreach ($usuarios->result() as $usuario){ ?>
-								<?php $contador++; $nombre = $usuario->nombre." ".$usuario->apellidos; ?>
-								<div class="span2 thumbnail well text-center">
-									<?php if(strlen( trim($nombre) ) > 20 ) { ?>
-										<h4 style="margin-bottom:5px;"><?php echo substr($nombre, 0,15).'...'; ?></h4>
-									<?php }else{ ?>
-										<h4 style="margin-bottom:5px;"><?php echo $nombre; ?></h4>
-									<?php } ?>
-									<?php if ($usuario->imagen){ ?>
-										<img src="<?php echo base_url('assets/media/usuarios/'.$usuario->imagen); ?>" style="max-width:120px;max-height:130px;">
-									<?php }else{ ?>
-										<img src="<?php echo base_url('assets/admin/img/ico/retina/man_64.png'); ?>" style="margin: 26px auto 10px auto;">
-										<?php } ?>
-									<br>
-									<p>
-										<a class="badge badge-success" href="<?=base_url('/panel/usuarios/edita_usuario/'.$usuario->id)?>" rel="tooltip" title="Editar usuario:<br /><?=$usuario->nombre?>"><i class="icon-edit icon-white"></i></a>
-										<a class="badge badge-important btndel" href="<?=base_url('panel/usuarios/borrar_usuario/'.$usuario->id)?>" rel="tooltip" title="Borrar usuario:<br /><?=$usuario->nombre?>"><i class="icon-remove icon-white"></i></a>
-									</p>
-								</div>
-								<?php if ($contador%6 == 0): ?>
-									</div><div class="row-fluid">
-								<?php endif ?> 
-							<?php } ?><!-- Fin foreach -->
+						<div class="alert">
+						  <strong>Aún no hay usuarios creados!</strong>
 						</div>
+						<?php }else{ ?>
+						<table class="table">
+							<th><b><a href="<?php echo base_url('panel/usuarios/ordena_por_id'); ?>" rel='tooltip' title='Ordenar por usuarios por ID'>#</a></b></th>
+							<th><b><a href="<?php echo base_url('panel/usuarios'); ?>" rel="tooltip" title="Ordenar usuarios por Nombre">Nombre</a></b></th>
+							<th><b><a href="<?php echo base_url('panel/usuarios/ordena_por_mail'); ?>" rel="tooltip" title="Ordenar usuarios por e-mail">e-mail</a></b></th>
+							<th><b><a href="<?php echo base_url('panel/usuarios/ordena_por_tipo'); ?>" rel="tooltip" title="Ordenar usuarios por Tipo">Tipo</a></b></th>
+							<th><b><a href="<?php echo base_url('panel/usuarios/ordena_por_estado'); ?>" rel="tooltip" title="Ordenar usuarios por Estado">Estado</a></b></th>
+							<td><b><a href="<?php echo base_url('panel/usuarios/ordena_por_fecha'); ?>" rel="tooltip" title="Ordenar usuarios por Fecha de Creación">Creado</a></b></td>
+							<td><b>Eliminar</b></td>
+							<?php foreach ($usuarios->result() as $usuario){ ?>
+								<?php $nombre = $usuario->nombre." ".$usuario->apellidos; ?>
+								<tr>
+									<td><?php echo $usuario->id; ?></td>
+									<td>
+										<?php if(strlen( trim($nombre) ) > 40 ) { ?>
+											<h4 style="margin-bottom:5px;"><a href="<?=base_url('/panel/usuarios/edita_usuario/'.$usuario->id)?>" rel="tooltip" title="Editar usuario:<br /><?=$usuario->nombre?>"><?php echo substr($nombre, 0,38).'...'; ?></a></h4>
+										<?php }else{ ?>
+											<h4 style="margin-bottom:5px;"><a href="<?=base_url('/panel/usuarios/edita_usuario/'.$usuario->id)?>" rel="tooltip" title="Editar usuario:<br /><?=$usuario->nombre?>"><?php echo $nombre; ?></a></h4>
+										<?php } ?>
+									</td>
+									<td><?php echo $usuario->email; ?></td>
+									<td>
+										<?php if($usuario->perfil == 1){
+											echo '<p class="text-success">Administrador</p>'; 
+										}if($usuario->perfil == 2){
+											echo '<p class="text-info">Editor</p>';
+										}if($usuario->perfil == 3){
+											echo '<p class="text-warning">Suscriptor</p>';
+										}?>
+									</td>
+									<td>
+										<?php if($usuario->estado == 1){ 
+												echo '<span class="label label-success">activo</span> <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/desactivar_usuario/'.$usuario->id).'" rel="tooltip" title="Desactivar al usuario'.$usuario->nombre.'">desactivar</a></span>'; 
+											}else{
+												echo ' <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/activar_usuario/'.$usuario->id).'" rel="tooltip" title="Activar al usuario'.$usuario->nombre.'">activar</a></span> <span class="label label-warning">inactivo</span>';
+											}?>
+									</td>
+									<td><?php echo $usuario->fecha_creacion; ?></td>
+									<td><a class="btn btn-danger btn-small" href="<?=base_url('panel/usuarios/borrar_usuario/'.$usuario->id)?>" rel="tooltip" title="Borrar usuario:<br /><?=$usuario->nombre?>">eliminar</a></td>
+								</tr>
+							<?php } ?><!-- Fin foreach -->
+						</table>
 						<?php } ?>
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- Footer -->
 		<?php $this->load->view('admin/helper/footer.php'); ?>
 	</div> 

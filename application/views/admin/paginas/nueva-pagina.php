@@ -41,27 +41,24 @@
 		<div class="span12">
 			<div class="span6">
 				<label><h4>Titulo</h4><em></em></label>
-				<input placeholder="Ingresa el titulo aquí"   name="titulo" value="<?php echo set_value('titulo'); ?>" type="text" id="idtitulo" class="span12 focus">
-				<label><h4>Slug</h4><em></em></label>
-				<input placeholder='Ingresa "slug" aquí'   name="slug" value="<?php echo set_value('slug'); ?>" type="text" id="idslug" class="span12">
-				<p class="help-block">El slug, es el nombre del titulo en texto simple y sin espacios</p>
+				<input placeholder="Ingresa el titulo aquí"   name="titulo" value="<?php echo set_value('titulo'); ?>" type="text" id="idtitulo" class="span12 focus"><br>
+				<label><h4>Slug<small> (El slug, es el nombre del titulo en texto simple y sin espacios)</small></h4></label>
+				<input placeholder='Ingresa "slug" aquí'   name="slug" value="<?php echo set_value('slug'); ?>" type="text" id="idslug" class="span12"><br>
 				<label><h4>Clase css</h4></label>
 				<input type="text" name="clase_css" class="span12">
 			</div>
 			<div class="span6">
-				<label><strong><h4>Etiquetas</h4></strong><em></em></label>
-				<input name="etiquetas" value="<?php echo set_value('etiquetas'); ?>" type="text" class="span12" placeholder="Inserta las etiquetas aquí...">
-				<p class="help-block">Separa con comas cada etiqueta.</p>
+				<label><strong><h4>Etiquetas</strong><small> (Separa con comas cada etiqueta)</small></h4></label>
+				<input name="etiquetas" value="<?php echo set_value('etiquetas'); ?>" type="text" class="span12" placeholder="Inserta las etiquetas aquí..."><br>
 				<input type="hidden" name="categoria" value="2">
 				<!-- Plantillas agregar -->
 				<label>
 					<h4>Selecciona la plantilla</h4>
 				</label>
 				<select name="plantilla" id="plantilla" class="span12">
-					<option value="1" selected>Plantilla Default</option>
-					<option value="2">Plantilla BLog</option>
-					<option value="3">Plantilla Página</option>
-					<option value="4">Plantilla Portafolio</option>
+					<option value="1" selected>Plantilla 1</option>
+					<option value="2">Plantilla 2</option>
+					<option value="3">Plantilla 3</option>
 				</select>
 			</div>
 		</div>

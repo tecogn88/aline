@@ -219,7 +219,7 @@ class Model_configuracion extends CI_Model {
             'plantilla' => $this->input->post('template', true),
             'no_articulos' => (int)$this->input->post('num_articulos', true),
             'no_recientes' => (int)$this->input->post('num_recientes', true),
-            'categorias' => $categorias,
+            /*'categorias' => $categorias,*/
             'mostrar_buscador' => $this->input->post('m_buscador', true),
             );
         $this->db->update('config_contenido',$data);
@@ -238,6 +238,7 @@ class Model_configuracion extends CI_Model {
             'youtube' => $this->input->post('youtube', true),
             'linked' => $this->input->post('linked', true),
             );
+        $this->db->update('config_social',$data);
         if ($this->db->affected_rows() > 0) {
            return true;
         }else{

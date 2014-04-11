@@ -29,7 +29,8 @@
 				<div class="row-fluid">
 					<fieldset>
 					<!--  id de usuario a editar --> 
-						<input type="hidden" value="<?=$usr->id?>" name="id" />	
+						<input type="hidden" value="<?=$usr->id?>" name="id" />
+						<input type="hidden" value="<?=$usr->fecha_creacion?>" name="fecha_c" />	
 						<div class="row-fluid">
 							<div class="span6">
 								<?php 

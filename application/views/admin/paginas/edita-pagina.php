@@ -63,10 +63,9 @@
 					<label><h4>Plantilla</h4></label>		
 					<!-- PLantillas seleccionar -->
 					<select name="plantilla" id="plantilla" class="span12">
-						<option value="1">Plantilla Default</option>
-						<option value="2">Plantilla Blog</option>
-						<option value="3">Plantilla Página</option>
-						<option value="4">Plantilla Portafolio</option>
+						<option value="1">Plantilla 1</option>
+						<option value="2">Plantilla 2</option>
+						<option value="3">Plantilla 3</option>
 					</select>
 				</div>
 			</div>

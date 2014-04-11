@@ -143,7 +143,7 @@ var postID = 0;
 						$("#cont_tipo").load("<?php echo base_url('panel/menus/get_paginas/1');?>");
 						$("#paso_2").click();
 					break;
-					case "5":
+					case "5":																	
 						$("#divUrl").hide();
 						$("#cont_tipo").html("");
 					break;
@@ -273,10 +273,6 @@ var postID = 0;
 				}
 			});
 		});
-
-
-
-
 
 		$(".alert").alert();
 	});// End Ready document

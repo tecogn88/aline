@@ -35,15 +35,12 @@
 								<div class="span2 thumbnail paginas" style="text-align:center;">
 									<div class="well well-small">
 										<?php if(strlen( trim($pagina->titulo) ) > 20 ) { ?>
-											<h4 style="margin-bottom:5px;"><?php echo substr($pagina->titulo, 0,15).'...'; ?></h4>
+											<a href="<?php echo base_url('panel/post/edita_pagina/'.$pagina->id_post); ?>" rel="tooltip" title="Editar pagina:<br /><?=$pagina->titulo?>"><h4 style="margin-bottom:5px;"><?php echo substr($pagina->titulo, 0,15).'...'; ?></h4></a>
 										<?php }else{ ?>
-											<h4 style="margin-bottom:5px;"><?php echo $pagina->titulo; ?></h4>
+											<a href="<?php echo base_url('panel/post/edita_pagina/'.$pagina->id_post); ?>" rel="tooltip" title="Editar pagina:<br /><?=$pagina->titulo?>"><h4 style="margin-bottom:5px;"><?php echo $pagina->titulo; ?></h4></a>
 										<?php } ?>
 									</div>
 									<p><small><i><?php echo $this->alinecms->dameFechaPublicacion($pagina->fecha_publicacion); ?></i></small></p>
-									<?php if ($autor) { ?>
-										<p>Por: <b><?php echo $autor->row('nombre').' '.$autor->row('apellidos'); ?></b></p>
-									<?php } ?>
 									<?php if($pagina->etiquetas){ ?>
 										<small>Etiquetas:</small><br><br>
 										<?php $tags = $pagina->etiquetas; $etiquetas = explode(",", $tags);
@@ -53,7 +50,6 @@
 									<?php } ?>
 									<hr>
 									<p>
-										<a class="badge badge-success" href="<?=base_url('/panel/post/edita_pagina/'.$pagina->id_post)?>" rel="tooltip" title="Editar pagina:<br /><?=$pagina->titulo?>"><i class="icon-edit icon-white"></i></a>
 										<a class="badge badge-important btndel" href="<?=base_url('/panel/post/borrar_pagina/'.$pagina->id_post)?>" rel="tooltip" title="Borrar pagina:<br /><?=$pagina->titulo?>"><i class="icon-remove icon-white"></i></a>
 									</p>
 								</div>

@@ -128,7 +128,6 @@ class Configuracion extends CI_Controller {
 		}else{
 			return array('ancho' => 0, 'alto' => 0);
 		}
-
 	}
 
 }

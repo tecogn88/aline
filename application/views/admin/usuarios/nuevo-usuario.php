@@ -148,6 +148,7 @@
 									<?php print_error('facebook'); ?>
 								</div>
 							</div>
+							
 						</div>
 						<div class="span6">
 							<div class="control-group <?php get_error('apellidos'); ?>">

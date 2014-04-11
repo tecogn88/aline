@@ -47,7 +47,7 @@
 					</li>
 					<!-- Menu de acceso al catalogo en el header -->
 					<!-- <li id="_6" class="item">
-						<a href="<?php echo base_url('panel/catalogo'); ?>">Catalogos</a>
+						<a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>">Catalogos</a>
 					</li> -->
 					<!-- Menu de acceso al panel de socios en el header -->
 					<!-- <li id="_7" class="item">

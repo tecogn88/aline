@@ -24,7 +24,9 @@
 					</div>
 					<div class="row-fluid">
 						<?php if($menues == FALSE){ ?>
-							<p>Aún no hay menus creados.</p>
+						<div class="alert">
+						  	<strong>Aún no hay menus creados</strong>
+						</div>
 						<?php }else{ ?>
 						<div class="row-fluid">
 							<div class="accordion" id="accordion2">

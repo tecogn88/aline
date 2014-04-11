@@ -338,6 +338,81 @@ class Usuarios extends CI_Controller {
 	public function borrar_usuario($id=0){
 		$result = $this->usr->borrar_usuario($id);
 		redirect('panel/usuarios', 'location'); 
+	}
+
+	public function ordena_por_id($filtro = '',$actualizado = ""){
+		$usuarios = $this->usr->get_ordena_por_id($filtro);
+		$perfiles = $this->usr->get_perfiles();
+		$data['head'] = $this->alinecms->get_head('Panel de usuarios',TRUE);
+		$data['header'] = $this->alinecms->get_header('_1');
+		$data['usuarios'] = $usuarios;
+		$data['perfiles'] = $perfiles;
+		$data['links'] = $this->get_links_filtros($usuarios);
+		$this->load->view('admin/usuarios/panel-usuarios',$data);
+	}
+
+	public function ordena_por_mail($filtro = '',$actualizado = ""){
+		$usuarios = $this->usr->get_ordena_por_email($filtro);
+		$perfiles = $this->usr->get_perfiles();
+		$data['head'] = $this->alinecms->get_head('Panel de usuarios',TRUE);
+		$data['header'] = $this->alinecms->get_header('_1');
+		$data['usuarios'] = $usuarios;
+		$data['perfiles'] = $perfiles;
+		$data['links'] = $this->get_links_filtros($usuarios);
+		$this->load->view('admin/usuarios/panel-usuarios',$data);
+	}
+
+	public function ordena_por_tipo($filtro = '',$actualizado = ""){
+		$usuarios = $this->usr->get_ordena_por_tipo($filtro);
+		$perfiles = $this->usr->get_perfiles();
+		$data['head'] = $this->alinecms->get_head('Panel de usuarios',TRUE);
+		$data['header'] = $this->alinecms->get_header('_1');
+		$data['usuarios'] = $usuarios;
+		$data['perfiles'] = $perfiles;
+		$data['links'] = $this->get_links_filtros($usuarios);
+		$this->load->view('admin/usuarios/panel-usuarios',$data);
+	}
+
+	public function ordena_por_estado($filtro = '',$actualizado = ""){
+		$usuarios = $this->usr->get_ordena_por_estado($filtro);
+		$perfiles = $this->usr->get_perfiles();
+		$data['head'] = $this->alinecms->get_head('Panel de usuarios',TRUE);
+		$data['header'] = $this->alinecms->get_header('_1');
+		$data['usuarios'] = $usuarios;
+		$data['perfiles'] = $perfiles;
+		$data['links'] = $this->get_links_filtros($usuarios);
+		$this->load->view('admin/usuarios/panel-usuarios',$data);
+	}
+
+	public function ordena_por_fecha($filtro = '',$actualizado = ""){
+		$usuarios = $this->usr->get_ordena_por_fecha($filtro);
+		$perfiles = $this->usr->get_perfiles();
+		$data['head'] = $this->alinecms->get_head('Panel de usuarios',TRUE);
+		$data['header'] = $this->alinecms->get_header('_1');
+		$data['usuarios'] = $usuarios;
+		$data['perfiles'] = $perfiles;
+		$data['links'] = $this->get_links_filtros($usuarios);
+		$this->load->view('admin/usuarios/panel-usuarios',$data);
+	}
+
+	public function desactivar_usuario($id){
+		$desactivado = $this->usr->desctivar($id);
+		if($desactivado){
+			$this->index();
+		}/*else{
+			$error_desactiva = '<span class="label label-important">Ocurrió un problema al desactivar el usuario, intentalo más tarde</span>';
+			$this->index($error_desactiva);
+		}*/
+	}
+
+	public function activar_usuario($id){
+		$activado = $this->usr->activar($id);
+		if($activado){
+			$this->index();
+		}/*else{
+			$error_desactiva = '<span class="label label-important">Ocurrió un problema al desactivar el usuario, intentalo más tarde</span>';
+			$this->index($error_desactiva);
+		}*/
 	}	
 	
 }

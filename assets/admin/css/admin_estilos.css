@@ -24,6 +24,18 @@ header{
 	margin-bottom: 20px;
 }
 
+p.text-success{
+	color: #468847;
+}
+
+p.text-info{
+	color: #3a87ad;
+}
+
+p.text-warning{
+	color: #c09853;
+}
+
 .navbar-fixed-top .brand {
 	padding-right: 0;
 	padding-left: 0;

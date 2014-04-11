@@ -161,7 +161,7 @@
 						    <!-- Acceso al Catalogo -->
 						    <!-- <li class="span2">
 						      <div class="thumbnail">
-						      	<a href="<?php echo base_url('panel/catalogo'); ?>">
+						      	<a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/book_64.png');?>" alt="">
 						            </div>

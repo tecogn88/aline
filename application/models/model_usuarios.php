@@ -59,6 +59,7 @@ class Model_usuarios extends CI_Model {
 			$descripcion = $this->input->post('descripcion', true);
 			$hobies = $this->input->post('hobies', true);
 			$perfil = $this->input->post('perfil', true);
+			$fecha = date('F j, Y, g:i a');
 
 			$data = array(
 				'nombre' => ucwords($nombre) ,
@@ -73,7 +74,8 @@ class Model_usuarios extends CI_Model {
 				'facebook' => $facebook,
 				'twitter' => $twitter,
 				'g_plus' => $g_plus,
-				'perfil' => $perfil 
+				'perfil' => $perfil,
+				'fecha_creacion' => $fecha, 
 			);
 
 			$this->db->insert('usuarios', $data); 
@@ -87,6 +89,24 @@ class Model_usuarios extends CI_Model {
 		}
 		$this->db->where("id", $id);
 		$this->db->update("usuarios", $data);
+		return true;
+	}
+
+	function desctivar($id){
+		$data = array(
+			'estado' => 0
+			);
+		$this->db->where('id', $id);
+		$this->db->update('usuarios', $data);
+		return true;
+	}
+
+	function activar($id){
+		$data = array(
+			'estado' => 1
+			);
+		$this->db->where('id', $id);
+		$this->db->update('usuarios', $data);
 		return true;
 	}
 
@@ -147,6 +167,7 @@ class Model_usuarios extends CI_Model {
 			$g_plus = $this->input->post('g_plus', true);
 			$descripcion = $this->input->post('descripcion', true);
 			$hobies = $this->input->post('hobies', true);
+			$fecha = $this->input->post('fecha_c', true);
 			
 			if( $this->input->post('new_pass') != ""){
 				$pass = $this->input->post('new_pass');
@@ -169,7 +190,8 @@ class Model_usuarios extends CI_Model {
 				'facebook' => $facebook,
 				'twitter' => $twitter,
 				'g_plus' => $g_plus,
-				'perfil' => $perfil 
+				'perfil' => $perfil,
+				'fecha_creacion' => $fecha 
 			);
 			$this->db->where('id', $id);
 			$this->db->update('usuarios', $data); 
@@ -245,6 +267,61 @@ class Model_usuarios extends CI_Model {
 		}else{
 			return FALSE;
 		}
+	}
+
+	function get_ordena_por_id($filtro = ''){
+
+		$this->db->order_by('id', 'asc'); 
+		if($filtro != ''){
+			// $filtro ==  [| 1 = Admin | 2 = Editor | 3 = Suscriptor |]
+			$this->db->where('perfil',$filtro);
+		}
+		$consulta = $this->db->get('usuarios');
+		return $consulta;
+	}
+
+	function get_ordena_por_email($filtro = ''){
+
+		$this->db->order_by('email', 'asc'); 
+		if($filtro != ''){
+			// $filtro ==  [| 1 = Admin | 2 = Editor | 3 = Suscriptor |]
+			$this->db->where('perfil',$filtro);
+		}
+		$consulta = $this->db->get('usuarios');
+		return $consulta;
+	}
+
+	function get_ordena_por_tipo($filtro = ''){
+
+		$this->db->order_by('perfil', 'asc'); 
+		if($filtro != ''){
+			// $filtro ==  [| 1 = Admin | 2 = Editor | 3 = Suscriptor |]
+			$this->db->where('perfil',$filtro);
+		}
+		$consulta = $this->db->get('usuarios');
+		return $consulta;
+	}
+
+	function get_ordena_por_estado($filtro = ''){
+
+		$this->db->order_by('estado', 'desc'); 
+		if($filtro != ''){
+			// $filtro ==  [| 1 = Admin | 2 = Editor | 3 = Suscriptor |]
+			$this->db->where('perfil',$filtro);
+		}
+		$consulta = $this->db->get('usuarios');
+		return $consulta;
+	}
+
+	function get_ordena_por_fecha($filtro = ''){
+
+		$this->db->order_by('fecha_creacion', 'desc'); 
+		if($filtro != ''){
+			// $filtro ==  [| 1 = Admin | 2 = Editor | 3 = Suscriptor |]
+			$this->db->where('perfil',$filtro);
+		}
+		$consulta = $this->db->get('usuarios');
+		return $consulta;
 	}
 
 }

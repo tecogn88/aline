@@ -26,7 +26,7 @@
 					<div class="well">
 						<div class="row-fluid">
 							<div class="span6">
-								<h2>Slides principal <small>Agrega y elimina slides</small></h2>
+								<h2>Slider <small>Agrega y elimina slides</small></h2>
 							</div>
 							<div class="pull-right">
 								<a id="btn_crea_banner" class="btn btn-primary" href="<?php echo base_url('panel/slider/nuevoSlide'); ?>">Nuevo Slide<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
@@ -37,43 +37,63 @@
 					<div class="row-fluid">
 						<div class="span12">
 							<?php if($slides == FALSE){ ?>
-								<p>Aún no hay slides creados.</p>
+							<div class="alert">
+							  	<strong>No se han creado slides!</strong>
+							</div>
 							<?php }else{ ?>
 							<div class="row-fluid">
 								<?php $contador = 0; ?>
-								<?php foreach ($slides as $slide){ ?>
-									<?php $contador++;
-									?>
-									<div class="span12 thumbnail" style="text-align:center;margin-bottom:10px;">
-										<div class="span5">
-											<div class="well">
-											<?php if(strlen( trim($slide->nombre) ) > 20 ) { ?>
-												<h4 style="margin-bottom:5px;"><?php echo substr($slide->nombre, 0,15).'...'; ?></h4>
-											<?php }else{ ?>
-												<h4 style="margin-bottom:5px;"><?php echo $slide->nombre; ?></h4>
-											<?php } ?>
-											</div>
-											<?php if ($slide->link) { ?>
-												<p>
-												<b>Link:</b><br><br>
-												<span class="label"><a href="<?php echo $slide->link; ?>" target="_blank"><?php echo $slide->link; ?></a></span>
-												</p>
-												<hr>
-											<?php } ?>
-											<p>
-												<a class="badge badge-success" href="<?=base_url('panel/slider/editaSlide/'.$slide->id)?>" rel="tooltip" title="Editar slide:<br /><?=$slide->nombre?>"><i class="icon-edit icon-white"></i></a>
-												<a class="badge badge-important btndel" href="<?=base_url('panel/slider/eliminaSlide/'.$slide->id)?>" rel="tooltip" title="Borrar slide:<br /><?=$slide->nombre?>"><i class="icon-remove icon-white"></i></a>
-											</p>
-										</div>
-										<div class="span7 imagen-slide">
-											<img src="<?php echo base_url('assets/img/slider/'.$slide->imagen); ?>">
-											<br>
-										</div>
-									</div>
-									<?php if ($contador%1 == 0): ?>
-										</div><div class="row-fluid">
-									<?php endif ?> 
-								<?php } ?><!-- Fin foreach -->
+								<div class="accordion" id="accordion2">
+									<?php foreach ($slides as $slide){ ?>
+										<?php $contador++;
+										?>
+										<div class="accordion-group">
+										    <div class="accordion-heading padres">
+										    	<div class="row-fluid">
+											    	<div class="span9">
+												      	<a style="color:#555;text-decoration:none;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $slide->id; ?>">
+												        <?php if(strlen( trim($slide->nombre) ) > 20 ) { ?>
+															<h4 style="margin-bottom:5px;"><?php echo substr($slide->nombre, 0,15).'...'; ?></h4>
+														<?php }else{ ?>
+															<h4 style="margin-bottom:5px;"><?php echo $slide->nombre; ?></h4>
+														<?php } ?>
+												      	</a>
+											    	</div>
+												    <div class="span3" style="text-align:right;padding:5px;">
+												    	<a class="btn" href="<?=base_url('panel/slider/editaSlide/'.$slide->id)?>" rel="tooltip" title="Editar slide:<br /><?=$slide->nombre?>">editar</a>
+												    	<a class="btn btn-danger btn-small" href="<?=base_url('panel/slider/eliminaSlide/'.$slide->id)?>" rel="tooltip" title="Borrar slide:<br /><?=$slide->nombre?>">eliminar</a>
+												    </div>
+										    	</div>
+										    </div>
+										    <div id="collapse<?php echo $slide->id; ?>" class="accordion-body collapse in">
+										      <div class="accordion-inner">
+										        <div class="span12 thumbnail" style="text-align:center;margin-bottom:10px;">
+													<div class="span5">
+														<?php if($slide->descripcion){ ?>
+															<p><b>Texto</b></p>
+															<p><?php if(strlen( trim($slide->descripcion) ) > 150 ) { ?>
+																<?php echo substr($slide->descripcion, 0,148).'...'; ?>
+															<?php }else{ ?>
+																<?php echo $slide->descripcion; ?>
+															<?php } ?></p>
+														<?php } ?>
+														<?php if ($slide->link) { ?>
+															<p>
+															<b>Link:</b><br><br>
+															<span class="label"><a href="<?php echo $slide->link; ?>" target="_blank"><?php echo $slide->link; ?></a></span>
+															</p>
+															<hr>
+														<?php } ?>
+													</div>
+													<div class="span7 imagen-slide">
+														<img src="<?php echo base_url('assets/img/slider/'.$slide->imagen); ?>">
+														<br>
+													</div>
+										      </div>
+										    </div>
+										 </div>
+									<?php } ?><!-- Fin foreach -->
+								</div>
 							</div>
 					<?php } ?>
 						</div>
@@ -84,6 +104,8 @@
 	</div> 
 	<!-- End div class="wrapper container" -->
 <script type="text/javascript">
+
+	$(".collapse").collapse();
 		
 		$(function(){
 			$(".btndel").click(function(e){
