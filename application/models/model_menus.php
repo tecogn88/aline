@@ -259,6 +259,16 @@ class Model_menus extends CI_Model {
 				// blog
 					$slug = 'blog';
 				break;
+
+			case '10':
+				// documentos
+					$slug = 'acervo';
+				break;
+
+			case '11':
+				// calendario
+					$slug = 'calendario';
+				break;
 			
 			default:
 				

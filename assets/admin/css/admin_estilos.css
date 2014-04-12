@@ -36,6 +36,12 @@ p.text-warning{
 	color: #c09853;
 }
 
+.btnSeltr.green{
+	color: #468847;
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+
 .navbar-fixed-top .brand {
 	padding-right: 0;
 	padding-left: 0;

@@ -11,6 +11,13 @@
 							<a href="<?php echo base_url('panel/menus/'); ?>" style="float:right;margin-left:10px;" class="btn btn-danger">Cancelar<span style='float:right;margin-left:10px;'><i class='icon-ban-circle icon-white'></i></span></a>
 							<button id="btnCreaItem" class="btn btn-primary" style="float:right;margin-left:10px;">Crear el nuevo menu<span style='float:right;margin-left:10px;'><i class='icon-plus icon-white'></i></span></button>							
 						</div>
+						<div class="row-fluid">
+					    	<div id="alerta_1" class="alert alert-error pull-right span12" style="margin-top:5px; display:none;">
+				            	<button type="button" class="close" data-dismiss="alert">×</button>
+					            <h4 class="alert-heading">Advertencia!</h4>
+					            <p>Debe ingresar un titulo para el item del menu</p>
+					      	</div>
+						</div>
 						<div class="accordion" id="accordion2">
 							<div class="accordion-group">
 							  <div class="accordion-heading">
@@ -24,17 +31,27 @@
 									<select id="sel_tipo" style="margin-top:10px;" name="tipo">
 										<option value='0'>Selecciona el tipo</option>
 										<option value='3'>Página</option>
-										<option value='5'>Blog</option>
-										<option value='4'>Articulo de Blog</option>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){ ?>
+											<option value='5'>Blog</option>
+											<option value='4'>Articulo de Blog</option>
+										<?php } ?>
 										<option value='1'>Inicio</option>
 										<option value='2'>Contacto</option>
 										<option value='6'>URL Directa</option>
-										<option value="7">Catálogo</option>
-										<option value="8">Galería de imágenes</option>
-										<option value="9">Galería de audios</option>
-										<option value="10">Acervo</option>
-										<option value="11">Calendario</option>
-										<option value="12">Galería de videos</option>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
+											<option value="7">Catálogo</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'galerias' ")) == 1 ){ ?>
+											<option value="8">Galería de imágenes</option>
+											<option value="9">Galería de audios</option>
+											<option value="12">Galería de videos</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'documentos' ")) == 1 ){ ?>
+											<option value="10">Documentos</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'eventos' ")) == 1 ){ ?>
+											<option value="11">Calendario</option>
+										<?php } ?>
 									</select>
 							    </div>
 							  </div>
@@ -76,19 +93,14 @@
 								    		<?=$padres;?>
 								    	</div>	
 								    	<div style="clear:both;"></div>
-								    	<button class="sig_paso btn" sigbtn="paso_3">Siguiente Paso</button>
-							    	
+								    	<button class="sig_paso btn" id='btn_ultimo' sigbtn="paso_3">Siguiente Paso</button>
+							    		
 							    	<div style="clear:both;"></div>	
-								    	<div id="alerta_1" class="alert" style="width:30%; margin-top:5px; display:none;">
-							            	<button type="button" class="close" data-dismiss="alert">×</button>
-								            <h4 class="alert-heading">Aline CMS</h4>
-								            <p>Ingresa un titulo para el item del menu</p>
-								      	</div>
 
 							    </div>
 							  </div>
 							</div>
-							<div class="accordion-group">
+							<div class="accordion-group" id="ultimo_paso">
 								<div class="accordion-heading">
 									<a id='paso_3' class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
 									  <h4>Paso No. 3</h4>
@@ -145,19 +157,29 @@ var postID = 0;
 					break;
 					case "5":																	
 						$("#divUrl").hide();
+						$("#ultimo_paso").hide();
+						$('#btn_ultimo').hide();
 						$("#cont_tipo").html("");
+						$("#paso_2").click();
 					break;
 					case "1":
 						$("#divUrl").hide();
+						$("#ultimo_paso").hide();
+						$('#btn_ultimo').hide();
 						$("#cont_tipo").html("");
+						$("#paso_2").click();
 					break;
 					case "2":
 						$("#divUrl").hide();
+						$("#ultimo_paso").hide();
+						$('#btn_ultimo').hide();
 						$("#cont_tipo").html("");
+						$("#paso_2").click();
 					break;
 					case "6":
 						$("#cont_tipo").html(""); 
 						$("#divUrl").show();
+						$("#paso_2").click();
 					break;
 					case "7":
 						$("#divUrl").hide();
@@ -175,12 +197,18 @@ var postID = 0;
 						$("#paso_2").click();
 					break;
 					case "10":
-						$("#cont_tipo").html(""); 
-						$("#divUrl").show();
+						$("#divUrl").hide();
+						$("#ultimo_paso").hide();
+						$('#btn_ultimo').hide();
+						$("#cont_tipo").html("");
+						$("#paso_2").click();
 					break;
 					case "11":
-						$("#cont_tipo").html(""); 
-						$("#divUrl").show();
+						$("#divUrl").hide();
+						$("#ultimo_paso").hide();
+						$('#btn_ultimo').hide();
+						$("#cont_tipo").html("");
+						$("#paso_2").click();
 					break;
 					case "12":
 						$("#divUrl").hide();
@@ -240,7 +268,12 @@ var postID = 0;
 			$(this).addClass('padre_sel');
 		});
 
-		$("#btnCreaItem").on("click",function(){
+		$("#btnCreaItem").on("click",function(e){
+			e.preventDefault();
+			if($("#titulo").val() == ""){ 
+				$("#alerta_1").fadeIn('slow').delay(2000).fadeOut('slow');
+				return false;
+			}else{
 			var vidMenu = "<?=$menu_id?>";
 			var vidPost = $(".badge-success").attr("id_post");
 			var vTitulo = $("#titulo").val(); 
@@ -272,6 +305,7 @@ var postID = 0;
 					location.href="<?php echo base_url('panel/menus') ?>";
 				}
 			});
+			}
 		});
 
 		$(".alert").alert();
