@@ -25,10 +25,16 @@ class Inicio extends CI_Controller {
         $this->load->library('Configuration');
 		$this->load->model('model_menus', 'menu');
         $this->load->model('model_slider','slider');
+        if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){
+            $this->load->model('model_blog','blog');
+        }
 	}
 		
 	public function index(){
         $data['slider'] = $this->slider->dameSlides();
+        if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){
+            $data['articulos_home'] = $this->blog->dameUltimosPostInicio();
+        }
         $menu_top = $this->menu->dameMenuTop();
         if ($menu_top) {
             $data['Menu_Top'] = $this->get_padres_vista($menu_top->id);
