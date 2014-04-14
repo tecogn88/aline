@@ -61,11 +61,15 @@
 										}?>
 									</td>
 									<td>
-										<?php if($usuario->estado == 1){ 
-												echo '<span class="label label-success">activo</span> <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/desactivar_usuario/'.$usuario->id).'" rel="tooltip" title="Desactivar al usuario'.$usuario->nombre.'">desactivar</a></span>'; 
-											}else{
-												echo ' <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/activar_usuario/'.$usuario->id).'" rel="tooltip" title="Activar al usuario'.$usuario->nombre.'">activar</a></span> <span class="label label-warning">inactivo</span>';
-											}?>
+										<?php if($usuario->id != 2 ){ ?>
+											<?php if($usuario->estado == 1){ 
+													echo '<span class="label label-success">activo</span> <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/desactivar_usuario/'.$usuario->id).'" rel="tooltip" title="Desactivar al usuario'.$usuario->nombre.'">desactivar</a></span>'; 
+												}else{
+													echo ' <span class="label"><a style="text-decoration:none;color:#fff;" href="'.base_url('panel/usuarios/activar_usuario/'.$usuario->id).'" rel="tooltip" title="Activar al usuario'.$usuario->nombre.'">activar</a></span> <span class="label label-warning">inactivo</span>';
+												}?>
+										<?php }else{ 
+											echo '<span class="label label-success">activo</span>'; 
+										} ?>
 									</td>
 									<td><?php echo $usuario->fecha_creacion; ?></td>
 									<td><a class="btn btn-danger btn-small" href="<?=base_url('panel/usuarios/borrar_usuario/'.$usuario->id)?>" rel="tooltip" title="Borrar usuario:<br /><?=$usuario->nombre?>">eliminar</a></td>
