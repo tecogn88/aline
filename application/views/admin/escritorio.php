@@ -35,20 +35,24 @@
 						    </li>
 
 						    <!-- Acceso al blog -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						        	<a title="Agregar usuario" class="pop_red" href="<?php echo base_url('panel/usuarios/nuevo_usuario'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						        	<?php //echo $users; ?>
+						        </span>
 						      	<a href="<?php echo base_url('panel/blog'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/pencil_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Blog</h4>
-						          <p class="info" style="text-align:center;">Accede al panel del blog y crea, edita o elimina categorias y articulos de tu blog.</p>
+						          	<a href="<?php echo base_url('panel/blog'); ?>"><h4 class="label label-info" style="text-align:center;">Blog</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
-
+						    </li>
+						    <?php } ?>
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
@@ -100,8 +104,8 @@
 						      </div>
 						    </li>
 
-						    <!-- modulos -->
-						    <!-- 
+						    <!-- acceso a los modulos html -->
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'modulos' ")) == 1 ){ ?>
 							<li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
@@ -118,7 +122,7 @@
 						        </div>
 						      </div>
 						    </li>
-						     -->
+						    <?php } ?>
 
 						    <!-- <li class="span2">
 						      <div class="thumbnail">
@@ -144,94 +148,124 @@
 						    </ul>
 							<ul class="thumbnails">
 							<!-- Acceso al panel de socios -->
-						    <!-- <li class="span2">
+							<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'alianzas' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/alianzas'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/case_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Socios</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel de los socios comerciales, aquí podras crear, editar y eliminar socios comerciales.</p>
+						          	<a href="<?php echo base_url('panel/alianzas'); ?>"><h4 class="label label-info" style="text-align:center;">Socios</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 
 						    <!-- Acceso al Catalogo -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/book_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Catálogos</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel de catalogos, aquí podras crear, editar y eliminar catálogos, categorias y productos.</p>
+						          <a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>"><h4 class="label label-info" style="text-align:center;">Catálogos</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 
 						    <!-- Acceso a las galerias -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'galerias' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/galerias'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/frame_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Galerias</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel de galerias, aquí podras crear, editar y eliminar galerias.</p>
+						          	<a href="<?php echo base_url('panel/galerias'); ?>"><h4 class="label label-info" style="text-align:center;">Galerias</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 
 						    <!-- Acceso a las descargas -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'documentos' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/acervo'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/outbox_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Descargas</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel de descargas, aquí podras crear, editar o eliminar descargas.</p>
+						          	<a href="<?php echo base_url('panel/acervo'); ?>"><h4 class="label label-info" style="text-align:center;">Descargas</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 
 						    <!-- Acceso a los eventos -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'eventos' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/eventos'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/calendar_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Eventos</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel del calendario de eventos.</p>
+						          	<a href="<?php echo base_url('panel/eventos'); ?>"><h4 class="label label-info" style="text-align:center;">Eventos</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 
 						    <!-- Acceso a los testimonios -->
-						    <!-- <li class="span2">
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'testimonios' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
 						      	<a href="<?php echo base_url('panel/testimonios'); ?>">
 						      		<div class="cont_ico">
 						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/attach_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;">Testimonios</h4>
-						          <p class="info" style="text-align:center; ">Accede al panel de testimonios, aquí podras crear, editar y eliminar los testimonios.</p>
+						          	<a href="<?php echo base_url('panel/testimonios'); ?>"><h4 class="label label-info" style="text-align:center;">Testimonios</h4></a>
 						        </div>
 						      </div>
-						    </li> -->
+						    </li>
+						    <?php } ?>
 						</ul>
 				  </div>
 				</div>
