@@ -64,16 +64,26 @@
 									<select id="sel_tipo" style="margin-top:10px;" name="tipo">
 										<option value='0'>Selecciona el tipo</option>
 										<option value='3' <?=$pagina?> >Página</option>
-										<option value='5' <?=$blog?> >Blog</option>
-										<option value='4' <?=$articulo?> >Articulo de Blog</option>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){ ?>
+											<option value='5' <?=$blog?> >Blog</option>
+											<option value='4' <?=$articulo?> >Articulo de Blog</option>
+										<?php } ?>
 										<option value='1' <?=$inicio?> >Inicio</option>
 										<option value='2' <?=$contacto?> >Contacto</option>
 										<option value='6' <?=$url_directa?> >URL Directa</option>
-										<option value="7" <?=$catalogo?>>Catálogo</option>
-										<option value="8" <?=$galeria_imagenes?>>Galería de imágenes</option>
-										<option value="9" <?=$galeria_audios?>>Galería de audios</option>
-										<option value="10" <?=$acervo?>>Acervo</option>
-										<option value="11" <?=$calendario?>>Calendario</option>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
+											<option value="7" <?=$catalogo?>>Catálogo</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'galerias' ")) == 1 ){ ?>
+											<option value="8" <?=$galeria_imagenes?>>Galería de imágenes</option>
+											<option value="9" <?=$galeria_audios?>>Galería de audios</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'documentos' ")) == 1 ){ ?>
+											<option value="10" <?=$acervo?>>Acervo</option>
+										<?php } ?>
+										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'eventos' ")) == 1 ){ ?>
+											<option value="11" <?=$calendario?>>Calendario</option>
+										<?php } ?>
 									</select>
 							    </div>
 							  </div>
