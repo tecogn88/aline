@@ -39,7 +39,7 @@
 										<option value='2'>Contacto</option>
 										<option value='6'>URL Directa</option>
 										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
-											<option value="7">Catálogo</option>
+											<option value="7">Catálogos</option>
 										<?php } ?>
 										<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'galerias' ")) == 1 ){ ?>
 											<option value="8">Galería de imágenes</option>

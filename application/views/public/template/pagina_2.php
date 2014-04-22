@@ -39,7 +39,7 @@
 	                        if($mhref == current_url()){ 
 	                         	$not = "no"; } ?>
 	                           	<li class="<?php echo $not; ?>">
-	                           		<a href="<?php echo base_url($articulo->slug); ?>">
+	                           		<a href="<?php echo base_url('blog/articulo/'.$articulo->slug); ?>">
 	                           			<span class="label label-info"><?php echo $articulo->titulo; ?></span>
 	                           		</a>
 	                          	</li>
@@ -51,34 +51,36 @@
 
 		<!--Inicio de los productos destacados-->
 		<div class="span3 bordertop">
-			<h2>Articulos destacados</h2>
-			<?php foreach ($destacados as $destacado): ?>
- 			<div class="row no-margin">
-            	<div class="span12 prodcuto">
-		            <div class="img-left">
-		            	<a href="<?php echo base_url($destacado->slug); ?>">
-		            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$destacado->imagen); ?>">
-		            	</a>
-		        	</div>
-		        	<div class="cont-right">
-			            <h3><a href="<?php echo base_url($destacado->slug); ?>"><?php echo $destacado->titulo; ?></a></h3>
-			            <p class="description"><?php echo substr($destacado->contenido, 0, 45); ?></p>
-	            	</div>
+			<?php if($destacados){ ?>
+				<h2>Articulos destacados</h2>
+				<?php foreach ($destacados as $destacado): ?>
+	 			<div class="row no-margin">
+	            	<div class="span12 prodcuto">
+			            <div class="img-left">
+			            	<a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>">
+			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$destacado->imagen); ?>">
+			            	</a>
+			        	</div>
+			        	<div class="cont-right">
+				            <h3><a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>"><?php echo $destacado->titulo; ?></a></h3>
+				            <p class="description"><?php echo substr($destacado->contenido, 0, 45); ?></p>
+		            	</div>
+		            </div>
 	            </div>
-            </div>
- 			<?php endforeach ?>
+	 			<?php endforeach ?>
+	 		<?php } ?>
         	<div class="mod2">
 				<h2>Articulos recientes</h2>
 				<?php foreach ($recientes as $reciente): ?>
 	 			<div class="row no-margin">
 	            	<div class="span12 prodcuto">
 			            <div class="img-left">
-			            	<a href="<?php echo base_url($reciente->slug); ?>">
+			            	<a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>">
 			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$reciente->imagen); ?>">
 			            	</a>
 			        	</div>
 			        	<div class="cont-right">
-				            <h3><a href="<?php echo base_url($reciente->slug); ?>"><?php echo $reciente->titulo; ?></a></h3>
+				            <h3><a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>"><?php echo $reciente->titulo; ?></a></h3>
 				            <p class="description"><?php echo substr($reciente->contenido, 0, 45); ?></p>
 		            	</div>
 		            </div>

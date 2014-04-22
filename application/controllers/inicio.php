@@ -28,12 +28,18 @@ class Inicio extends CI_Controller {
         if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){
             $this->load->model('model_blog','blog');
         }
+        if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'eventos' ")) == 1 ){
+            $this->load->model('model_eventos','eventos');
+        }
 	}
 		
 	public function index(){
         $data['slider'] = $this->slider->dameSlides();
         if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'blog' ")) == 1 ){
             $data['articulos_home'] = $this->blog->dameUltimosPostInicio();
+        }
+        if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'eventos' ")) == 1 ){
+            $data['eventos'] = $this->eventos->dameEventos();
         }
         $menu_top = $this->menu->dameMenuTop();
         if ($menu_top) {

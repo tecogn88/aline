@@ -48,7 +48,7 @@
 										<?php $contador++;
 										?>
 										<div class="accordion-group">
-										    <div class="accordion-heading padres">
+										    <div class="accordion-heading padres" rel="tooltip" title="Haga clic para ver la información del slide">
 										    	<div class="row-fluid">
 											    	<div class="span9">
 												      	<a style="color:#555;text-decoration:none;" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?php echo $slide->id; ?>">

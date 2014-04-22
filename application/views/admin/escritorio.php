@@ -104,21 +104,21 @@
 						      </div>
 						    </li>
 
-						    <!-- acceso a los modulos html -->
-						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'modulos' ")) == 1 ){ ?>
-							<li class="span2">
+						    <!-- Acceso al Catalogo -->
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
+						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="<?php echo base_url('panel/modulos/nuevoModulo'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<a href="<?php echo base_url('panel/catalogo/crea_catalogo'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						      		<?php //echo $modules; ?>
 						      	</span>
-						      	<a href="<?php echo base_url('panel/modulos'); ?>">
+						      	<a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>">
 						      		<div class="cont_ico">
-						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/app_globe_64.png');?>" alt="">
+						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/book_64.png');?>" alt="">
 						            </div>
 						    	</a>
 						        <div class="caption">
-						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/modulos'); ?>">Modulos</a></h4>
+						          <a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>"><h4 class="label label-info" style="text-align:center;">Catálogos</h4></a>
 						        </div>
 						      </div>
 						    </li>
@@ -147,6 +147,25 @@
 
 						    </ul>
 							<ul class="thumbnails">
+						    <!-- acceso a los modulos html -->
+						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'modulos' ")) == 1 ){ ?>
+							<li class="span2">
+						      <div class="thumbnail">
+						      	<span style="float:right;" class="badge-small badge-info">
+						      		<a href="<?php echo base_url('panel/modulos/nuevoModulo'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<?php //echo $modules; ?>
+						      	</span>
+						      	<a href="<?php echo base_url('panel/modulos'); ?>">
+						      		<div class="cont_ico">
+						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/app_globe_64.png');?>" alt="">
+						            </div>
+						    	</a>
+						        <div class="caption">
+						          <h4 class="label label-info" style="text-align:center;"><a class="link-panel" href="<?php echo base_url('panel/modulos'); ?>">Modulos</a></h4>
+						        </div>
+						      </div>
+						    </li>
+						    <?php } ?>
 							<!-- Acceso al panel de socios -->
 							<?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'alianzas' ")) == 1 ){ ?>
 						    <li class="span2">
@@ -167,25 +186,6 @@
 						    </li>
 						    <?php } ?>
 
-						    <!-- Acceso al Catalogo -->
-						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'catalogos' ")) == 1 ){ ?>
-						    <li class="span2">
-						      <div class="thumbnail">
-						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
-						      		<?php //echo $modules; ?>
-						      	</span>
-						      	<a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>">
-						      		<div class="cont_ico">
-						           		<img src="<?php echo base_url('assets/admin/img/ico/retina/book_64.png');?>" alt="">
-						            </div>
-						    	</a>
-						        <div class="caption">
-						          <a href="<?php echo base_url('panel/catalogo/administra_catalogos'); ?>"><h4 class="label label-info" style="text-align:center;">Catálogos</h4></a>
-						        </div>
-						      </div>
-						    </li>
-						    <?php } ?>
 
 						    <!-- Acceso a las galerias -->
 						    <?php if( mysql_num_rows(mysql_query("SHOW TABLES LIKE 'galerias' ")) == 1 ){ ?>
@@ -232,7 +232,7 @@
 						    <li class="span2">
 						      <div class="thumbnail">
 						      	<span style="float:right;" class="badge-small badge-info">
-						      		<a href="#" ><i class="icon-plus-sign icon-white"></i></a>
+						      		<a href="<?php echo base_url('panel/eventos/nuevo_evento'); ?>" ><i class="icon-plus-sign icon-white"></i></a>
 						      		<?php //echo $modules; ?>
 						      	</span>
 						      	<a href="<?php echo base_url('panel/eventos'); ?>">
