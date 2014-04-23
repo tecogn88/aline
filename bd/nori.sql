@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2014 at 10:12 AM
+-- Generation Time: Apr 23, 2014 at 02:39 PM
 -- Server version: 5.5.29
 -- PHP Version: 5.4.6-1ubuntu1.1
 
@@ -51,6 +51,32 @@ INSERT INTO `banners` (`id`, `id_post`, `nombre`, `orden`, `imagen`, `width`, `h
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `blog`
+--
+
+CREATE TABLE IF NOT EXISTS `blog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_autor` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `titulo` text NOT NULL,
+  `slug` text NOT NULL,
+  `contenido` text NOT NULL,
+  `fecha` date NOT NULL,
+  `fecha_publicacion` date NOT NULL,
+  `fecha_despublicacion` date NOT NULL,
+  `estado` int(11) NOT NULL,
+  `etiquetas` text NOT NULL,
+  `tipo` int(2) NOT NULL,
+  `plantilla` int(2) NOT NULL,
+  `pag_inicio` int(1) NOT NULL,
+  `portafolio` int(1) NOT NULL,
+  `imagen` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `captcha`
 --
 
@@ -61,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=434 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=436 ;
 
 --
 -- Dumping data for table `captcha`
@@ -500,7 +526,9 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUE
 (430, 1396547178, '127.0.0.1', 'VmiD'),
 (431, 1396547508, '127.0.0.1', 'jBsS'),
 (432, 1396547533, '127.0.0.1', 'oLOw'),
-(433, 1396547588, '127.0.0.1', 'drwA');
+(433, 1396547588, '127.0.0.1', 'drwA'),
+(434, 1397255818, '127.0.0.1', 'lzzx'),
+(435, 1397262533, '127.0.0.1', 'xgcI');
 
 -- --------------------------------------------------------
 
@@ -515,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `imagen` varchar(500) DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `categoria`
@@ -608,6 +636,7 @@ CREATE TABLE IF NOT EXISTS `config_contenido` (
   `no_articulos` int(3) NOT NULL DEFAULT '4',
   `no_recientes` int(3) NOT NULL DEFAULT '3',
   `categorias` varchar(50) DEFAULT NULL,
+  `mostrar_buscador` int(3) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -615,8 +644,8 @@ CREATE TABLE IF NOT EXISTS `config_contenido` (
 -- Dumping data for table `config_contenido`
 --
 
-INSERT INTO `config_contenido` (`id`, `plantilla`, `no_articulos`, `no_recientes`, `categorias`) VALUES
-(1, 1, 4, 3, NULL);
+INSERT INTO `config_contenido` (`id`, `plantilla`, `no_articulos`, `no_recientes`, `categorias`, `mostrar_buscador`) VALUES
+(1, 1, 6, 5, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -666,7 +695,7 @@ CREATE TABLE IF NOT EXISTS `config_social` (
 --
 
 INSERT INTO `config_social` (`id`, `twitter`, `facebook`, `google`, `youtube`, `linked`) VALUES
-(1, '', 'https://www.facebook.com/Norimx?fref=ts', '', '', '');
+(1, '', 'https://www.facebook.com/', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -703,24 +732,16 @@ CREATE TABLE IF NOT EXISTS `item_menu` (
   `url` text NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idItem`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `item_menu`
 --
 
 INSERT INTO `item_menu` (`idItem`, `idmenu`, `idpost`, `titulo`, `slug`, `padre`, `tipo`, `orden`, `id_css`, `clase`, `atri`, `is_logged`, `url`, `estado`) VALUES
-(54, 28, 0, 'Home', '', 0, 1, 3, '', '', '', 'no', '', 1),
-(55, 28, 2, 'Nosotros', 'sobre-nosotros', 0, 3, 1, '', '', '', 'no', '', 1),
-(56, 29, 2, 'fdgfdgfdg', 'sobre-nosotros', 0, 3, 0, '', '', '', 'no', '', 1),
-(57, 30, 0, 'test', '', 0, 1, 0, '', '', '', 'no', '', 1),
-(58, 31, 0, 'tryr', '', 0, 1, 0, '', '', '', 'no', '', 1),
-(59, 32, 0, 'Menu de prueba', '', 0, 1, 0, '', '', '', 'no', '', 1),
-(60, 33, 0, 'Link menu', 'contacto', 0, 2, 0, '', '', '', 'no', '', 1),
 (62, 34, 0, 'Inicio', '', 0, 1, 0, '', '', '', 'no', '', 1),
 (65, 34, 0, 'Contacto', 'contacto', 0, 2, 1, '', '', '', 'no', '', 1),
-(66, 34, 0, 'Nosotros', '', 0, 6, 0, '', '', '', 'no', '#', 1),
-(67, 34, 0, 'Historia', 'contacto', 66, 2, 0, '', '', '', 'no', '', 1);
+(66, 34, 0, 'Nosotros', '', 0, 6, 0, '', '', '', 'no', '#', 1);
 
 -- --------------------------------------------------------
 
@@ -733,7 +754,7 @@ CREATE TABLE IF NOT EXISTS `log_articulos` (
   `id_pagina` int(11) NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1642 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1644 ;
 
 --
 -- Dumping data for table `log_articulos`
@@ -2380,7 +2401,9 @@ INSERT INTO `log_articulos` (`id`, `id_pagina`, `fecha`) VALUES
 (1638, 5, '2014-02-24'),
 (1639, 5, '2014-03-07'),
 (1640, 5, '2014-03-07'),
-(1641, 5, '2014-03-07');
+(1641, 5, '2014-03-07'),
+(1642, 5, '2014-04-11'),
+(1643, 5, '2014-04-11');
 
 -- --------------------------------------------------------
 
@@ -2405,12 +2428,6 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 INSERT INTO `menu` (`id`, `titulo`, `descripcion`, `id_css`, `clase`, `ubicacion`, `atributos`, `id_post`) VALUES
-(28, 'Footer1', '', '', 'nav nav-pills', 'footer1', '', ''),
-(29, 'Footer4', '', '', 'nav nav-pills', 'footer4', '', ''),
-(30, 'Footer2', '', '', 'nav nav-pills', 'footer2', '', ''),
-(31, 'Footer3', '', '', 'nav nav-pills', 'footer3', '', ''),
-(32, 'Bottom', '', '', 'nav nav-pills', 'bottom', '', ''),
-(33, 'Top', '', '', 'nav nav-pills', 'topright', '', ''),
 (34, 'Principal', '', '', 'nav nav-pills', 'nav', '', '');
 
 -- --------------------------------------------------------
@@ -2439,13 +2456,6 @@ CREATE TABLE IF NOT EXISTS `post` (
   `imagen` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id`, `id_autor`, `id_categoria`, `titulo`, `slug`, `clase`, `contenido`, `fecha`, `fecha_publicacion`, `fecha_despublicacion`, `estado`, `etiquetas`, `tipo`, `plantilla`, `pag_inicio`, `portafolio`, `imagen`) VALUES
-(5, 2, 2, 'Pagina de prueba', 'pagina-de-prueba', '', '<p>\n	sadasdasdasdasdasdasdasdasdasdasd</p>\n<p>\n	<img alt="" src="/media/images/img-control.jpg" style="width: 200px; height: 110px;" /></p>\n<p>\n	&nbsp;</p>', '2014-02-24', '2014-02-24', '0000-00-00', 1, 'Prueba,nuevos,todo', 2, 3, 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -2491,6 +2501,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `twitter` varchar(500) DEFAULT NULL,
   `g_plus` varchar(500) DEFAULT NULL,
   `perfil` int(1) NOT NULL COMMENT '{1--admin} {2--editor} {3--suscriptor}',
+  `fecha_creacion` text NOT NULL,
   `estado` int(2) NOT NULL DEFAULT '0' COMMENT '1 = activo | 0 = Inactivo',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -2499,8 +2510,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `imagen`, `descripcion`, `hobies`, `usuario`, `pass`, `email`, `facebook`, `twitter`, `g_plus`, `perfil`, `estado`) VALUES
-(2, 'Administrador', 'Apellidos', 'fan_147_x_210.jpg', '<p>\n Descripci&oacute;n del Administrador.hgfhgfh</p>\n', '<p>\n Pasatiempor del Administrador.hghgfhfgh</p>\n', 'admin', '72c3364465bbdf009e54b70d73881caf', 'info@newemage.com', 'https://www.facebook.com/09fau09?fref=ts', '', '', 1, 1);
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `imagen`, `descripcion`, `hobies`, `usuario`, `pass`, `email`, `facebook`, `twitter`, `g_plus`, `perfil`, `fecha_creacion`, `estado`) VALUES
+(2, 'Administrador', 'Noricms', 'fan_147_x_210.jpg', '<p>\n Descripci&oacute;n del Administrador.hgfhgfh</p>\n', '<p>\n Pasatiempor del Administrador.hghgfhfgh</p>\n', 'admin', '72c3364465bbdf009e54b70d73881caf', 'info@newemage.com', 'https://www.facebook.com/09fau09?fref=ts', '', '', 1, 'April 9, 2012, 6:38 pm', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
