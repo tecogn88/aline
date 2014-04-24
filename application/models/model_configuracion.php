@@ -157,11 +157,13 @@ class Model_configuracion extends CI_Model {
                 $categorias .= $cats[$i] . "|"; 
             }
         }
+        $g_analytics = $this->input->post('g_analytics');
     	$data = array(
     		'titulo' => $this->input->post('titulo', true),
     		'logo' => $logo,
             'logo_ancho' => $ancho,
             'logo_alto' => $alto,
+            'g_analytics' => $g_analytics
     	);
     	$this->db->update($this->tabla,$data);
         if ($this->db->affected_rows() > 0) {

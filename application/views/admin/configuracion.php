@@ -22,6 +22,7 @@
 						  <li><a href="#contacto"><h4>Contacto</h4></a></li>
 						  <li><a href="#contenido"><h4>Contenido</h4></a></li>
 						  <li><a href="#social"><h4>Redes sociales</h4></a></li>
+						  <li><a href="#seo"><h4>SEO</h4></a></li>
 						</ul>
 						<div class="alert alert-tabs">
 							<div class="tab-content">
@@ -148,6 +149,12 @@
 							  	<div class="span3">
 									<label for="linked"><h4>LinkedIn</h4></label>
 									<input type="text" name="linked" value="<?=$linked?>" />
+							  	</div>
+							  </div>
+							  <div class="tab-pane" id="seo">
+							  	<div class="span4">
+							  		<label><h4>Codigo de Analytics</h4></label>
+							  		<textarea name="g_analytics" class="span4" rows="6"><?php echo $g_analytics; ?></textarea>
 							  	</div>
 							  </div>
 							  </div>

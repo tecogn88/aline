@@ -60,7 +60,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- This .js file, add generic functions. -->
 <!-- jquery necesario -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.2/jquery.min.js"></script>  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>  
 <!-- bootstrap -->
 <script src="<?php echo base_url('assets/js/bootstrap-carousel.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap-dropdown.js'); ?>"></script>

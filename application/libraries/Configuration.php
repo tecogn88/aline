@@ -24,6 +24,7 @@ class Configuration{
 	public $google = '';
 	public $youtube = '';
 	public $linked = '';
+	public $g_analytics = '';
 	public $no_articulos = 0;
 	public $no_destacados = 0;
 	public $marca = '';
@@ -64,6 +65,7 @@ class Configuration{
 			$this->logo = $configuracion->row('logo');
 			$this->logo_ancho = $configuracion->row('logo_ancho');
 			$this->logo_alto = $configuracion->row('logo_alto');
+			$this->g_analytics = $configuracion->row('g_analytics');
 			$this->configuracion = true;
 
 			// Calcular ancho y alto del logotipo original
