@@ -90,10 +90,6 @@ class Blog extends CI_Controller {
             $this->error_404();
             return;
         }
-        $data['Menu_Principal'] = $this->get_padres_vista(27);
-        $data['Menu_Footer'] = $this->get_padres_vista(29);
-        $data['Menu_Footer2'] = $this->get_padres_vista(29);
-        $data['main_menu'] = $this->load->view('public/helper/main_menu' , $data,True);
         $data['pagina'] = $consulta->row();
         $data['categoria_nombre'] = $this->post->dameNombreCategoria($consulta->row("id_categoria"));
         $data['categorias'] = $this->post->dameCategoriasPost();
