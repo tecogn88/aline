@@ -1,4 +1,8 @@
-<?php $this->load->view('/public/helper/head.php'); ?>
+<?php $this->load->view('/public/helper/head_1.php'); ?>
+<meta name="title" content="<?php echo $pagina->m_titulo; ?>">
+<meta name="description" content="<?php echo $pagina->m_descripcion; ?>">
+</head>
+<body>
 <?php $this->load->view('/public/helper/main_menu.php'); ?>
 	<div class="container">
     	<div class="row">

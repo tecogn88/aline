@@ -34,6 +34,4 @@
     	<!-- Codigo de seguimiento Analytics -->
     	<?php echo $this->configuration->g_analytics; ?>
     	<!-- fin codigo -->
-	</head>
-	<body>
 	

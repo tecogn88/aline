@@ -54,23 +54,40 @@
 			<input placeholder="Ingresa el titulo aquí"   name="titulo" value="<?php if(set_value('titulo') != ""){echo set_value('titulo');}else{echo $row->titulo;} ?>" type="text" id="idtitulo" class="span12 focus">
 			</div>		
 			<div class="span6">
-			<label><h4>Slug</h4><em></em></label>
+			<label><h4>Slug<small> (Slug, es el nombre del titulo sin espacios)</small></h4></label>
 			<input placeholder='Ingresa "slug" aquí'   name="slug" value="<?php if(set_value('slug') != ""){echo set_value('slug');}else{echo $row->slug;} ?>" type="text" id="idslug" class="span12">
-			<p class="help-block">Slug, es el nombre del titulo sin espacios</p>
 			</div>
 			</div>
-			<label><strong><h4>Autor</h4></strong><em></em></label>
-			<select name="id_autor" id="id_autor" class="span12">
-			<?php
-				foreach ($autores->result() as $autor){
-					if ($autor->id == $id_autor){ ?>
-						<option value="<?=$autor->id?>" selected><?=$autor->nombre?></option>
-					<?php }else{ ?>
-						<option vlaue="0">Anónimo</option>
-						<option value="<?=$autor->id?>"><?=$autor->nombre?></option>
-					<?php }
-				} ?>
-			</select>
+			<br>
+			<div class="row-fluid">
+				<div class="span6">
+					<label><strong><h4>Autor</h4></strong><em></em></label>
+					<select name="id_autor" id="id_autor" class="span12">
+					<?php
+						foreach ($autores->result() as $autor){
+							if ($autor->id == $id_autor){ ?>
+								<option value="<?=$autor->id?>" selected><?=$autor->nombre?></option>
+							<?php }else{ ?>
+								<option vlaue="0">Anónimo</option>
+								<option value="<?=$autor->id?>"><?=$autor->nombre?></option>
+							<?php }
+						} ?>
+					</select>
+				</div>
+				<div class="span6">
+					<label><strong><h4>Meta-tiulo</h4></strong><em></em></label>
+					<input name="m_titulo" value="<?php if(set_value('m_titulo') !=""){echo set_value('m_titulo');} else {echo $row->m_titulo;} ?>" type="text" class="span12">
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<br>
+					<label><strong><h4>Meta-descripción</h4></strong></label>
+					<textarea name="m_descripcion" class="span12"><?php
+						 if(set_value('m_descripcion') != ""){echo set_value('m_descripcion');} else{echo $row->m_descripcion;} 
+					 ?></textarea>
+				</div>	
+			</div>
 			<br>
 			<label><h4>Contenido</h4><em></em></label>
 			<textarea name="contenido"  placeholder="Ingresa aquí el contenido de tu artículo" class="span10" id="ckeditor" rows="15" >

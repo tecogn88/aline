@@ -327,7 +327,6 @@ class Blog extends CI_Controller {
 		$categorias = $this->blog->get_categorias1();
 		$Cat = "<select name='categoria'>";
 		if($categorias->num_rows > 0 ){
-			$Cat .= "<option value='0'>Sin categoría</option>";
 			foreach ($categorias->result() as $row) {
 				$Cat .= "<option " . set_select('categoria', "$row->id")  ."  value='$row->id'>$row->nombre</option>";
 			}

@@ -240,6 +240,9 @@ class Model_blog extends CI_Model {
 		$tipo = 1;
 		$pag_inicio = $this->input->post('pag_inicio', true);
 		$portafolio = 0;
+		$plantilla = 2;
+		$m_titulo = $this->input->post('m_titulo');
+		$m_descripcion = $this->input->post('m_descripcion');
 		$data = array(
 			'id_autor' => $id_autor ,
 			'id_categoria' => $id_categoria ,
@@ -252,43 +255,15 @@ class Model_blog extends CI_Model {
 			'estado' => $estado ,
 			'etiquetas' => $etiquetas ,
 			'tipo' => $tipo,
-			'plantilla' => $this->configuration->plantilla,
+			'plantilla' => $plantilla,
 			'pag_inicio' => $pag_inicio,
 			'portafolio' => $portafolio,
-			'imagen' => $imagen
+			'imagen' => $imagen,
+			'm_titulo' => $m_titulo,
+			'm_descripcion' => $m_descripcion
 		);
 		$this->db->insert('blog', $data); 
 	}
-
-	/*public function agrega_pagina(){
-		$id_autor = $this->session->userdata('id');
-		$id_categoria = $this->input->post('categoria');
-		$titulo = $this->input->post('titulo');
-		$slug = $this->input->post('slug');
-		$contenido = $this->input->post('contenido');
-		$fecha = date("y-m-d");
-		$fecha_publicacion = $fecha;
-		$fecha_despublicacion = "0000-00-00";
-		$estado = 1;
-		$etiquetas = $this->input->post('etiquetas');
-		$tipo = 2;
-		$plantilla = $this->input->post('plantilla');
-		$data = array(
-			'id_autor' => $id_autor ,
-			'id_categoria' => $id_categoria ,
-			'titulo' => $titulo ,
-			'slug' => $slug ,
-			'contenido' => $contenido ,
-			'fecha' => $fecha ,
-			'fecha_publicacion' => $fecha_publicacion ,
-			'fecha_despublicacion' => $fecha_despublicacion ,
-			'estado' => $estado ,
-			'etiquetas' => $etiquetas ,
-			'tipo' => $tipo,
-			'plantilla' => $plantilla
-		);
-		$this->db->insert('post', $data); 
-	}*/
 
 	public function agrega_categoria($imagen=''){
 		$titulo = $this->input->post('titulo');
@@ -383,6 +358,8 @@ class Model_blog extends CI_Model {
 		$tipo = 1;
 		$pag_inicio = $this->input->post('pag_inicio', true);
 		$plantilla = 2;
+		$m_titulo = $this->input->post('m_titulo');
+		$m_descripcion = $this->input->post('m_descripcion');
 		$data = array(
 			'id_autor' => $id_autor ,
 			'titulo' => $titulo ,
@@ -395,7 +372,9 @@ class Model_blog extends CI_Model {
 			'pag_inicio' => $pag_inicio,
 			'id_categoria' =>$id_categoria,
 			'imagen' => $imagen,
-			'plantilla' => $plantilla
+			'plantilla' => $plantilla,
+			'm_titulo' => $m_titulo,
+			'm_descripcion' => $m_descripcion
 		);
 		$this->db->where('id', $id);
 		/*die($contenido);*/

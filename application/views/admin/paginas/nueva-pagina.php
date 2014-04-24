@@ -59,21 +59,29 @@
 					<option value="1" selected>Plantilla 1</option>
 					<option value="2">Plantilla 2</option>
 					<option value="3">Plantilla 3</option>
-				</select>
+				</select><br>
+				<label><strong><h4>Meta-titulo</h4></strong></label>
+					<input name="m_titulo" type="text" class="span12">
+				</div>
 			</div>
-		</div>
-		<div class="span12">
-			<br>
-				<label><h4>Contenido</h4><em></em></label>
-				<textarea name="contenido" placeholder="Ingresa aquí el contenido de tu página" id="ckeditor">
-					<?php echo set_value('contenido'); ?>
-				</textarea>
-				<?php $ck_config = array(     
-					"replace" => "#ckeditor", // selector del objeto a reemplazar     
-					"options" => ck_options_paginas()     
-				);
-				echo jquery_ckeditor($ck_config); ?>
-		</div>
+			<div class="row-flud">
+				<div class="span12"><br>
+					<label><strong><h4>Meta-descripción</h4></strong></label>
+					<textarea name="m_descripcion" class="span12"></textarea>
+				</div>
+			</div>
+			<div class="span12">
+				<br>
+					<label><h4>Contenido</h4><em></em></label>
+					<textarea name="contenido" placeholder="Ingresa aquí el contenido de tu página" id="ckeditor">
+						<?php echo set_value('contenido'); ?>
+					</textarea>
+					<?php $ck_config = array(     
+						"replace" => "#ckeditor", // selector del objeto a reemplazar     
+						"options" => ck_options_paginas()     
+					);
+					echo jquery_ckeditor($ck_config); ?>
+			</div>
 		</fieldset>
 </div>
 </form> <!-- Fin formulario para crear nuevo articulo -->

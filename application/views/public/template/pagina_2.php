@@ -1,4 +1,8 @@
-<?php $this->load->view('/public/helper/head.php'); ?>
+<?php $this->load->view('/public/helper/head_1.php'); ?>
+<meta name="title" content="<?php echo $pagina->m_titulo; ?>">
+<meta name="description" content="<?php echo $pagina->m_descripcion; ?>">
+</head>
+<body>
 <?php $this->load->view('/public/helper/logo.php'); ?>
 <?php if ($menu_top) { $this->load->view('/public/helper/menus/menu_top.php'); } ?>
 <?php if ($menu_nav == TRUE) { $this->load->view('/public/helper/menus/menu_nav.php'); } ?>	
@@ -10,7 +14,7 @@
 			</div>	
 		</div>	
 		<div class="row">
-			<div class="span9">
+			<div class="span12">
 				<?php  $inicio = '/';$base2 = '/blog/'; $base1 = '/blog/categoria/'.$pagina->id_categoria;?>
 				<p class="breadcrum">
 					<a href="<?php echo base_url(''.$inicio); ?>">Inicio</a> / 
@@ -48,58 +52,6 @@
 				</div>
 			</div>
 		<!--Fin del contenido del sitio-->
-
-		<!--Inicio de los productos destacados-->
-		<div class="span3 bordertop">
-			<?php if($destacados){ ?>
-				<h2>Articulos destacados</h2>
-				<?php foreach ($destacados as $destacado): ?>
-	 			<div class="row no-margin">
-	            	<div class="span12 prodcuto">
-			            <div class="img-left">
-			            	<a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>">
-			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$destacado->imagen); ?>">
-			            	</a>
-			        	</div>
-			        	<div class="cont-right">
-				            <h3><a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>"><?php echo $destacado->titulo; ?></a></h3>
-				            <p class="description"><?php echo substr($destacado->contenido, 0, 45); ?></p>
-		            	</div>
-		            </div>
-	            </div>
-	 			<?php endforeach ?>
-	 		<?php } ?>
-        	<div class="mod2">
-				<h2>Articulos recientes</h2>
-				<?php foreach ($recientes as $reciente): ?>
-	 			<div class="row no-margin">
-	            	<div class="span12 prodcuto">
-			            <div class="img-left">
-			            	<a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>">
-			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$reciente->imagen); ?>">
-			            	</a>
-			        	</div>
-			        	<div class="cont-right">
-				            <h3><a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>"><?php echo $reciente->titulo; ?></a></h3>
-				            <p class="description"><?php echo substr($reciente->contenido, 0, 45); ?></p>
-		            	</div>
-		            </div>
-	            </div>
-	 			<?php endforeach ?>
- 			</div>
-        	<div class="mod2">
-				<h2>Categorías</h2>
-				<?php foreach ($categorias as $categoria): ?>
-	 			<div class="row no-margin">
-	            	<div class="span12 prodcuto">
-				            <a href="<?php echo base_url('blog/categoria/'.$categoria->id); ?>">
-				            	<h3><?php echo $categoria->nombre; ?></h3>
-				            </a>
-		            </div>
-	            </div>
-	 			<?php endforeach ?>
- 			</div>
- 		</div>
 	</div>
 
 	<?php if ($menu_footer == TRUE) { $this->load->view('/public/helper/menus/menu_footer.php'); } ?>

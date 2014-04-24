@@ -59,6 +59,18 @@
 						<input type="file" name="imagen">
 					</div>
 				</div>
+				<div class="row-fluid">
+				<div class="span12">
+					<div class="span4">
+						<label><strong><h4>Meta-titulo</h4></strong></label>
+						<input name="m_titulo" type="text" class="span12">
+					</div>
+					<div class="span8">
+						<label><strong><h4>Meta-descripción</h4></strong></label>
+						<textarea name="m_descripcion" class="span12"></textarea>
+					</div>
+				</div>
+				</div>
 				<div class="span12">
 					<label><h4>Contenido</h4><em></em></label>
 					<textarea name="contenido" placeholder="Ingresa aquí el contenido de tu artículo" class="span8" id="ckeditor" rows="15" >

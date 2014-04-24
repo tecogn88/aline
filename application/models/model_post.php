@@ -193,6 +193,8 @@ class Model_post extends CI_Model {
 		$tipo = 2;
 		$plantilla = $this->input->post('plantilla');
 		$clase_css = $this->input->post('clase_css');
+		$m_titulo = $this->input->post('m_titulo');
+		$m_descripcion = $this->input->post('m_descripcion');
 		$data = array(
 			'id_autor' => $id_autor ,
 			'id_categoria' => $id_categoria ,
@@ -206,7 +208,9 @@ class Model_post extends CI_Model {
 			'etiquetas' => $etiquetas ,
 			'tipo' => $tipo,
 			'plantilla' => $plantilla,
-			'clase' => $clase_css
+			'clase' => $clase_css,
+			'm_titulo' => $m_titulo,
+			'm_descripcion' => $m_descripcion
 		);
 		$this->db->insert('post', $data); 
 	}
@@ -273,6 +277,8 @@ class Model_post extends CI_Model {
 		$tipo = 2;
 		$plantilla = $this->input->post('plantilla');
 		$clase = $this->input->post('clase_css');
+		$m_titulo = $this->input->post('m_titulo');
+		$m_descripcion = $this->input->post('m_descripcion');
 		$data = array(
 			'id_autor' => $id_autor ,
 			'titulo' => $titulo ,
@@ -283,7 +289,9 @@ class Model_post extends CI_Model {
 			'fecha_despublicacion' => $fecha_despublicacion ,
 			'etiquetas' => $etiquetas ,
 			'plantilla' => $plantilla,
-			'clase' => $clase
+			'clase' => $clase,
+			'm_titulo' => $m_titulo,
+			'm_descripcion' => $m_descripcion
 		);
 		$this->db->where('id', $id);
 		$this->db->update('post', $data); 

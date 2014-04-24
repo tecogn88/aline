@@ -67,9 +67,21 @@
 						<option value="2">Plantilla 2</option>
 						<option value="3">Plantilla 3</option>
 					</select>
+					<br>
+					<label><strong><h4>Meta-tiulo</h4></strong><em></em></label>
+					<input name="m_titulo" value="<?php if(set_value('m_titulo') !=""){echo set_value('m_titulo');} else {echo $row->m_titulo;} ?>" type="text" class="span12">
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<label><strong><h4>Meta-descripción</h4></strong></label>
+					<textarea name="m_descripcion" class="span12"><?php
+						 if(set_value('m_descripcion') != ""){echo set_value('m_descripcion');} else{echo $row->m_descripcion;} 
+					 ?></textarea>
 				</div>
 			</div>
 			<div class="span12">
+				<br>
 				<label><h4>Contenido</h4><em></em></label>
 				<textarea name="contenido"  placeholder="Ingresa aquí el contenido de tu página" class="span12" id="ckeditor" rows="15" >
 					<?php

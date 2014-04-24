@@ -66,49 +66,49 @@
 				<?php foreach ($destacados as $destacado): ?>
 	 			<div class="row no-margin">
 	            	<div class="span12 prodcuto">
-			            <div class="img-left">
+	            		<?php if($destacado->imagen){ ?>
 			            	<a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>">
 			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$destacado->imagen); ?>">
 			            	</a>
-			        	</div>
-			        	<div class="cont-right">
-				            <h3><a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>"><?php echo $destacado->titulo; ?></a></h3>
-				            <p class="description"><?php echo substr($destacado->contenido, 0, 45); ?></p>
-				            <!-- <a class="read-more" href="<?php echo base_url($destacado->slug); ?>">+ Ver Más</a> -->
-		            	</div>
+				        <?php } ?>
+			            <h3><strong><a href="<?php echo base_url('blog/articulo/'.$destacado->slug); ?>"><?php echo $destacado->titulo; ?></a></strong></h3>
+			            <p class="description"><?php echo substr($destacado->contenido, 0, 45); ?></p>
 		            </div>
 	            </div>
- 				<?php endforeach ?>
+	 			<?php endforeach ?>
  			<?php } ?>
-			<div class="mod2">       
-				<h2>Articulos recientes</h2>
-				<?php foreach ($recientes as $reciente): ?>
-	 			<div class="row no-margin">
-	            	<div class="span12 prodcuto">
-			            <div class="img-left">
-			            	<a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>">
-			            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$reciente->imagen); ?>">
-			            	</a>
-			        	</div>
-			        	<div class="cont-right">
-				            <h3><a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>"><?php echo $reciente->titulo; ?></a></h3>
+ 			<?php if($recientes){ ?>
+	        	<div class="mod2">
+					<h2>Articulos recientes</h2>
+					<?php foreach ($recientes as $reciente): ?>
+		 			<div class="row no-margin">
+		            	<div class="span12 prodcuto">
+		            		<?php if($reciente->imagen){ ?>
+				            	<a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>">
+				            		<img class="img-principal" src="<?php echo base_url('assets/img/'.$reciente->imagen); ?>">
+				            	</a>
+					        <?php } ?>
+				            <h3><strong><a href="<?php echo base_url('blog/articulo/'.$reciente->slug); ?>"><?php echo $reciente->titulo; ?></a></strong></h3>
 				            <p class="description"><?php echo substr($reciente->contenido, 0, 45); ?></p>
-				            <!-- <a class="read-more" href="<?php echo base_url($reciente->slug); ?>">+ Ver Más</a> -->
-		            	</div>
+			            </div>
 		            </div>
-	            </div>
-	 			<?php endforeach ?>
- 			</div>
- 			<div class="mod2">
-				<h2>Categorías</h2>
-				<?php foreach ($categorias as $categoria): ?>
-	 			<div class="row no-margin">
-	            	<div class="span12 prodcuto">
-	            		<a href="<?php echo base_url('blog/categoria/'.$categoria->id); ?>"><h3><?php echo $categoria->nombre; ?></h3></a>
-	            	</div>
-	            </div>
-	 			<?php endforeach ?>
- 			</div>
+		 			<?php endforeach ?>
+	 			</div>
+	 		<?php } ?>
+	 		<?php if($categorias){ ?>
+	        	<div class="mod2">
+					<h2>Categorías</h2>
+					<?php foreach ($categorias as $categoria): ?>
+		 			<div class="row no-margin">
+		            	<div class="span12 prodcuto">
+				            <a href="<?php echo base_url('blog/categoria/'.$categoria->id); ?>">
+				            	<h3><?php echo $categoria->nombre; ?></h3>
+				            </a>
+			            </div>
+		            </div>
+		 			<?php endforeach ?>
+	 			</div>
+ 			<?php } ?>
  		</div>
 
 	<!--  /Home articulos  -->

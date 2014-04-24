@@ -22,10 +22,55 @@ class Blog extends CI_Controller {
         }else{
             $string = $this->session->flashdata('string');
         }
-        $data['Menu_Principal'] = $this->get_padres_vista(27);
-        $data['Menu_Footer'] = $this->get_padres_vista(28);
-        $data['main_menu'] = $this->load->view('public/helper/main_menu' , $data,True);
-        $data['menu_left'] = "";
+        $menu_top = $this->menu->dameMenuTop();
+            if ($menu_top) {
+                $data['Menu_Top'] = $this->get_padres_vista($menu_top->id);
+                $data['menu_top'] = $this->load->view('public/helper/menus/menu_top' , $data,True);
+            }else{
+                $data['menu_top'] = '';
+            }
+            $menu_nav = $this->menu->dameMenuNav();
+            if ($menu_nav) {
+                $data['Menu_Nav'] = $this->get_padres_vista($menu_nav->id);
+                $data['menu_nav'] = $this->load->view('public/helper/menus/menu_nav' , $data,True);
+            }else{
+                $data['menu_nav'] = '';
+            }
+            $menu_footer = $this->menu->dameMenuFooter();
+            if ($menu_footer) {
+                $data['Menu_Footer'] = $this->get_padres_vista($menu_footer->id);
+                $data['menu_footer'] = $this->load->view('public/helper/menus/menu_footer' , $data,True);
+            }else{
+                $data['menu_footer'] = '';
+            }
+            $menu_footer1 = $this->menu->dameMenuFooter1();
+            if ($menu_footer1) {
+                $data['Menu_Footer1'] = $this->get_padres_vista_span3($menu_footer1->id);
+                $data['menu_footer1'] = $this->load->view('public/helper/menus/menu_footer1' , $data,True);
+            }else{
+                $data['menu_footer1'] = '';
+            }
+            $menu_footer2 = $this->menu->dameMenuFooter2();
+            if ($menu_footer2) {
+                $data['Menu_Footer2'] = $this->get_padres_vista_span3($menu_footer2->id);
+                $data['menu_footer2'] = $this->load->view('public/helper/menus/menu_footer2' , $data,True);
+            }else{
+                $data['menu_footer2'] = '';
+            }
+            $menu_footer3 = $this->menu->dameMenuFooter3();
+            if ($menu_footer3) {
+                $data['Menu_Footer3'] = $this->get_padres_vista_span3($menu_footer3->id);
+                $data['menu_footer3'] = $this->load->view('public/helper/menus/menu_footer3' , $data,True);
+            }else{
+                $data['menu_footer3'] = '';
+            }
+            $menu_footer4 = $this->menu->dameMenuFooter4();
+            if ($menu_footer4) {
+                $data['Menu_Footer4'] = $this->get_padres_vista_span3($menu_footer4->id);
+                $data['menu_footer4'] = $this->load->view('public/helper/menus/menu_footer4' , $data,True);
+            }else{
+                $data['menu_footer4'] = '';
+            }
         //$data['sidebar_der'] = $this->dameSidebarDerecha();
         $numero_articulos = $this->post->dame_numPost();
         $paginacion = $this->paginacion($numero_articulos);
