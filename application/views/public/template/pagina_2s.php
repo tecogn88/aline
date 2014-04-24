@@ -1,5 +1,6 @@
 		<div class="exist">
 		<?php $this->load->view('/public/helper/head_1.php'); ?>
+		<title><?php echo $pagina->titulo; ?></title>
 		<meta name="title" content="<?php echo $pagina->m_titulo; ?>">
 		<meta name="description" content="<?php echo $pagina->m_descripcion; ?>">
 		</head>
