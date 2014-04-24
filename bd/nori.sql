@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2014 at 02:39 PM
+-- Generation Time: Apr 24, 2014 at 11:02 AM
 -- Server version: 5.5.29
 -- PHP Version: 5.4.6-1ubuntu1.1
 
@@ -59,8 +59,10 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `id_autor` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `titulo` text NOT NULL,
+  `m_titulo` text NOT NULL,
   `slug` text NOT NULL,
   `contenido` text NOT NULL,
+  `m_descripcion` text NOT NULL,
   `fecha` date NOT NULL,
   `fecha_publicacion` date NOT NULL,
   `fecha_despublicacion` date NOT NULL,
@@ -72,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `portafolio` int(1) NOT NULL,
   `imagen` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=436 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=437 ;
 
 --
 -- Dumping data for table `captcha`
@@ -528,7 +530,8 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUE
 (432, 1396547533, '127.0.0.1', 'oLOw'),
 (433, 1396547588, '127.0.0.1', 'drwA'),
 (434, 1397255818, '127.0.0.1', 'lzzx'),
-(435, 1397262533, '127.0.0.1', 'xgcI');
+(435, 1397262533, '127.0.0.1', 'xgcI'),
+(436, 1398287811, '127.0.0.1', 'PqTB');
 
 -- --------------------------------------------------------
 
@@ -559,18 +562,19 @@ INSERT INTO `categoria` (`id`, `nombre`, `descripcion`, `imagen`, `slug`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `configuracion` (
-  `titulo` varchar(50) NOT NULL DEFAULT 'Nombre de página',
-  `logo` varchar(50) DEFAULT NULL,
+  `titulo` varchar(500) NOT NULL DEFAULT 'Nombre de página',
+  `logo` varchar(500) DEFAULT NULL,
   `logo_ancho` int(10) NOT NULL DEFAULT '0',
-  `logo_alto` int(10) NOT NULL DEFAULT '0'
+  `logo_alto` int(10) NOT NULL DEFAULT '0',
+  `g_analytics` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `configuracion`
 --
 
-INSERT INTO `configuracion` (`titulo`, `logo`, `logo_ancho`, `logo_alto`) VALUES
-('Nori CMS', '576523_331946103542387_1335348836_n.jpg', 100, 100);
+INSERT INTO `configuracion` (`titulo`, `logo`, `logo_ancho`, `logo_alto`, `g_analytics`) VALUES
+('Nori CMS', '576523_331946103542387_1335348836_n.jpg', 100, 100, '');
 
 -- --------------------------------------------------------
 
@@ -604,15 +608,15 @@ INSERT INTO `config_catalogo` (`id`, `marca_agua`, `marca`, `horizontal`, `verti
 
 CREATE TABLE IF NOT EXISTS `config_contacto` (
   `id` int(3) NOT NULL,
-  `correo_admin` varchar(50) NOT NULL,
+  `correo_admin` varchar(500) NOT NULL,
   `emails_extra` varchar(500) DEFAULT NULL,
-  `nombre_admin` varchar(50) DEFAULT NULL,
+  `nombre_admin` varchar(500) DEFAULT NULL,
   `direccion` varchar(500) DEFAULT NULL,
-  `telefono` varchar(50) DEFAULT NULL,
+  `telefono` varchar(500) DEFAULT NULL,
   `mapa_g` varchar(255) NOT NULL,
   `mostrar_mapa` int(3) NOT NULL DEFAULT '0',
   `mostrar_info` int(3) NOT NULL DEFAULT '0',
-  `encabezado` varchar(50) DEFAULT NULL,
+  `encabezado` varchar(500) DEFAULT NULL,
   `info_descripcion` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -635,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `config_contenido` (
   `plantilla` int(2) NOT NULL,
   `no_articulos` int(3) NOT NULL DEFAULT '4',
   `no_recientes` int(3) NOT NULL DEFAULT '3',
-  `categorias` varchar(50) DEFAULT NULL,
+  `categorias` varchar(500) DEFAULT NULL,
   `mostrar_buscador` int(3) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -754,7 +758,7 @@ CREATE TABLE IF NOT EXISTS `log_articulos` (
   `id_pagina` int(11) NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1644 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1647 ;
 
 --
 -- Dumping data for table `log_articulos`
@@ -2403,7 +2407,10 @@ INSERT INTO `log_articulos` (`id`, `id_pagina`, `fecha`) VALUES
 (1640, 5, '2014-03-07'),
 (1641, 5, '2014-03-07'),
 (1642, 5, '2014-04-11'),
-(1643, 5, '2014-04-11');
+(1643, 5, '2014-04-11'),
+(1644, 7, '2014-04-24'),
+(1645, 7, '2014-04-24'),
+(1646, 7, '2014-04-24');
 
 -- --------------------------------------------------------
 
@@ -2441,9 +2448,11 @@ CREATE TABLE IF NOT EXISTS `post` (
   `id_autor` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `titulo` text NOT NULL,
+  `m_titulo` text NOT NULL,
   `slug` text NOT NULL,
   `clase` text NOT NULL,
   `contenido` longtext NOT NULL,
+  `m_descripcion` text NOT NULL,
   `fecha` date NOT NULL,
   `fecha_publicacion` date NOT NULL,
   `fecha_despublicacion` date NOT NULL,
@@ -2455,7 +2464,7 @@ CREATE TABLE IF NOT EXISTS `post` (
   `portafolio` int(1) NOT NULL DEFAULT '0',
   `imagen` varchar(55) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
