@@ -152,9 +152,14 @@
 							  	</div>
 							  </div>
 							  <div class="tab-pane" id="seo">
-							  	<div class="span4">
-							  		<label><h4>Codigo de Analytics</h4></label>
-							  		<textarea name="g_analytics" class="span4" rows="6"><?php echo $g_analytics; ?></textarea>
+							  	<div class="row-fluid">
+								  	<div class="span4">
+								  		<label><h4>Codigo de Analytics</h4></label>
+								  		<textarea name="g_analytics" class="span12" rows="6"><?php echo $g_analytics; ?></textarea>
+								  	</div>
+								  	<div class="span4">
+								  		<label><h4>Url's amigables</h4></label>
+								  	</div>
 							  	</div>
 							  </div>
 							  </div>
