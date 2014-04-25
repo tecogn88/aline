@@ -233,7 +233,7 @@ class Inicio extends CI_Controller {
         }else{
             $elementos = "<ul class='nav nav-list'>";
         }
-        $elementos .= "<li class='nav-header'><h4>".$nombre_menu."</h4></li><br>";
+        $elementos .= "<li class='nav-header'><h4>".$nombre_menu."</h4></li>";
         // Recorremos el arbol de elementos padre buscando hijos 
         foreach($items->result() as $row){
             if( $row->is_logged == 'si' && ! $this->session->userdata('logged_in') ) continue;
@@ -307,7 +307,7 @@ class Inicio extends CI_Controller {
             if($hijos > 0){
                 $elementos .= $this->get_padres_vista($idMenu,$row->idItem);
             }
-            $elementos .= '</li><br>';  
+            $elementos .= '</li>';  
         } 
         $elementos .='</ul>';
         return $elementos;
