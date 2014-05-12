@@ -157,8 +157,9 @@
 								  		<label><h4>Codigo de Analytics</h4></label>
 								  		<textarea name="g_analytics" class="span12" rows="6"><?php echo $g_analytics; ?></textarea>
 								  	</div>
-								  	<div class="span4">
-								  		<label><h4>Url's amigables</h4></label>
+								  	<div class="span8">
+								  		<label><h4>Meta descripción</h4></label>
+										<textarea name="m_descripcion" class="span12" rows="6"><?php echo $m_descripcion; ?></textarea>
 								  	</div>
 							  	</div>
 							  </div>

@@ -1,7 +1,10 @@
-<?php $this->load->view('/public/helper/head_1.php'); ?>
-<title><?php echo $pagina->titulo; ?></title>
-<meta name="title" content="<?php echo $pagina->m_titulo; ?>">
-<meta name="description" content="<?php echo $pagina->m_descripcion; ?>">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<title><?=$pagina->m_titulo;?></title>
+	<meta name="description" content="<?=$pagina->m_descripcion;?>" />
+	<?php $this->load->view('/public/helper/metadata_principal.php');?>
 </head>
 <body>
 <?php $this->load->view('/public/helper/logo.php'); ?>

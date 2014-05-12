@@ -87,6 +87,7 @@ class Configuracion extends CI_Controller {
 			$data['youtube'] = $this->configuration->youtube;
 			$data['linked'] = $this->configuration->linked;
 			$data['g_analytics'] = $this->configuration->g_analytics;
+			$data['m_descripcion'] = $this->configuration->m_descripcion;
 			$data['num_articulos'] = $this->configuration->no_articulos;
 			$data['num_recientes'] = $this->configuration->no_recientes;
 			$data['head'] = $this->alinecms->get_head('Panel de Configuración', TRUE);

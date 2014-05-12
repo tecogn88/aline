@@ -171,18 +171,17 @@ class Blog extends CI_Controller {
 
 	public function get_tabla_categoria_panel($id=0){
 		$categorias = $this->blog->get_categorias1($id);
-		$filas = 'No se encontraron categorías';
+		$filas = '<div class="alert"><strong>No se encontraron categorías</strong></div>';
 		if($categorias == FALSE){
 			return $filas;
 		}
-		$filas = "  <table id='tblMenus' class='table table-striped  table-bordered '>
+		$filas = "  <table id='tblMenus' class='table'>
 							<thead>															
-								<tr style='background-color: #D9EDF7;'>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-barcode icon-white'></i></span>ID</th>
+								<tr>
+									<th>#</th>
 									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-font icon-white'></i></span>Titulo</th>
 									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-align-left icon-white'></i></span>Descripción</th>
-									<th><span class='label label-info' style='margin-right: 10px;'><i class='icon-picture icon-white'></i></span>Imagen</th>
-									<th class='cont_accion'><span class='label label-info' style='margin-right: 10px;'><i class='icon-wrench icon-white'></i></span>Acciones</th>
+									<th class='cont_accion'><span class='label label-important' style='margin-right: 10px;'><i class='icon-remove icon-white'></i></span>Eliminar</th>
 								</tr>
 							</thead>
 					<tbody>";
@@ -190,12 +189,10 @@ class Blog extends CI_Controller {
 			$imagen = base_url('/assets/img/'.$row->imagen);
 		    $filas.= "<tr title='$row->descripcion'>";
 		    	$filas.= "<td style='font-style:italic;font-weight:bold;vertical-align: middle;'>" .  $row->id . "</td>";
-	    		$filas.= "<td style='vertical-align: middle;'>" .  $row->nombre . "</td>";
+	    		$filas.= "<td style='vertical-align: middle;'><a href='"   . base_url("/panel/blog/edita_categoria/$row->id")   ."' rel='tooltip' title='Editar categoria:  <br/>". $row->nombre . "'>" .  $row->nombre . "</a></td>";
 				$filas.= "<td style='vertical-align: middle;'>" . $row->descripcion . "</td>";
-				$filas.= "<td style='vertical-align: middle;text-align:center;'><img src=".$imagen." style='width:70px;'></td>";
-	    		$filas.= "<td style='vertical-align: middle;'><div class='cont_accion'>" 
-						."<a class='badge badge-success' href='"   . base_url("/panel/blog/edita_categoria/$row->id")   ."' rel='tooltip' title='Editar categoria:  <br/>". $row->nombre . "'><i class='icon-edit icon-white'></i></a>"  
-						."<a class='badge badge-important btndel' 	href='"   . base_url("/panel/blog/borra_categoria/$row->id") ."' rel='tooltip' title='Borrar categoria: <br/>". $row->nombre . "'><i class='icon-remove icon-white'></i></a>"  
+	    		$filas.= "<td style='vertical-align: middle;'><div class='cont_accion'>"  
+						."<span class='label label-important'><a class='btndel' href='"   . base_url("/panel/blog/borra_categoria/$row->id") ."' rel='tooltip' title='Borrar categoria: <br/>". $row->nombre . "' style='text-decoration:none;color:white;'>eliminar</a></span>"  
 						."</div></td>";
 			    $filas.= "</tr>";
 		}
