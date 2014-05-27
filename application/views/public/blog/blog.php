@@ -1,4 +1,12 @@
-<?php $this->load->view('/public/helper/head.php'); ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<title><?=$m_titulo;?></title>
+	<meta name="description" content="<?=$m_descripcion;?>" />
+	<?php $this->load->view('/public/helper/metadata_principal.php');?>
+</head>
+<body>
 <?php $this->load->view('/public/helper/logo.php'); ?>
 <?php if ($menu_top) { $this->load->view('/public/helper/menus/menu_top.php'); } ?>
 <?php if ($menu_nav == TRUE) { $this->load->view('/public/helper/menus/menu_nav.php'); } ?>	
@@ -10,11 +18,13 @@
 	</div>	
 	<div class="row">
 		<div class="span9">
+			<?php if($this->configuration->breadcrumbs == 1){ ?>
 			<?php  $inicio = '/';$base2 = '/blog/';?>
 			<p class="breadcrum">
 				<a href="<?php echo base_url(''.$inicio); ?>">Inicio</a> / 
 				<a href="<?php echo base_url(''.$base2); ?>">Blog</a>
 			</p>
+			<?php } ?>
 			<?php if($articulos!=false){ ?>
 				<?php foreach ($articulos as $post): ?>
 					<div class="nota-secundaria">

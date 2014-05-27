@@ -15,12 +15,14 @@
 	<!-- Home articulos  -->
 
 	<div class="span9">
-		<?php  $inicio = '/';$base2 = '/blog/'; $base1 = '/blog/categoria/'.$categoria_padre->id;?>
+		<?php if($this->configuration->breadcrumbs == 1){ ?>
+			<?php  $inicio = '/';$base2 = '/blog/'; $base1 = '/blog/categoria/'.$categoria_padre->id;?>
 			<p class="breadcrum">
 				<a href="<?php echo base_url(''.$inicio); ?>">Inicio</a> / 
 				<a href="<?php echo base_url(''.$base2); ?>">Blog</a> / 
 				<a href="<?php echo base_url(''.$base1); ?>"><?php echo $categoria_padre->nombre; ?></a>
 			</p>
+		<?php } ?>
 		<?php if($articulos!=false){ ?>
 			<?php foreach ($articulos as $post): ?>
 				<div class="nota-secundaria">

@@ -72,7 +72,7 @@
 										} ?>
 									</td>
 									<td><?php echo $usuario->fecha_creacion; ?></td>
-									<td><a class="btn btn-danger btn-small" href="<?=base_url('panel/usuarios/borrar_usuario/'.$usuario->id)?>" rel="tooltip" title="Borrar usuario:<br /><?=$usuario->nombre?>">eliminar</a></td>
+									<td><?php if($usuario->id != 2 ){ ?><a class="label label-important" href="<?=base_url('panel/usuarios/borrar_usuario/'.$usuario->id)?>" rel="tooltip" title="Borrar usuario:<br /><?=$usuario->nombre?>">eliminar</a><?php } ?></td>
 								</tr>
 							<?php } ?><!-- Fin foreach -->
 						</table>

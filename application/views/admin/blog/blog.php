@@ -19,6 +19,7 @@
 							</div>
 							<div class="pull-right">
 								<a class="btn btn-primary" href="<?php echo base_url('/panel/blog/crea_articulo'); ?>">Agregar Nuevo<span style='margin-left:10px;'><i class='icon-plus icon-white'></i></span></a>
+								<a class="btn btn-inverse" href="<?php echo base_url('/panel/blog/configuracion'); ?>">Configuración Blog <span style='margin-left:10px;'><i class='icon-cog icon-white'></i></span></a>	
 							</div>
 						</div>
 					</div>
@@ -75,7 +76,7 @@
 									</td>
 						    		<td>
 						    			<div class="cont_accion">
-											<a class="btn btn-danger btn-small btndel" href="<?=base_url('panel/blog/borrar_post/'.$articulo->id)?>" rel="tooltip" title="Borrar articulo:<br /><?=$articulo->titulo?>">eliminar</a>
+											<a class="label label-important btndel" href="<?=base_url('panel/blog/borrar_post/'.$articulo->id)?>" rel="tooltip" title="Borrar articulo:<br /><?=$articulo->titulo?>">eliminar</a>
 										</div>
 									</td>
 								</tr>

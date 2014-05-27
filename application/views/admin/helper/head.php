@@ -13,6 +13,8 @@
 		<?php 
 	    	$this->alinecms->add_css('bootstrap',TRUE,TRUE);
 	    	$this->alinecms->add_css('bootstrap-responsive',TRUE,TRUE);
+	    	/*$this->alinecms->add_css_bootstrap3('bootstrap',TRUE,TRUE);
+	    	$this->alinecms->add_css_bootstrap3('bootstrap-responsive',TRUE,TRUE);*/
 			$this->alinecms->add_css('admin_estilos',TRUE,TRUE);
 			$this->alinecms->add_css('animate',TRUE,TRUE);
 		?>
@@ -28,6 +30,7 @@
 		<script src="<?php echo base_url('assets/js/jquery-ui.js'); ?>" type="text/javascript"></script>
 		<?php $this->alinecms->add_javascript('plugins',TRUE,TRUE);	?>
 		<?php $this->alinecms->add_javascript('bootstrap.min',TRUE,TRUE); ?>
+		<!--<?php $this->alinecms->add_javascript_bootstrap3('bootstrap.min',TRUE,TRUE); ?>-->
 		
 		<!-- Heyy!! Designer, replace favicon.ico & apple-touch-icon.png in the folder /assets/img/ico  -->
 		<link rel="shortcut icon" href="<?php echo base_url('assets/img/ico/favicon.ico'); ?>"/>

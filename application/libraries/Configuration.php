@@ -40,10 +40,14 @@ class Configuration{
 	public $slider_alto_original = 0;
 	public $auto = 1;
 	public $infinito = 1;
+	public $breadcrumbs = '';
+	public $paginacion = '';
 	public $velocidad = 0;
 	public $slide_i = 1;
 	public $aleatorio = 0;
 	public $controles = 1;
+	public $m_titulo_blog = '';
+	public $m_descripcion_blog = '';
 	public $configuracion = false;
 	protected $ci;
 
@@ -104,6 +108,7 @@ class Configuration{
 			$this->encabezado = $configuracion_contacto->row('encabezado');
 			$this->info_descripcion = $configuracion_contacto->row('info_descripcion');
 			$this->telefono = $configuracion_contacto->row('telefono');
+			$this->buscador = $configuracion_contacto->row('mostrar_buscador');
 		}
 
 		if ($configuracion_contenido->num_rows() > 0) {
@@ -111,7 +116,10 @@ class Configuration{
 			$this->no_articulos = $configuracion_contenido->row('no_articulos');
 			$this->no_recientes = $configuracion_contenido->row('no_recientes');
 			$this->categorias = $configuracion_contenido->row('categorias');
-			$this->buscador = $configuracion_contenido->row('mostrar_buscador');
+			$this->breadcrumbs = $configuracion_contenido->row('breadcrumbs');
+			$this->m_titulo_blog = $configuracion_contenido->row('m_titulo');
+			$this->m_descripcion_blog = $configuracion_contenido->row('m_descripcion');
+			$this->paginacion = $configuracion_contenido->row('paginacion');
 		}
 
 		if ($configuracion_social->num_rows() > 0) {

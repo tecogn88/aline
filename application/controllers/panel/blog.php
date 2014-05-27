@@ -13,7 +13,9 @@ class Blog extends CI_Controller {
 		}
 		$this->load->model('model_blog', 'blog');
 		$this->load->model('model_usuarios', 'usr');
+		$this->load->model('model_configuracion', 'configuracion');
 		$this->load->library('form_validation');
+		$this->load->library('Configuration');
 	}
 			
 	public function index($filtro = '',$actualizado = "", $id = 0){
@@ -37,6 +39,28 @@ class Blog extends CI_Controller {
 		$data['descripcion_pagina'] = "";
 		$data['categorias'] = $this->get_tabla_categoria_panel();
 		$this->load->view('admin/blog/panel-categorias' , $data);
+	}
+
+	public function configuracion(){
+		$data['head'] = $this->alinecms->get_head('Configuracion del blog' , TRUE);
+		$data['header'] = $this->alinecms->get_header('_2');
+		$data['titulo_pagina'] = "Configuración del Blog";
+		$data['descripcion_pagina'] = "administra las entradas de tu Blog";
+		$data['breadcrumbs'] = $this->configuration->breadcrumbs;
+		$data['num_articulos'] = $this->configuration->no_articulos;
+		$data['paginacion'] = $this->configuration->paginacion;
+		$data['m_titulo_blog'] = $this->configuration->m_titulo_blog;
+		$data['m_descripcion_blog'] = $this->configuration->m_descripcion_blog;
+		$data['no_recientes'] = $this->configuration->no_recientes;
+		$this->load->view('admin/blog/configuracion' , $data);
+	}
+
+	public function GuardaConfiguracion(){
+		$cambio = $this->configuracion->editar_config_contenido();
+		if($cambio){
+			$this->session->set_flashdata('warning','<div id="cambio" class="alert alert-success"><b>La configuración se ha guardado correctamente.</b></div>');
+		}
+		redirect('panel/blog/configuracion/','REFRESH');
 	}
 
 	public function paginacion($num,$url){

@@ -20,7 +20,7 @@
 						  <li class="active"><a href="#general"><h4>General</h4></a></li>
 						  <li><a href="#informacion" id="info_tab"><h4>Información</h4></a></li>
 						  <li><a href="#contacto"><h4>Contacto</h4></a></li>
-						  <li><a href="#contenido"><h4>Contenido</h4></a></li>
+						  <!-- <li><a href="#contenido"><h4>Contenido</h4></a></li> -->
 						  <li><a href="#social"><h4>Redes sociales</h4></a></li>
 						  <li><a href="#seo"><h4>SEO</h4></a></li>
 						</ul>
@@ -73,7 +73,14 @@
 									  	<input type="text" name="mapa_g" id="mapa_g" style="display:none" value="<?=$mapa_g?>">
 									  	<img src=".base_url('assets/img/icon-mapa.png')." id='google_img' style="display:none;" width='50px' />
 										<label><h4>Teléfono</h4></label>
-										<input type="text" name="telefono" value="<?=$telefono?>" />	
+										<input type="text" name="telefono" value="<?=$telefono?>" />
+										<label><h4>Mostrar Buscador</h4></label>
+										<div class="btn-group" data-toggle="buttons-radio">
+											<?php $checado_search = ''; $checado_search1 = ''; if ($buscador == 1) {$checado_search1 = 'active';}else{$checado_search = 'active';} ?>
+										  <button id='buscador_si' type="button" value='1' class="btn btn-inverse <?php echo $checado_search1 ?>"><i id='icon_buscador_si' class="icon-ok icon-white"></i></button>
+										  <button id='buscador_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_search ?>"><i id='icon_buscador_no' class="icon-ban-circle icon-white"></i></button>
+										</div>
+										<input name="m_buscador" id="m_buscador" type="hidden" value="<?php echo $buscador ?>">	
 									</div>
 									<div class="span3">
 										<label><h4>Mostrar mapa</h4></label>
@@ -106,7 +113,7 @@
 								  	</div>
 							  	</div>
 							  </div>
-							  <div class="tab-pane" id="contenido">
+							  <!-- <div class="tab-pane" id="contenido">
 							  	<div class="row">
 								  	<div class="span4">
 									  	<label for="template"><h4>Template predeterminado</h4></label>
@@ -123,16 +130,10 @@
 										<input type="number" name="num_recientes" value="<?=$num_recientes?>" />
 									</div>
 									<div class="span4">
-										<label><h4>Mostrar Buscador</h4></label>
-										<div class="btn-group" data-toggle="buttons-radio">
-											<?php $checado_search = ''; $checado_search1 = ''; if ($buscador == 1) {$checado_search1 = 'active';}else{$checado_search = 'active';} ?>
-										  <button id='buscador_si' type="button" value='1' class="btn btn-inverse <?php echo $checado_search1 ?>"><i id='icon_buscador_si' class="icon-ok icon-white"></i></button>
-										  <button id='buscador_no' type="button" value="0" class="btn btn-inverse <?php echo $checado_search ?>"><i id='icon_buscador_no' class="icon-ban-circle icon-white"></i></button>
-										</div>
-										<input name="m_buscador" id="m_buscador" type="hidden" value="<?php echo $buscador ?>">
+										
 									</div>
 								</div>
-							  </div>
+							  </div> -->
 							  <div class="tab-pane" id="social">
 							  	<div class="span4">
 								  	<label for="twitter"><h4>Twitter</h4></label>

@@ -184,7 +184,9 @@
 	<!-- End div class="wrapper container" -->
 <script type="text/javascript">
 
-	$(".collapse").collapse();
+	$(".collapse").collapse({
+		show: true
+	});
 
 		$(function(){
 			$(".btndel").click(function(e){

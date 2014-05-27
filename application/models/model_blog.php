@@ -724,6 +724,24 @@ class Model_blog extends CI_Model {
     	}
     }
 
+    public function dameMetaTitulo(){
+    	$query = $this->db->get('config_contenido');
+		if($query->num_rows() > 0){
+			return $query->row('m_titulo');
+		}else{
+			return false;
+		}
+    }
+
+    public function dameMetaDescripcion(){
+    	$query = $this->db->get('config_contenido');
+		if($query->num_rows() > 0){
+			return $query->row('m_descripcion');
+		}else{
+			return false;
+		}
+    }
+
 }
 
 /* End of file Model_usuarios.php */

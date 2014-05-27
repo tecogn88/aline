@@ -59,6 +59,22 @@ class Alinecms {
 		}
 	}
 
+	function add_javascript_bootstrap3($nombreJS = '', $imprime = TRUE,$admin = FALSE){
+		$_path = base_url('/assets/bootstrap3/js/');
+		
+		if($admin == TRUE)
+			$_path = base_url('/assets/admin/bootstrap3/js/');
+		
+
+		$_path .="/";
+
+		if( $imprime == TRUE){
+			echo "<script src='" . $_path . $nombreJS . ".js' type='text/javascript'></script>";
+		}else{
+			return "<script src='" . $_path . $nombreJS . ".js' type='text/javascript'></script>";
+		}
+	}
+
 
 	/**
 	 * Funcion para imprimir javascript
@@ -71,6 +87,22 @@ class Alinecms {
 		$_path = base_url('assets/css');
 		if($admin == TRUE){
 			$_path = base_url('assets/admin/css');
+		}
+
+		$_path .="/";
+
+		if( $imprime == TRUE){
+			echo "<link href='". $_path . $nombreCSS . ".css' rel='stylesheet' >";
+		}else{
+			return "<link href='" . $_path . $nombreCSS . ".css' rel='stylesheet' >";
+		}
+
+	}
+
+	function add_css_bootstrap3($nombreCSS = '', $imprime = TRUE,$admin = FALSE){
+		$_path = base_url('assets/bootstrap3/css');
+		if($admin == TRUE){
+			$_path = base_url('assets/admin/bootstrap3/css');
 		}
 
 		$_path .="/";

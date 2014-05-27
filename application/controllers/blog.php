@@ -81,6 +81,8 @@ class Blog extends CI_Controller {
         $data['articulos'] = $this->post->blog($paginacion['per_page'],$paginacion['desde']);
         $usuarios = $this->usr->dameAutores();
         $data['usuarios'] = $usuarios;
+        $data['m_titulo'] = $this->post->dameMetaTitulo();
+        $data['m_descripcion'] = $this->post->dameMetaDescripcion();
         $this->load->view('public/blog/blog',$data);
     }
 
@@ -243,7 +245,7 @@ class Blog extends CI_Controller {
         $data['menu_left'] = "";
         //$data['sidebar_der'] = $this->dameSidebarDerecha();
         $numero_articulos = $this->post->dame_numPost(/*$string*/);
-        $paginacion = false;/*$this->paginacion($numero_articulos);*/
+        
         $data['paginacion'] = $this->pagination->create_links();
         $data['destacados'] = $this->post->dameUltimosPostInicio();
         $data['categoria_padre'] = $this->post->dameCategoria($id);
@@ -306,7 +308,7 @@ class Blog extends CI_Controller {
     public function paginacion($num){
         $config['base_url'] = base_url('blog/index');
         $config['total_rows'] = $num;
-        $config['per_page'] = 5;
+        $config['per_page'] = $this->configuration->paginacion;
         $config['uri_segment'] = 3;
         $config['first_link'] = TRUE;
         $config['last_link'] = TRUE;

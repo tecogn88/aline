@@ -209,6 +209,7 @@ class Model_configuracion extends CI_Model {
             'info_descripcion' => $this->input->post('info_descripcion', true),
             'mostrar_mapa' => $this->input->post('map_u', true),
             'telefono' => $this->input->post('telefono', true),
+            'mostrar_buscador' => $this->input->post('m_buscador', true),
             );
         $this->db->update('config_contacto',$data);
         if ($this->db->affected_rows() > 0) {
@@ -221,10 +222,14 @@ class Model_configuracion extends CI_Model {
     function editar_config_contenido(){
         $data = array(
             'plantilla' => $this->input->post('template', true),
-            'no_articulos' => (int)$this->input->post('num_articulos', true),
+            /*'no_articulos' => (int)$this->input->post('num_articulos', true),*/
             'no_recientes' => (int)$this->input->post('num_recientes', true),
+            'breadcrumbs' => $this->input->post('breadcrumbs'),
+            'm_titulo' => $this->input->post('m_titulo'),
+            'm_descripcion' => $this->input->post('m_descripcion'),
+            'paginacion' => $this->input->post('num_paginacion'),
             /*'categorias' => $categorias,*/
-            'mostrar_buscador' => $this->input->post('m_buscador', true),
+            /*'mostrar_buscador' => $this->input->post('m_buscador', true),*/
             );
         $this->db->update('config_contenido',$data);
         if ($this->db->affected_rows() > 0) {

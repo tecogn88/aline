@@ -1,14 +1,15 @@
 	<div class="row-fluid">
 	<footer>
-		<p>
-			
-		</p>
+		<div class="text-center navbar navbar-inner  navbar-fixed-bottom">
+            <p style="padding:10px;"><strong>NoriCMS 2.5.26 - <?php echo date('Y'); ?></strong></p>
+        </div>
 	</footer>
 
 	<!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- This .js file, add generic functions. -->
+    <script src="<?php echo base_url('assets/js/bootstrap.js'); ?>"></script>
  <!--    
     <script src="<?php echo base_url('assets/admin/js/scripts_admin.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap-transition.js'); ?>"></script>

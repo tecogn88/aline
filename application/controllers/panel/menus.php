@@ -39,7 +39,7 @@ class Menus extends CI_Controller {
 		$data['titulo_pagina'] = "Crea un nuevo menu";
 		$data['descripcion_pagina'] = "crea un menu de navegación nuevo";
 		$data['menus'] = $this->get_tabla_menu();
-		$data['paginas'] = $this->get_paginas_menus();
+		//$data['paginas'] = $this->get_paginas_menus();
 		$this->load->view('admin/menus/nuevo-menu' , $data);
 	}
 

@@ -19,13 +19,15 @@
 		</div>	
 		<div class="row">
 			<div class="span12">
-				<?php  $inicio = '/';$base2 = '/blog/'; $base1 = '/blog/categoria/'.$pagina->id_categoria;?>
-				<p class="breadcrum">
-					<a href="<?php echo base_url(''.$inicio); ?>">Inicio</a> / 
-					<a href="<?php echo base_url(''.$base2); ?>">Blog</a> / 
-					<a href="<?php echo base_url(''.$base1); ?>"><?php echo $categoria_nombre; ?></a> /
-					<?php echo $pagina->titulo; ?>
-				</p>
+				<?php if($this->configuration->breadcrumbs == 1){ ?>
+					<?php  $inicio = '/';$base2 = '/blog/'; $base1 = '/blog/categoria/'.$pagina->id_categoria;?>
+					<p class="breadcrum">
+						<a href="<?php echo base_url(''.$inicio); ?>">Inicio</a> / 
+						<a href="<?php echo base_url(''.$base2); ?>">Blog</a> / 
+						<a href="<?php echo base_url(''.$base1); ?>"><?php echo $categoria_nombre; ?></a> /
+						<?php echo $pagina->titulo; ?>
+					</p>
+				<?php } ?>
 				<div class="contenidoarticulo">
 					<h2 class="titulos noticia"><?=$pagina->titulo;?></h2>
 					<?php if ($pagina->id_autor == 0){ ?>
